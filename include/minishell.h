@@ -12,15 +12,14 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-
 # define TRUE 0
 # define FALSE 1
 
 typedef struct s_node{
-	char *key;
-	char *value;
-	struct s_node *next;
-} t_node;
+	char	*key;
+	char	*value;
+	t_node	*next;
+}	t_node;
 
 typedef struct s_hash{
 	t_node **nodes;
