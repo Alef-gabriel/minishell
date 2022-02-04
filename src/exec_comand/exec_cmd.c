@@ -1,24 +1,14 @@
 #include "minishell.h"
 
-/*
-void try_to_exec(char *s, char *env)
+void ft_exec(char *path, char **cmd, char **env)
 {
-	char **matrix;
 	int pid;
-	char *cmd;
-	char *temp;
 
-	temp = swap_chars(s, ' ', 1);
-	matrix = ft_split(s, ' ');
-	matrix = search_matrix(matrix);
-	cmd = check_access(matrix[0]);
 	pid = fork();
 	if (pid == 0)
-		execve(cmd, matrix, env);
+		execve(path, cmd, env);
 	waitpid(pid, NULL, 0);
-	return ;
 }
-*/
 
 char **append_in_matrix(char **arrey, char *str)
 {
@@ -40,21 +30,26 @@ char **append_in_matrix(char **arrey, char *str)
 	return (res);
 }
 
-char **hash_to_env(t_hash *table)
+char **hash_to_env(t_node **nodes)
 {
 	int		i;
 	char	**env;
 	char	*path;
-
+	//the exec error is here
 	i = 0;
 	env = (char **)ft_calloc(sizeof(char *), 1);
-	while (g_mini.env_table->nodes[i])
+	while (i < g_mini.env_table->size)
 	{
-		while (g_mini.env_table->nodes[i] && g_mini.env_table->nodes[i]->key != NULL)
+		if (nodes[i] && nodes[i]->key != NULL)
 		{
-			path = ft_conect(g_mini.env_table->nodes[i]->key, "=", g_mini.env_table->nodes[i]->value);
+			while (nodes[i]->next != NULL)
+			{
+				path = ft_conect(nodes[i]->key, "=", nodes[i]->value);
+				env = append_in_matrix(env, path);
+				nodes[i] = nodes[i]->next;
+			}
+			path = ft_conect(nodes[i]->key, "=", nodes[i]->value);
 			env = append_in_matrix(env, path);
-			g_mini.env_table->nodes[i] = g_mini.env_table->nodes[i]->next;
 		}
 		i++;
 	}

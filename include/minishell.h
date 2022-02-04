@@ -15,8 +15,6 @@
 
 # define TRUE 0
 # define FALSE 1
-# define PATH "/usr/local/sbin/::/usr/local/bin/:\
-/usr/sbin/:/usr/bin/:/sbin:/bin/"
 
 typedef struct s_node{
 	char *key;
@@ -83,19 +81,16 @@ char	*ft_strtrim(char const *s1, char const *set);
 void	init_term(void);
 void init_vars(void);
 
-char	*check_path(char *cmd, t_hash *table);
-
-void	print_table(t_hash *table);
 
 char **append_in_matrix(char **arrey, char *str);
-char **hash_to_env(t_hash *table);
+char **hash_to_env(t_node **nodes);
 
 /* Parse */
 char	*takeinput(void);
 void	parse_input(char *s, char **env);
 int		is_comand(char *s);
 int		check_sintax(char *s);
-
+char	*check_path(char *cmd, t_node **nodes);
 char 	*swap_chars(char *, char to_find, char to_put);
 char	**search_matrix(char **matrix);
 void	verify_what_is(char *s);
@@ -121,7 +116,7 @@ char	**cmd_parser(char *cmd);
 
 t_files	*files_save(char *s, t_files *anchor, int finish, int sig);
 /* Exec */
-void	try_to_exec(char *s, char **env);
+void ft_exec(char *path, char **cmd, char **env);
 int		export(t_hash *data, char *cmd);
 int		unset(t_hash *data, char *key);
 
@@ -131,7 +126,8 @@ t_hash			*create_hash(int size);
 void			create_node(t_hash *hash);
 unsigned int	hash(char* str, unsigned int len);
 void			atribute_node(char *key, char *value, t_hash *hash, int index);
-t_node	*hash_search(t_hash *data, char *key, int len);
+char *hash_search(t_node **nodes, char *key, int len);
 t_hash *env_to_hash(char **env);
 t_node *create_new_node(char *key, char *value);
+void	print_table(t_node **nodes, int size);
 #endif

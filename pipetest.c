@@ -14,7 +14,7 @@ int main()
 	int status;
 	struct stat buf;
 	char cmd[] = "/usr/bin/ls";
-	char *argp[] = {"ls   ", "-l", NULL};
+	char *argp[] = {"ls", "-l", NULL};
 	char *argt[] = {NULL};
 	int	a;
 

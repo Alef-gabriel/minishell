@@ -1,26 +1,26 @@
 #include "minishell.h"
 
-t_node *hash_search(t_hash *data, char *key, int len)
+char *hash_search(t_node **nodes, char *key, int len)
 {
 	int	i;
 
-	i = hash(key, data->size);
-	while (ft_memcmp(data->nodes[i]->key, key, len) != 0)
-		data->nodes[i] = data->nodes[i]->next;
-	return (data->nodes[i]);
+	i = hash(key, g_mini.env_table->size);
+	while (nodes[i] && ft_memcmp(nodes[i]->key, key, len) != 0)
+		nodes[i] = nodes[i]->next;
+	return (nodes[i]->value);
 }
 
-void	print_table(t_hash *table)
+void	print_table(t_node **nodes, int size)
 {
 	int	i;
 
 	i = 0;
-	while (i < g_mini.env_table->size && g_mini.env_table->nodes[i])
+	while (i < size && nodes[i])
 	{
-		while (g_mini.env_table->nodes[i] && g_mini.env_table->nodes[i]->key != NULL)
+		while (nodes[i] && nodes[i]->key != NULL)
 		{
-			printf("%s=%s\n", g_mini.env_table->nodes[i]->key, g_mini.env_table->nodes[i]->value);
-			g_mini.env_table->nodes[i] = g_mini.env_table->nodes[i]->next;
+			printf("%s=%s\n", nodes[i]->key, nodes[i]->value);
+			nodes[i] = nodes[i]->next;
 		}
 		i++;
 	}

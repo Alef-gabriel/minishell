@@ -4,8 +4,6 @@ int main(int argc, char **argv, char **envp)
 {
 	char *input;
 	char *s;
-	int i = 0;
-	int j = 0;
 
 	init_vars();
 	// init_term();

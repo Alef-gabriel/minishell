@@ -3,6 +3,8 @@
 int pipe_parse(char *s)
 {
 	t_commands *save_init;
+	char	**env;
+	char	*local;
 
 	save_init = g_mini.commands;
 	separate_in_pipes(s);
@@ -15,14 +17,19 @@ int pipe_parse(char *s)
 		g_mini.commands = g_mini.commands->next;
 	}
 	g_mini.commands = save_init;
-	//printf("cmmand : %s\n",ft_conect("/usr/bin", "/", g_mini.commands->cmd[0]));
+	env = hash_to_env(g_mini.env_table->nodes);
+	local = check_path(g_mini.commands->cmd[0], g_mini.env_table->nodes);
+	ft_exec(local, g_mini.commands->cmd, env);
+	free(local);
+	free_matrix(env);
 	//redir_exec(g_mini.commands->files_redir);
-	//hash_to_env(g_mini.env_table);
 	// fazer isso quando executar o comando
 	while (g_mini.commands->wf_cmd != NULL)
 	{
 		free(g_mini.commands->wf_cmd);
 		g_mini.commands->wf_cmd = NULL;
+		free_matrix(g_mini.commands->cmd);
+		g_mini.commands->cmd = NULL;
 		g_mini.commands = g_mini.commands->next;
 	}
 	g_mini.commands = save_init;

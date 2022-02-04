@@ -1,7 +1,7 @@
 NAME = minishell
 
 CC = gcc
-CFLAGS = -g
+CFLAGS = -fsanitize=address -g3
 
 RM = rm -rf
 

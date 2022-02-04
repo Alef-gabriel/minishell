@@ -1,15 +1,15 @@
 #include "minishell.h"
 
-char	*check_path(char *cmd, t_hash *table)
+char	*check_path(char *cmd, t_node **nodes)
 {
 	int		pos;
 	char	**path_comand;
 	char	*command_which;
-	t_node	*path;
+	char	*path;
 
 	pos = 0;
-	path = hash_search(table, "PATH", 5);
-	path_comand = ft_split(path->value, ':');
+	path = hash_search(nodes, "PATH", 5);
+	path_comand = ft_split(path, ':');
 	while (path_comand[pos] != NULL)
 	{
 		command_which = ft_conect(path_comand[pos], "/", cmd);
@@ -36,7 +36,7 @@ int is_comand(char *s)
 	temp = swap_chars(s, ' ', 1);
 	matrix = ft_split(temp, ' ');
 	matrix = search_matrix(matrix);
-	cmd = check_path(matrix[0],g_mini.env_table);
+	cmd = check_path(matrix[0],g_mini.env_table->nodes);
 
 	if (cmd == NULL)
 		return (1);

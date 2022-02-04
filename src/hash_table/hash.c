@@ -21,7 +21,7 @@ t_hash *create_hash(int size)
 	i = 0;
 	hash = (t_hash *)ft_calloc(sizeof(t_hash), 1);
 	hash->size = size;
-	hash->nodes = (t_node **)ft_calloc(sizeof(t_node *), hash->size);
+	hash->nodes = (t_node **)ft_calloc(sizeof(t_node *), hash->size + 1);
 	while (i < size)
 	{
 		hash->nodes[i] = NULL;

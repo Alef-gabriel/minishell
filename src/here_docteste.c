@@ -209,7 +209,7 @@ int	 main(int argc, char **argv, char **envp)
 
 	fd = open (argv[2], O_CREAT | O_RDONLY | O_WRONLY | O_APPEND, 0777);
 	while(1)
-	{ 	
+	{
 		input = readline(STDIN_FILENO);
 		if(ft_strncmp(argv[1], input, ft_strlen(argv[1])) != 0)
 		{
@@ -221,4 +221,3 @@ int	 main(int argc, char **argv, char **envp)
 	}
 	return (0);
 }
-

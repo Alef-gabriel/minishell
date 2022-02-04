@@ -6,6 +6,11 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+void	test(void)
+{
+	exit(0);
+}
+
 int main()
 {
 	int		fd[2];
@@ -16,11 +21,13 @@ int main()
 	pid = fork();
 	if (pid == 0)
 	{
+		test();
 		ft = open("tt", O_WRONLY | O_TRUNC | O_CREAT, 0644);
 		//dup(STDOUT_FILENO);
 		dup2(fd[1], STDOUT_FILENO);
 		write(ft, "hello guys\n", 11);
 	}
 	waitpid(pid,NULL,0);
+	printf("hello\n");
 	return (0);
 }
