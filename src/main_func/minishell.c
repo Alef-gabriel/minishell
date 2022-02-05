@@ -1,12 +1,16 @@
 #include "minishell.h"
 
-int main(int argc, char **argv, char **envp)
+t_minishell	g_mini;
+
+int	main(int argc, char **argv, char **envp)
 {
-	char *input;
-	char *s;
+	char	*input;
+	char	*s;
 
 	init_vars();
 	// init_term();
+	(void)argc;
+	(void)argv;
 	g_mini.env_table = env_to_hash(envp);
 	while (1)
 	{

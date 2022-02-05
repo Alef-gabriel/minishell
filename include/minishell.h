@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/03 23:26:47 by anhigo-s         ###   ########sp.org.br */
+/*   Updated: 2022/02/05 02:47:53 by anhigo-s         ###   ########sp.org.br */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@
 # define FALSE 1
 
 typedef struct s_node{
-	char	*key;
-	char	*value;
-	t_node	*next;
+	char			*key;
+	char			*value;
+	struct s_node	*next;
 }	t_node;
 
 typedef struct s_hash{
@@ -39,27 +39,27 @@ typedef struct s_hash{
 }	t_hash;
 
 typedef struct s_files{
-	char	*file_name;
-	int		fd;
-	int		link;
-	int		doc_sig;
-	t_files	*next;
+	char			*file_name;
+	int				fd;
+	int				link;
+	int				doc_sig;
+	struct s_files	*next;
 }	t_files;
 
 typedef struct s_limiter{
-	char		*name;
-	t_limiter	*next;
+	char				*name;
+	struct s_limiter	*next;
 }	t_limiter;
 
 typedef struct s_commands{
-	t_limiter	*limiter;
-	t_files		*files_redir;
-	t_files		*files_here_doc;
-	char		**cmd;
-	char		*wf_cmd;
-	char		*input;
-	int			redir_type;
-	t_commands	*next;
+	t_limiter			*limiter;
+	t_files				*files_redir;
+	t_files				*files_here_doc;
+	char				**cmd;
+	char				*wf_cmd;
+	char				*input;
+	int					redir_type;
+	struct s_commands	*next;
 }	t_commands;
 
 typedef struct s_minishell{
@@ -71,7 +71,7 @@ typedef struct s_minishell{
 	t_hash		*env_table;
 }	t_minishell;
 
-t_minishell	g_mini;
+extern t_minishell	g_mini;
 
 /* Utils */
 void			*ft_calloc(size_t nbytes, size_t sizemem);
