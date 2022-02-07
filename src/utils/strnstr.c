@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-int ft_strstr(const char *str, const char *tofind)
+int	ft_strstr(const char *str, const char *tofind)
 {
 	size_t	s;
 	size_t	t;

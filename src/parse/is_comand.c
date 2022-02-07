@@ -26,17 +26,17 @@ char	*check_path(char *cmd, t_node **nodes)
 }
 
 
-int is_comand(char *s)
+int	is_comand(char *s)
 {
-	char *cmd;
-	char **matrix;
-	char *temp;
+	char	*cmd;
+	char	**matrix;
+	char	*temp;
 
 
 	temp = swap_chars(s, ' ', 1);
 	matrix = ft_split(temp, ' ');
 	matrix = search_matrix(matrix);
-	cmd = check_path(matrix[0],g_mini.env_table->nodes);
+	cmd = check_path(matrix[0], g_mini.env_table->nodes);
 
 	if (cmd == NULL)
 		return (1);

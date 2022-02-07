@@ -1,9 +1,9 @@
 #include "minishell.h"
 
-char **split_swap_cmds(char *cmd)
+char	**split_swap_cmds(char *cmd)
 {
-	char **matrix;
-	char *temp;
+	char	**matrix;
+	char	*temp;
 
 	temp = swap_chars(cmd, ' ', 1);
 	matrix = ft_split(temp, ' ');
@@ -11,7 +11,7 @@ char **split_swap_cmds(char *cmd)
 	return (matrix);
 }
 
-char **treat_cmd(char *cmd)
+char	**treat_cmd(char *cmd)
 {
 	char	**matrix;
 
@@ -19,7 +19,7 @@ char **treat_cmd(char *cmd)
 	return (matrix);
 }
 
-int is_builtin(char *cmd)
+int	is_builtin(char *cmd)
 {
 	// criar a builtin de cad um epaasar como função no if
 	// else passa para o execve

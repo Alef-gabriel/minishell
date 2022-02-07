@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 09:05:40 by gabriel           #+#    #+#             */
-/*   Updated: 2022/01/11 09:17:45 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/02/07 01:21:26 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	if (new == NULL)
 		return (NULL);
 	while (s1[n] != '\0')
-	{	
+	{
 		new[n] = s1[n];
 		n++;
 	}

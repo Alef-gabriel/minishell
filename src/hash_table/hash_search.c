@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-char *hash_search(t_node **nodes, char *key, int len)
+char	*hash_search(t_node **nodes, char *key, int len)
 {
 	int	i;
 

@@ -1,11 +1,11 @@
 #include "minishell.h"
 
-int check_quotes(char *s)
+int	check_quotes(char *s)
 {
-	int i;
-	int quote_s;
-	int quote_d;
-	
+	int	i;
+	int	quote_s;
+	int	quote_d;
+
 	i = 0;
 	quote_s = 0;
 	quote_d = 0;
@@ -19,11 +19,11 @@ int check_quotes(char *s)
 	}
 	if (quote_s % 2 != 0 || quote_d % 2 != 0)
 		return (1);
-	return(0);
+	return (0);
 }
 
 
-int check_sintax(char *s)
+int	check_sintax(char *s)
 {
 	if (!ft_strstr(s, ";"))
 		return (-1);

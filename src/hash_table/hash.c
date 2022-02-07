@@ -1,8 +1,8 @@
 #include "minishell.h"
 
-t_node *create_new_node(char *key, char *value)
+t_node	*create_new_node(char *key, char *value)
 {
-	t_node *ret;
+	t_node	*ret;
 
 	ret = (t_node *)ft_calloc(sizeof(t_node), 1);
 	ret->key = ft_strdup(key);
@@ -13,10 +13,10 @@ t_node *create_new_node(char *key, char *value)
 
 
 
-t_hash *create_hash(int size)
+t_hash	*create_hash(int size)
 {
-	t_hash *hash;
-	int i;
+	t_hash	*hash;
+	int		i;
 
 	i = 0;
 	hash = (t_hash *)ft_calloc(sizeof(t_hash), 1);
@@ -30,14 +30,14 @@ t_hash *create_hash(int size)
 	return (hash);
 }
 
-unsigned int hash(char* str, unsigned int len)
+unsigned int	hash(char *str, unsigned int len)
 {
-	unsigned long int hash;
-	unsigned int i;
+	unsigned long int	hash;
+	unsigned int		i;
 
 	hash = 5381;
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
 		hash = ((hash << 5) + hash) + (str[i]);
 		i++;
@@ -45,17 +45,17 @@ unsigned int hash(char* str, unsigned int len)
 	return (hash % len);
 }
 
-void atribute_node(char *key, char *value, t_hash *hash, int index)
+void	atribute_node(char *key, char *value, t_hash *hash, int index)
 {
 	hash->nodes[index]->key = ft_strdup(key);
 	hash->nodes[index]->value = ft_strdup(value);
 }
 
 
-void create_node(t_hash *hash)
+void	create_node(t_hash *hash)
 {
-	t_node *aux;
-	int i;
+	t_node	*aux;
+	int		i;
 
 	i = 0;
 	while (i < hash->size)
@@ -66,5 +66,4 @@ void create_node(t_hash *hash)
 		hash->nodes[i]->value = NULL;
 		i++;
 	}
-
 }

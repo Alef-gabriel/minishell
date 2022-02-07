@@ -2,7 +2,7 @@
 
 char *swap_chars(char *cmd, char to_find, char to_put)
 {
-	int i;
+	int	i;
 
 	i = 0;
 /*colocar tratamento caso nao tenha sido fechado as aspas*/

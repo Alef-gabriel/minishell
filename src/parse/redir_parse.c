@@ -1,19 +1,19 @@
 #include "minishell.h"
 
-int check_redir(char *cmd_line)
+int	check_redir(char *cmd_line)
 {
 	if (!ft_strstr(cmd_line, ">>>"))
 		return (-1);
-	if(!ft_strstr(cmd_line, ">>"))
+	if (!ft_strstr(cmd_line, ">>"))
 		return (1);
-	if(!ft_strstr(cmd_line, ">"))
+	if (!ft_strstr(cmd_line, ">"))
 		return (1);
 	return (0);
 }
 
 t_files	*files_save(char *s, t_files *anchor, int finish, int sig)
 {
-	t_files *save_f;
+	t_files	*save_f;
 
 	save_f = anchor;
 	if (anchor == NULL)

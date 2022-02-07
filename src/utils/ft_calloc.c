@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 15:05:39 by gabriel           #+#    #+#             */
-/*   Updated: 2022/01/17 08:10:40 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/02/07 01:20:40 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memset(void *mem, int c, size_t len)
 		*(unsigned char *)(mem + len) = (unsigned char)(c);
 	}
 	return (mem);
-}	
+}
 
 void	ft_bzero(void *s, size_t n)
 {
