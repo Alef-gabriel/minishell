@@ -28,7 +28,9 @@ SRCS = $(PATH_MAIN)minishell.c $(PATH_MAIN)initial_func.c\
 		$(PATH_UTILS)ft_strjoin.c $(PATH_UTILS)free_matrix.c $(PATH_UTILS)strnstr.c\
 		$(PATH_UTILS)ft_calloc.c $(PATH_UTILS)ft_strdup.c $(PATH_UTILS)ft_strlcpy.c\
 		$(PATH_UTILS)ft_substr.c $(PATH_UTILS)ft_memcmp.c\
-		$(PATH_UTILS)ft_strtrim.c $(PATH_BUILTINS)export.c $(PATH_BUILTINS)unset.c $(PATH_PARSE)ultils.c
+		$(PATH_UTILS)ft_strtrim.c $(PATH_UTILS)ft_putendl_fd.c \
+		$(PATH_BUILTINS)export.c $(PATH_BUILTINS)unset.c \
+		$(PATH_PARSE)ultils.c
 
 OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(SRCS))
 

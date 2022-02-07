@@ -1,10 +1,10 @@
 #include "minishell.h"
 
-int pipe_parse(char *s)
+int	pipe_parse(char *s)
 {
 	t_commands *save_init;
-	char	**env;
-	char	*local;
+	char		**env;
+	char		*local;
 
 	save_init = g_mini.commands;
 	separate_in_pipes(s);

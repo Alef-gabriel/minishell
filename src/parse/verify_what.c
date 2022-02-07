@@ -13,10 +13,10 @@ char **split_swap_cmds(char *cmd)
 
 char **treat_cmd(char *cmd)
 {
-	char **matrix;
+	char	**matrix;
 
 	matrix = split_swap_cmds(cmd);
-	return(matrix);
+	return (matrix);
 }
 
 int is_builtin(char *cmd)
