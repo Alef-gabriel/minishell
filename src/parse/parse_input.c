@@ -4,17 +4,17 @@
 // executar as dups caso necessario (em caso de redirect)
 // criar a commat_commands, linkando todos os pipes antes de começar com os execs
 
-char *takeinput(void)
+char	*takeinput(void)
 {
-	char *buffer;
+	char	*buffer;
 
 	buffer = readline("MINIHELL: ");
 	return (buffer);
 }
 
-int count_cmd_len(char *s, int init)
+int	count_cmd_len(char *s, int init)
 {
-	int ret;
+	int	ret;
 
 	ret = 0;
 
@@ -26,7 +26,7 @@ int count_cmd_len(char *s, int init)
 	return (ret);
 }
 
-void separate_in_pipes(char *s)
+void	separate_in_pipes(char *s)
 {
 	int			i;
 	int			j;

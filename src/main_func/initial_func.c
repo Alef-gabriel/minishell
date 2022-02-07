@@ -5,7 +5,7 @@ void	init_term(void)
 	printf("\033[H\033[J");
 }
 
-void init_vars(void)
+void	init_vars(void)
 {
 	g_mini.pipes = 0;
 	g_mini.comand = 0;

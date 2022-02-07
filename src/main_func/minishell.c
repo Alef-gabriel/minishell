@@ -18,12 +18,12 @@ int	main(int argc, char **argv, char **envp)
 		if (!ft_strncmp("exit", input, 4))
 			exit(0);
 		s = ft_strtrim(input, " ");
-		if(s[0] != '\0')
+		if (s[0] != '\0')
 			parse_input(s, envp);
 		free(s);
 		free(input);
 		g_mini.pipes = 0;
 	}
-	return(0);
+	return (0);
 }
 
