@@ -6,10 +6,9 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 01:01:38 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/07 01:11:13 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/02/08 01:21:05 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 //verificar se o "echo $?" retorna 0
 void	pwd_build(void)

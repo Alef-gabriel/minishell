@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 21:29:04 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/07 21:29:11 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/02/08 01:21:38 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	unset(t_hash *data, char *key)
 {
+	t_node	*aux;
 	int		i;
 	int		len;
 	int		j;
-	t_node	*aux;
 
 	j = 0;
 	i = hash(key, data->size);

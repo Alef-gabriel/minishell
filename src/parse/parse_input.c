@@ -6,14 +6,14 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 00:58:23 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/08 01:15:26 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/02/08 01:22:05 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 // executar as dups caso necessario (em caso de redirect)
-// criar a commat_commands, linkando todos os pipes antes 
+// criar a commat_commands, linkando todos os pipes antes
 // de começar com os execs
 char	*takeinput(void)
 {
