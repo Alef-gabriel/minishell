@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 01:17:39 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/08 01:17:41 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/02/08 01:25:19 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ static int	signal_type(char *s)
 	return (0);
 }
 
-t_files	*parser(char *s, char iten, t_files *(*save)(char *, t_files *anchor, int finish, int sig), int (*check)(char *cmd_line))
+t_files	*parser(char *s, char iten, \
+t_files *(*save)(char *, t_files *anchor, int finish, int sig), \
+int (*check)(char *cmd_line))
 {
 	int			i;
 	int			j;

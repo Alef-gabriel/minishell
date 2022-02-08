@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 00:57:51 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/08 00:57:52 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/02/08 01:24:43 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 t_minishell	g_mini;
 
+// verificar >>> init_term();
 int	main(int argc, char **argv, char **envp)
 {
 	char	*input;
 	char	*s;
 
-	init_vars();
-	// init_term();
 	(void)argc;
 	(void)argv;
+	init_vars();
 	g_mini.env_table = env_to_hash(envp);
 	while (1)
 	{
@@ -38,4 +38,3 @@ int	main(int argc, char **argv, char **envp)
 	}
 	return (0);
 }
-

@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 09:00:11 by gsilva-v          #+#    #+#             */
-/*   Updated: 2022/02/07 01:21:54 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/02/08 01:23:25 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,3 @@ int	ft_strcmp(const char *s1, const char *s2)
 	}
 	return (0);
 }
-
-
