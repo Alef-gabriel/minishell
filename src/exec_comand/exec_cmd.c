@@ -35,6 +35,7 @@ char **hash_to_env(t_node **nodes)
 	int		i;
 	char	**env;
 	char	*path;
+	t_node	*aux;
 	//the exec error is here
 	i = 0;
 	env = (char **)ft_calloc(sizeof(char *), 1);
@@ -42,12 +43,14 @@ char **hash_to_env(t_node **nodes)
 	{
 		if (nodes[i] && nodes[i]->key != NULL)
 		{
+			aux = nodes[i];
 			while (nodes[i]->next != NULL)
 			{
 				path = ft_conect(nodes[i]->key, "=", nodes[i]->value);
 				env = append_in_matrix(env, path);
 				nodes[i] = nodes[i]->next;
 			}
+			nodes[i] = aux;
 			path = ft_conect(nodes[i]->key, "=", nodes[i]->value);
 			env = append_in_matrix(env, path);
 		}

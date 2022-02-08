@@ -17,8 +17,8 @@ int pipe_parse(char *s)
 		g_mini.commands = g_mini.commands->next;
 	}
 	g_mini.commands = save_init;
-	env = hash_to_env(g_mini.env_table->nodes);
 	local = check_path(g_mini.commands->cmd[0], g_mini.env_table->nodes);
+	env = hash_to_env(g_mini.env_table->nodes);
 	ft_exec(local, g_mini.commands->cmd, env);
 	free(local);
 	free_matrix(env);
