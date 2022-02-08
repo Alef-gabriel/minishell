@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   create_env.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/07 21:30:36 by anhigo-s          #+#    #+#             */
+/*   Updated: 2022/02/07 21:30:41 by anhigo-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-t_hash *env_to_hash(char **env)
+t_hash	*env_to_hash(char **env)
 {
-	t_hash *table;
-	int i;
-	int j;
-	int hash_index;
-	char *key;
-	char *value;
+	t_hash	*table;
+	int		i;
+	int		j;
+	int		hash_index;
+	char	*key;
+	char	*value;
 
 
 	i = 0;

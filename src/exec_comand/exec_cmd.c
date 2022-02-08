@@ -30,7 +30,7 @@ char **append_in_matrix(char **arrey, char *str)
 	return (res);
 }
 
-char **hash_to_env(t_node **nodes)
+char	**hash_to_env(t_node **nodes)
 {
 	int		i;
 	char	**env;
