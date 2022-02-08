@@ -22,7 +22,6 @@ int	check_quotes(char *s)
 	return (0);
 }
 
-
 int	check_sintax(char *s)
 {
 	if (!ft_strstr(s, ";"))

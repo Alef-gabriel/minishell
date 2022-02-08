@@ -33,7 +33,7 @@ t_files	*parser(char *s, char iten, t_files *(*save)(char *, t_files *anchor, in
 	int			j;
 	int			len;
 	int			sig;
-	t_files *save_file;
+	t_files 	*save_file;
 
 	save_file = NULL;
 	if (check(s) <= 0)

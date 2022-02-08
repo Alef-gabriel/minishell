@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hash.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/08 00:57:37 by anhigo-s          #+#    #+#             */
+/*   Updated: 2022/02/08 00:57:38 by anhigo-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 t_node	*create_new_node(char *key, char *value)
@@ -10,8 +22,6 @@ t_node	*create_new_node(char *key, char *value)
 	ret->next = NULL;
 	return (ret);
 }
-
-
 
 t_hash	*create_hash(int size)
 {

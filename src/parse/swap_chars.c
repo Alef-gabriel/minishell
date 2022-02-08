@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-char *swap_chars(char *cmd, char to_find, char to_put)
+char	*swap_chars(char *cmd, char to_find, char to_put)
 {
 	int	i;
 
@@ -23,9 +23,9 @@ char *swap_chars(char *cmd, char to_find, char to_put)
 	return (cmd);
 }
 
-char **search_matrix(char **matrix)
+char	**search_matrix(char **matrix)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (matrix[i])

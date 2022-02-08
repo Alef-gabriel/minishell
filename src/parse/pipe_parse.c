@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 21:28:42 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/07 21:28:43 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/02/08 01:01:06 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	pipe_parse(char *s)
 {
-	t_commands *save_init;
+	t_commands	*save_init;
 	char		**env;
 	char		*local;
 

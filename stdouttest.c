@@ -11,7 +11,7 @@ void	test(void)
 	exit(0);
 }
 
-int main()
+int	main(void)
 {
 	int		fd[2];
 	pid_t	pid;
@@ -27,7 +27,7 @@ int main()
 		dup2(fd[1], STDOUT_FILENO);
 		write(ft, "hello guys\n", 11);
 	}
-	waitpid(pid,NULL,0);
+	waitpid(pid, NULL, 0);
 	printf("hello\n");
 	return (0);
 }

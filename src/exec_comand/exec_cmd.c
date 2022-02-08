@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec_cmd.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/08 00:58:42 by anhigo-s          #+#    #+#             */
+/*   Updated: 2022/02/08 00:58:58 by anhigo-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-void ft_exec(char *path, char **cmd, char **env)
+void	ft_exec(char *path, char **cmd, char **env)
 {
-	int pid;
+	int	pid;
 
 	pid = fork();
 	if (pid == 0)
@@ -10,7 +22,7 @@ void ft_exec(char *path, char **cmd, char **env)
 	waitpid(pid, NULL, 0);
 }
 
-char **append_in_matrix(char **arrey, char *str)
+char	**append_in_matrix(char **arrey, char *str)
 {
 	int		i;
 	char	**res;

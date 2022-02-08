@@ -31,4 +31,3 @@ t_files	*files_save(char *s, t_files *anchor, int finish, int sig)
 	}
 	return (anchor);
 }
-

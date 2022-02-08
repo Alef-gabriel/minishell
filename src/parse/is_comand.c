@@ -25,7 +25,6 @@ char	*check_path(char *cmd, t_node **nodes)
 	return (NULL);
 }
 
-
 int	is_comand(char *s)
 {
 	char	*cmd;
