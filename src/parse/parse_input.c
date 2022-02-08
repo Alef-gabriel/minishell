@@ -47,7 +47,7 @@ void separate_in_pipes(char *s)
 		if (s[j] == '\0' || s[j] == '|')
 		{
 			if(s[j] == '|')
-				g_mini.pipes++;
+				g_mini.cont_pipe++;
 			len = count_cmd_len(s, i);
 			g_mini.commands->wf_cmd = ft_substr(s, i, len);
 			if (g_mini.commands->next == NULL)

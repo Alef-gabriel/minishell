@@ -12,7 +12,9 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 # define TRUE 0
 # define FALSE 1
 
@@ -56,7 +58,8 @@ typedef struct s_minishell{
 	int comand;
 	int open_quotes_sig;
 	int quote_type_sig;
-	int	pipes;
+	int	**pipes;
+	int cont_pipe;
 	t_commands *commands;
 	t_hash *env_table;
 } t_minishell;
@@ -80,6 +83,11 @@ char	*ft_strtrim(char const *s1, char const *set);
 
 void	init_term(void);
 void init_vars(void);
+
+/* get_next_line */
+char	*get_next_line(int fd);
+void	ft_delete(char **buf);
+int		ft_buf_verify(char *buf);
 
 
 char **append_in_matrix(char **arrey, char *str);
@@ -116,7 +124,7 @@ char	**cmd_parser(char *cmd);
 
 t_files	*files_save(char *s, t_files *anchor, int finish, int sig);
 /* Exec */
-void ft_exec(char *path, char **cmd, char **env);
+void ft_exec(char *path, t_commands *cmds, char **env);
 int		export(t_hash *data, char *cmd);
 int		unset(t_hash *data, char *key);
 
