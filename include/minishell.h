@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/08 01:27:49 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/02/08 01:48:06 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 
 # define TRUE 0
 # define FALSE 1
+# define PATH_MAX 4096
 
 extern t_minishell	g_mini;
 
@@ -44,6 +45,8 @@ size_t			ft_strlcpy(char *dst, const char *src, size_t destsize);
 char			*ft_substr(const char *s, unsigned int start, size_t len);
 int				ft_memcmp(const char *s1, const char *s2, size_t n);
 char			*ft_strtrim(char const *s1, char const *set);
+void			ft_putendl_fd(char *s, int fd);
+void			ft_putchar_fd(char c, int fd);
 
 void			init_term(void);
 void			init_vars(void);

@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 00:57:51 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/08 01:24:43 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/02/08 01:48:23 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int argc, char **argv, char **envp)
 	(void)argc;
 	(void)argv;
 	init_vars();
+	pwd_build(); // < teste do pwd
 	g_mini.env_table = env_to_hash(envp);
 	while (1)
 	{

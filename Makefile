@@ -29,7 +29,7 @@ SRCS = $(PATH_MAIN)minishell.c $(PATH_MAIN)initial_func.c\
 		$(PATH_UTILS)ft_calloc.c $(PATH_UTILS)ft_strdup.c $(PATH_UTILS)ft_strlcpy.c\
 		$(PATH_UTILS)ft_substr.c $(PATH_UTILS)ft_memcmp.c\
 		$(PATH_UTILS)ft_strtrim.c $(PATH_UTILS)ft_putendl_fd.c \
-		$(PATH_BUILTINS)export.c $(PATH_BUILTINS)unset.c \
+		$(PATH_BUILTINS)export.c $(PATH_BUILTINS)unset.c $(PATH_BUILTINS)pwd.c \
 		$(PATH_PARSE)ultils.c
 
 OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(SRCS))
@@ -61,4 +61,11 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re push
+
+push:clean
+	rm -rf push_swap
+	git add .
+	read -p "Message:" message; \
+	git commit -m "$$message"; \
+	git push

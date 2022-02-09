@@ -6,16 +6,18 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 01:01:38 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/08 01:21:05 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/02/08 01:47:00 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "minishell.h"
 
 //verificar se o "echo $?" retorna 0
 void	pwd_build(void)
 {
-	char	*folder;
+	char	folder[PATH_MAX];
 
-	folder = getcwd(NULL, 0);
-	ft_putendl(folder, 1);
-	free(folder);
+	getcwd(folder, sizeof(folder));
+	ft_putendl_fd(folder, STDOUT_FILENO);
+	//free(folder);
 }
