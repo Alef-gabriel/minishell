@@ -69,7 +69,7 @@ int main(int argc __attribute__((unused)), char **argv __attribute__((unused)),\
 	struct stat buf;
 	char cmd[] = "/usr/bin/ls";
 	char *argp[] = {"ls", "-l", NULL};
-	char *argt[] = {NULL};
+	//char *argt[] = {NULL};
 	int	a;
 
 	//printf("dir : %s\n", getcwd(NULL, 0));
@@ -84,7 +84,7 @@ int main(int argc __attribute__((unused)), char **argv __attribute__((unused)),\
 		//dup2(piper[0], STDIN_FILENO);
 		dup2(piper[pipe_write], STDOUT_FILENO);
 		close(piper[pipe_read]);
-		execve(cmd, argp, argt);
+		execve(cmd, argp, env);
 
 	}
 	close(piper[pipe_write]);
@@ -93,10 +93,10 @@ int main(int argc __attribute__((unused)), char **argv __attribute__((unused)),\
 	{
 		char cmd[] = "/usr/bin/wc";
 		char *argp[] = {"wc", "-l", NULL};
-		char *argt[] = {NULL};
+		//char *argt[] = {NULL};
 		dup2(piper[pipe_read], STDIN_FILENO);
 		ft_putendl_fd("Caiu Aqui !", 2);
-		execve(cmd, argp, argt);
+		execve(cmd, argp, env);
 	}
 	waitpid(cpid, &status, 0);
 	return (0);
