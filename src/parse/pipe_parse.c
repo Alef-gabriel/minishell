@@ -24,6 +24,14 @@ int pipe_parse(char *s)
 	free_matrix(env);
 	//redir_exec(g_mini.commands->files_redir);
 	// fazer isso quando executar o comando
+	int i = 0;
+	while (i < g_mini.cont_pipe)
+	{
+		free(g_mini.pipes[i]);
+		i++;
+	}
+	free(g_mini.pipes);
+	g_mini.pipes = NULL;
 	while (g_mini.commands->wf_cmd != NULL)
 	{
 		free(g_mini.commands->wf_cmd);

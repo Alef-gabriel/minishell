@@ -6,6 +6,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+/*
 int main()
 {
 	int	piper[2];
@@ -25,10 +26,9 @@ int main()
 	//printf("execve int : %d\n",a);
 
 	cpid = fork();
-	printf("piper %d\n",piper[1]);
 	if (cpid == 0)
 	{
-		close(piper[0]);
+		dup2(piper[0], STDIN_FILENO);
 		dup2(piper[1], STDOUT_FILENO);
 		execve(cmd, argp, argt);
 
@@ -65,3 +65,4 @@ int main()
 	}
 	return (0);
 }
+*/

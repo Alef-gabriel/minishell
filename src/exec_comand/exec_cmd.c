@@ -6,8 +6,8 @@ static int	**creat_pipe_array(void)
 	int		i;
 
 	i = 0;
-	if (g_mini.cont_pipe == 0)
-		g_mini.cont_pipe = 1;
+	if (g_mini.cont_pipe > 0)
+		g_mini.cont_pipe++;
 	pipes = (int **)ft_calloc(sizeof(int *), g_mini.cont_pipe);
 	while (i < g_mini.cont_pipe)
 	{
@@ -21,33 +21,37 @@ void ft_exec(char *path, t_commands *cmds, char **env)
 {
 	int			pid;
 	t_commands	*aux;
-	int	piper[2];
 	int		i;
+	int		j;
+	char	*aj;
 
 	i = 0;
+	j = 0;
 	aux = cmds;
 	g_mini.pipes = creat_pipe_array();
-	while (cmds->next != NULL)
+	while (cmds != NULL && cmds->cmd != NULL)
 	{
+		if (i > 0)
+			j = i - 1;
 		pipe(g_mini.pipes[i]);
 		pid = fork();
 		if (pid == 0)
 		{
 			if (g_mini.cont_pipe > 0)
 			{
-				dup2(g_mini.pipes[i][0], STDIN_FILENO);
+				dup2(g_mini.pipes[0][0], STDIN_FILENO);
 				dup2(g_mini.pipes[i][1], STDOUT_FILENO);
-				execve(path, cmds->cmd, env);
+				execve(ft_conect(path, "/", cmds->cmd[0]), cmds->cmd, env);
 			}
 			else
-				execve(path, cmds->cmd, env);
+				execve(ft_conect(path, "/", cmds->cmd[0]), cmds->cmd, env);
 		}
 		waitpid(pid, NULL, 0);
 		cmds = cmds->next;
 		i++;
 	}
 	if (g_mini.cont_pipe > 0)
-		printf("%s", get_next_line(g_mini.pipes[0][0]));
+		printf("%s", get_next_line(g_mini.pipes[1][0]));
 	cmds = aux;
 }
 
