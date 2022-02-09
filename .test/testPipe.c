@@ -58,8 +58,8 @@ void	ft_putendl_fd(char *s, int fd)
 // 	}
 // }
 
-int main(int argc __attribute__((unused)), char **argv __attribute__((unused)),\
-	char **env)
+int	main(int agc __attribute__((unused)), char **argv __attribute__((unused)), \
+char **env)
 {
 	int	piper[2];
 	int	piper2[2];
