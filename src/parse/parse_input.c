@@ -53,7 +53,7 @@ void separate_in_pipes(char *s)
 			g_mini.commands->wf_cmd = ft_substr(s, i, len);
 			if (g_mini.commands->next == NULL)
 			{
-				g_mini.commands->next = (t_commands *)ft_calloc(sizeof(t_commands), 1);
+				g_mini.commands->next = init_comands();
 			}
 			g_mini.commands = g_mini.commands->next;
 		}
@@ -63,7 +63,6 @@ void separate_in_pipes(char *s)
 	}
 	g_mini.commands = save_init;
 }
-
 
 void	parse_input(char *s, char **env)
 {

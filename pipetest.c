@@ -9,35 +9,24 @@
 
 int main()
 {
-	int		piper[2];
+	int		p[2];
 	int		fd_int;
-	pid_t	cpid;
+	pid_t	pid;
 	int		i;
 	int status;
 	struct stat buf;
-	char cmd[] = "/usr/bin/ls";
-	char *argp[] = {"ls", "-l", NULL};
-	char *argt[] = {NULL};
 
-	while (*cmd != NULL)
+	pipe(p);
+	if (pid == 0)
 	{
-		pipe(p);
-		else if (pid == 0)
-		{
-			dup2(fd_in, 0);
-			if (*(cmd + 1) != NULL)
-				dup2(p[1], 1);
-			close(p[0]);
-			execvp((*cmd)[0], *cmd);
-			exit(EXIT_FAILURE);
-		}
-		else
-		{
-			wait(NULL);
-			close(p[1]);
-			fd_in = p[0];
-			cmd++;
-		}
+		close(p[0]);
+		dup2(p[1], 1);
+		write(1, "hello\n",6);
+	}
+	else
+	{
+		wait(NULL);
+		close(p[1]);
 	}
 	return (0);
 }

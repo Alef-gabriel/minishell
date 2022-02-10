@@ -12,7 +12,7 @@ int pipe_parse(char *s)
 	while (g_mini.commands->next != NULL)
 	{
 		g_mini.commands->files_redir = parser(g_mini.commands->wf_cmd, '>', &files_save, &check_redir);
-		g_mini.commands->files_here_doc = parser(g_mini.commands->wf_cmd, '<', &files_save, &check_here_doc);
+		//g_mini.commands->files_here_doc = parser(g_mini.commands->wf_cmd, '<', &files_save, &check_here_doc);
 		g_mini.commands->cmd = cmd_parser(g_mini.commands->wf_cmd);
 		g_mini.commands = g_mini.commands->next;
 	}

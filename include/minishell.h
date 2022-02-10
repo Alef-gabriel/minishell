@@ -46,11 +46,9 @@ typedef struct s_limiter{
 typedef struct s_commands{
 	t_limiter *limiter;
 	t_files *files_redir;
-	t_files *files_here_doc;
 	char **cmd;
 	char *wf_cmd;
 	char *input;
-	int redir_type;
 	struct s_commands *next;
 } t_commands;
 
@@ -58,6 +56,7 @@ typedef struct s_minishell{
 	int	comand;
 	int	on_child;
 	int	cont_pipe;
+	int	fd_in;
 	t_commands	*commands;
 	t_hash	*env_table;
 } t_minishell;
@@ -81,6 +80,7 @@ char	*ft_strtrim(char const *s1, char const *set);
 
 void	init_term(void);
 void init_vars(void);
+t_commands	*init_comands(void);
 
 /* get_next_line */
 char	*get_next_line(int fd);
