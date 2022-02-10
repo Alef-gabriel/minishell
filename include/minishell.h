@@ -89,6 +89,7 @@ int		ft_buf_verify(char *buf);
 
 /* signal */
 void	get_sig(void);
+void	fd_to_fd(int fd_in, t_files *fd_out);
 
 char **append_in_matrix(char **arrey, char *str);
 char **hash_to_env(t_node **nodes);

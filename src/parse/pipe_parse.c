@@ -19,11 +19,14 @@ int pipe_parse(char *s)
 	g_mini.commands = save_init;
 	local = check_path(g_mini.commands->cmd[0], g_mini.env_table->nodes);
 	env = hash_to_env(g_mini.env_table->nodes);
+	redir_exec(g_mini.commands->files_redir);
 	ft_exec(local, g_mini.commands, env);
 	free(local);
 	free_matrix(env);
-	//redir_exec(g_mini.commands->files_redir);
+	fd_to_fd(g_mini.fd_in, g_mini.commands->files_redir);
 	// fazer isso quando executar o comando
+	// fechar os fds abertos
+	// abrir a fd_to_fd no ft_exec
 	while (g_mini.commands->wf_cmd != NULL)
 	{
 		free(g_mini.commands->wf_cmd);

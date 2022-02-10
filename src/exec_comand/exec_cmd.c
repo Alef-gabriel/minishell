@@ -11,7 +11,7 @@ void ft_exec(char *path, t_commands *cmds, char **env)
 	aux = cmds;
 	while (cmds->next != NULL)
 	{
-		if (g_mini.cont_pipe > 0)
+		if (g_mini.cont_pipe > 0 || cmds->files_redir != NULL)
 			pipe(piper);
 		if ((pid = fork()) == 0)
 		{
@@ -19,7 +19,8 @@ void ft_exec(char *path, t_commands *cmds, char **env)
 			get_sig();
 			dup2(fd_in, STDIN_FILENO);
 			close(piper[0]);
-			if (g_mini.cont_pipe > 0)
+			//fd_to_fd embaixo do if antes do dup
+			if (g_mini.cont_pipe > 0 || cmds->files_redir != NULL)
 				dup2(piper[1], STDOUT_FILENO);
 			execve(ft_conect(path, "/", cmds->cmd[0]), cmds->cmd, env);
 		}
@@ -32,8 +33,8 @@ void ft_exec(char *path, t_commands *cmds, char **env)
 			cmds = cmds->next;
 		}
 	}
-	//printf("%s", get_next_line(fd_in));
 	cmds = aux;
+	g_mini.fd_in = fd_in;
 }
 
 char **append_in_matrix(char **arrey, char *str)
