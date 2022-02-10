@@ -8,6 +8,7 @@ char *takeinput(void)
 {
 	char *buffer;
 
+	get_sig();
 	buffer = readline("MINIHELL: ");
 	return (buffer);
 }

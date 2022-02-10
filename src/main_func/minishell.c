@@ -18,7 +18,7 @@ int main(int argc, char **argv, char **envp)
 			parse_input(s, envp);
 		free(s);
 		free(input);
-		g_mini.pipes = 0;
+		g_mini.cont_pipe = 0;
 	}
 	return(0);
 }

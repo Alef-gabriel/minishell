@@ -55,13 +55,11 @@ typedef struct s_commands{
 } t_commands;
 
 typedef struct s_minishell{
-	int comand;
-	int open_quotes_sig;
-	int quote_type_sig;
-	int	**pipes;
-	int cont_pipe;
-	t_commands *commands;
-	t_hash *env_table;
+	int	comand;
+	int	on_child;
+	int	cont_pipe;
+	t_commands	*commands;
+	t_hash	*env_table;
 } t_minishell;
 
 t_minishell g_mini;
@@ -89,6 +87,8 @@ char	*get_next_line(int fd);
 void	ft_delete(char **buf);
 int		ft_buf_verify(char *buf);
 
+/* signal */
+void	get_sig(void);
 
 char **append_in_matrix(char **arrey, char *str);
 char **hash_to_env(t_node **nodes);

@@ -1,28 +1,11 @@
 #include "minishell.h"
 
-static int	**creat_pipe_array(void)
-{
-	int		**pipes;
-	int		i;
-
-	i = 0;
-	if (g_mini.cont_pipe > 0)
-		g_mini.cont_pipe++;
-	pipes = (int **)ft_calloc(sizeof(int *), g_mini.cont_pipe);
-	while (i < g_mini.cont_pipe)
-	{
-		pipes[i] = (int *)ft_calloc(sizeof(int), 2);
-		i++;
-	}
-	return (pipes);
-}
-
 void ft_exec(char *path, t_commands *cmds, char **env)
 {
 	int			pid;
 	t_commands	*aux;
-	int		piper[2];
-	int		fd_in;
+	int			piper[2];
+	int			fd_in;
 
 	fd_in = 0;
 	aux = cmds;
@@ -32,6 +15,8 @@ void ft_exec(char *path, t_commands *cmds, char **env)
 			pipe(piper);
 		if ((pid = fork()) == 0)
 		{
+			g_mini.on_child = TRUE;
+			get_sig();
 			dup2(fd_in, STDIN_FILENO);
 			close(piper[0]);
 			if (g_mini.cont_pipe > 0)
@@ -41,6 +26,7 @@ void ft_exec(char *path, t_commands *cmds, char **env)
 		else
 		{
 			waitpid(pid, NULL, 0);
+			g_mini.on_child = FALSE;
 			close(piper[1]);
 			fd_in = piper[0];
 			cmds = cmds->next;
