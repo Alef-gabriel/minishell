@@ -21,37 +21,32 @@ void ft_exec(char *path, t_commands *cmds, char **env)
 {
 	int			pid;
 	t_commands	*aux;
-	int		i;
-	int		j;
-	char	*aj;
+	int		piper[2];
+	int		fd_in;
 
-	i = 0;
-	j = 0;
+	fd_in = 0;
 	aux = cmds;
-	g_mini.pipes = creat_pipe_array();
-	while (cmds != NULL && cmds->cmd != NULL)
+	while (cmds->next != NULL)
 	{
-		if (i > 0)
-			j = i - 1;
-		pipe(g_mini.pipes[i]);
-		pid = fork();
-		if (pid == 0)
+		if (g_mini.cont_pipe > 0)
+			pipe(piper);
+		if ((pid = fork()) == 0)
 		{
+			dup2(fd_in, STDIN_FILENO);
+			close(piper[0]);
 			if (g_mini.cont_pipe > 0)
-			{
-				dup2(g_mini.pipes[0][0], STDIN_FILENO);
-				dup2(g_mini.pipes[i][1], STDOUT_FILENO);
-				execve(ft_conect(path, "/", cmds->cmd[0]), cmds->cmd, env);
-			}
-			else
-				execve(ft_conect(path, "/", cmds->cmd[0]), cmds->cmd, env);
+				dup2(piper[1], STDOUT_FILENO);
+			execve(ft_conect(path, "/", cmds->cmd[0]), cmds->cmd, env);
 		}
-		waitpid(pid, NULL, 0);
-		cmds = cmds->next;
-		i++;
+		else
+		{
+			waitpid(pid, NULL, 0);
+			close(piper[1]);
+			fd_in = piper[0];
+			cmds = cmds->next;
+		}
 	}
-	if (g_mini.cont_pipe > 0)
-		printf("%s", get_next_line(g_mini.pipes[1][0]));
+	//printf("%s", get_next_line(fd_in));
 	cmds = aux;
 }
 
