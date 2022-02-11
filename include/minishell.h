@@ -128,8 +128,8 @@ t_files	*files_save(char *s, t_files *anchor, int finish, int sig);
 void ft_exec(char *path, t_commands *cmds, char **env);
 int		export(t_hash *data, char *cmd);
 int		unset(t_hash *data, char *key);
+void	redir_exec(t_commands *commands);
 
-void	redir_exec(t_files *files);
 /*hash*/
 t_hash			*create_hash(int size);
 void			create_node(t_hash *hash);

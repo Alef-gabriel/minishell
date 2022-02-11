@@ -19,17 +19,18 @@ void ft_exec(char *path, t_commands *cmds, char **env)
 			get_sig();
 			dup2(fd_in, STDIN_FILENO);
 			close(piper[0]);
-			//fd_to_fd embaixo do if antes do dup
 			if (g_mini.cont_pipe > 0 || cmds->files_redir != NULL)
 				dup2(piper[1], STDOUT_FILENO);
 			execve(ft_conect(path, "/", cmds->cmd[0]), cmds->cmd, env);
 		}
 		else
 		{
+			//verificar os files
 			waitpid(pid, NULL, 0);
 			g_mini.on_child = FALSE;
 			close(piper[1]);
 			fd_in = piper[0];
+			fd_to_fd(fd_in, cmds->files_redir);
 			cmds = cmds->next;
 		}
 	}

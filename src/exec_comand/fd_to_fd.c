@@ -7,7 +7,7 @@ void	fd_to_fd(int fd_in, t_files *fd_out)
 	t_files *save;
 
 	save = fd_out;
-	if (fd_out != NULL)
+	if (fd_out != NULL && fd_in != 0)
 	{
 		while (fd_out)
 		{
@@ -24,6 +24,6 @@ void	fd_to_fd(int fd_in, t_files *fd_out)
 			fd_in = fd_out->fd;
 			fd_out = fd_out->next;
 		}
+		fd_out = save;
 	}
-	fd_out = save;
 }
