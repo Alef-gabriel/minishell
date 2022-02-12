@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 00:57:51 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/08 01:48:23 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/02/11 23:08:11 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 t_minishell	g_mini;
 
-// verificar >>> init_term();
-int	main(int argc, char **argv, char **envp)
+// verificar >>> init_term() mensagem inicial;
+int	main(int argc UNUSED, char **argv UNUSED, char **envp)
 {
 	char	*input;
 	char	*s;
 
-	(void)argc;
-	(void)argv;
 	init_vars();
 	pwd_build(); // < teste do pwd
 	g_mini.env_table = env_to_hash(envp);

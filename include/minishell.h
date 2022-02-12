@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/08 01:48:06 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/02/11 23:04:04 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@
 # define TRUE 0
 # define FALSE 1
 # define PATH_MAX 4096
+
+# define SIZE 255
+# define BOLDGREEN   "\033[1m\033[32m"
+# define BOLDWHITE   "\033[1m\033[37m"
+# define RESET   " $ \033[0m "
+# define UNUSED	__attribute__((unused))
 
 extern t_minishell	g_mini;
 
