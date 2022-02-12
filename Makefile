@@ -1,7 +1,8 @@
 NAME = minishell
 
 CC = gcc
-CFLAGS = -g3 -Wall#-Werror
+
+CFLAGS = -g3 -Wall #-Werror
 
 RM = rm -rf
 
