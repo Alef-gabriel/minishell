@@ -1,5 +1,7 @@
 #include "minishell.h"
 
+t_minishell g_mini;
+
 int main(int argc, char **argv, char **envp)
 {
 	char *input;

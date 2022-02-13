@@ -26,8 +26,9 @@ void ft_exec(char *path, t_commands *cmds, char **env)
 		else
 		{
 			//verificar os files
-			waitpid(pid, NULL, 0);
+			waitpid(pid, &g_mini.exit_tmp, 0);
 			g_mini.on_child = FALSE;
+			g_mini.exit_code = WEXITSTATUS(g_mini.exit_tmp);
 			close(piper[1]);
 			fd_in = piper[0];
 			fd_to_fd(fd_in, cmds->files_redir);

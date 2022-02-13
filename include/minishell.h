@@ -57,11 +57,13 @@ typedef struct s_minishell{
 	int	on_child;
 	int	cont_pipe;
 	int	fd_in;
+	int	exit_code;
+	int	exit_tmp;
 	t_commands	*commands;
 	t_hash	*env_table;
 } t_minishell;
 
-t_minishell g_mini;
+extern t_minishell g_mini;
 
 /* Utils */
 void	*ft_calloc(size_t nbytes, size_t sizemem);
@@ -77,6 +79,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t destsize);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
 int		ft_memcmp(const char *s1, const char *s2, size_t n);
 char	*ft_strtrim(char const *s1, char const *set);
+int	ft_matrixlen(char **str);
 
 void	init_term(void);
 void init_vars(void);
@@ -95,6 +98,7 @@ char **append_in_matrix(char **arrey, char *str);
 char **hash_to_env(t_node **nodes);
 
 /* Parse */
+void	to_variable(char **str);
 char	*takeinput(void);
 void	parse_input(char *s, char **env);
 int		is_comand(char *s);
