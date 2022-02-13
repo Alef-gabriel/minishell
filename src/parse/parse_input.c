@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 00:58:23 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/08 01:22:05 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/02/12 23:38:31 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ char	*takeinput(void)
 	char	*buffer;
 
 	buffer = readline("MINIHELL: ");
+	add_history(buffer);
 	return (buffer);
 }
 
