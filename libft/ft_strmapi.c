@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/07 01:04:47 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/07 01:06:34 by anhigo-s         ###   ########.fr       */
+/*   Created: 2021/08/04 20:16:08 by anhigo-s          #+#    #+#             */
+/*   Updated: 2021/08/05 17:42:01 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	write(fd, &c, 1);
-}
+	char	*string;
+	size_t	len;
+	size_t	i;
 
-void	ft_putendl_fd(char *s, int fd)
-{
-	if (s)
+	if (s == 0)
+		return (0);
+	len = ft_strlen(s);
+	string = (char *)malloc(len + 1);
+	i = 0;
+	if (string == 0)
+		return (0);
+	while (i < len)
 	{
-		write(fd, s, ft_strlen(s));
-		ft_putchar_fd('\n', fd);
+		string[i] = f(i, s[i]);
+		i++;
 	}
+	string[i] = '\0';
+	return (string);
 }

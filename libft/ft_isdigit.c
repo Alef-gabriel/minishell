@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlen.c                                           :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/11 08:58:42 by gsilva-v          #+#    #+#             */
-/*   Updated: 2022/01/11 08:58:43 by gsilva-v         ###   ########.fr       */
+/*   Created: 2021/07/27 14:56:46 by anhigo-s          #+#    #+#             */
+/*   Updated: 2021/07/27 23:18:04 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int	ft_strlen(const char *str)
+int	ft_isdigit(int c)
 {
-	int	x;
-
-	x = 0;
-	while (str[x] != '\0')
+	if (c >= '0' && c <= '9')
 	{
-		x++;
+		return (1);
 	}
-	return (x);
+	else
+	{
+		return (0);
+	}
 }

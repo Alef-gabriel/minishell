@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/23 15:05:00 by gabriel           #+#    #+#             */
-/*   Updated: 2022/01/17 08:17:42 by gsilva-v         ###   ########.fr       */
+/*   Created: 2021/07/27 14:51:56 by anhigo-s          #+#    #+#             */
+/*   Updated: 2021/08/18 17:06:28 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-char	*ft_strdup(const char *s)
+size_t	ft_strlen(const char *s)
 {
-	int		i;
-	char	*newstr;
+	size_t	i;
 
 	i = 0;
-	if (s == 0)
-		return (0);
-	newstr = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (newstr == NULL)
-		return (NULL);
 	while (s[i] != '\0')
 	{
-		newstr[i] = s[i];
 		i++;
 	}
-	newstr[i] = '\0';
-	return (newstr);
+	return (i);
 }

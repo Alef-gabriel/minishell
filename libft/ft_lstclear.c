@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/24 09:05:40 by gabriel           #+#    #+#             */
-/*   Updated: 2022/02/07 01:21:26 by anhigo-s         ###   ########.fr       */
+/*   Created: 2021/08/08 15:30:30 by anhigo-s          #+#    #+#             */
+/*   Updated: 2021/08/08 15:30:31 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	char	*new;
-	int		n;
-	int		s;
+	t_list	*i;
 
-	s = 0;
-	n = 0;
-	new = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
-	if (new == NULL)
-		return (NULL);
-	while (s1[n] != '\0')
+	while (*lst)
 	{
-		new[n] = s1[n];
-		n++;
+		i = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = i;
 	}
-	while (s2[s] != '\0')
-	{
-		new[n + s] = s2[s];
-		s++;
-	}
-	new[n + s] = '\0';
-	return (new);
+	lst = 0;
 }

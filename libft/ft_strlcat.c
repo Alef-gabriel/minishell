@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/23 15:06:18 by gabriel           #+#    #+#             */
-/*   Updated: 2022/01/17 08:59:56 by gsilva-v         ###   ########.fr       */
+/*   Created: 2021/08/01 00:11:08 by anhigo-s          #+#    #+#             */
+/*   Updated: 2021/08/31 13:30:25 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t destsize)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
-	size_t	srclen;
 
-	srclen = ft_strlen(src);
 	i = 0;
-	if (destsize == 0)
-		return (srclen);
-	while (src[i] != '\0' && i < (destsize - 1))
+	while ((dst[i] != '\0') && (i < dstsize))
 	{
-		dst[i] = src[i];
 		i++;
 	}
-	dst[i] = '\0';
-	return (srclen);
+	return (i + ft_strlcpy(dst + i, src, dstsize - i));
 }

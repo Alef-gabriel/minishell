@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strtjoin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/23 15:05:39 by gabriel           #+#    #+#             */
-/*   Updated: 2022/02/07 01:20:40 by anhigo-s         ###   ########.fr       */
+/*   Created: 2021/11/12 02:36:45 by anhigo-s          #+#    #+#             */
+/*   Updated: 2021/11/12 03:00:46 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	*ft_memset(void *mem, int c, size_t len)
+char	*ft_strtjoin(char *string0, char *string1, char *string2)
 {
-	while (len--)
-	{
-		*(unsigned char *)(mem + len) = (unsigned char)(c);
-	}
-	return (mem);
-}
+	char	*str;
+	char	*temp_string;
 
-void	ft_bzero(void *s, size_t n)
-{
-	ft_memset(s, '\0', n);
-}
-
-void	*ft_calloc(size_t nbytes, size_t sizemem)
-{
-	void	*ptr;
-
-	ptr = malloc(nbytes * sizemem);
-	if (ptr == 0)
-		return (0);
-	ft_bzero(ptr, (nbytes * sizemem));
-	return (ptr);
+	if (!string0 | !string1 | !string2)
+		return (NULL);
+	temp_string = ft_strjoin(string0, string1);
+	str = ft_strjoin(temp_string, string2);
+	free(temp_string);
+	temp_string = NULL;
+	return (str);
 }
