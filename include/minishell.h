@@ -79,6 +79,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t destsize);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
 int		ft_memcmp(const char *s1, const char *s2, size_t n);
 char	*ft_strtrim(char const *s1, char const *set);
+char	*ft_itoa(int n);
 int	ft_matrixlen(char **str);
 
 void	init_term(void);

@@ -46,9 +46,14 @@ static char *key_to_value(int code, char **split)
 		i = 1;
 	while (split[i])
 	{
-		split[i] = ft_strdup(hash_search(g_mini.env_table->nodes, split[i], ft_strlen(split[i])));
-		if (split[i] == NULL)
-			split[i] = ft_strdup("");
+		if (split[i][0] == '?')
+			split[i] = ft_strjoin(ft_itoa(g_mini.exit_code), ft_substr(split[i], 1, ft_strlen(split[i])));
+		else
+		{
+			split[i] = ft_strdup(hash_search(g_mini.env_table->nodes, split[i], ft_strlen(split[i])));
+			if (split[i] == NULL)
+				split[i] = ft_strdup("");
+		}
 		i++;
 	}
 	i = 0;
