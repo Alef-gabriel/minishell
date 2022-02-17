@@ -16,7 +16,17 @@ int pipe_parse(char *s)
 		g_mini.commands = g_mini.commands->next;
 	}
 	g_mini.commands = save_init;
-	to_variable(g_mini.commands->cmd);
+	ft_test(g_mini.commands->wf_cmd);
+	//to_variable(g_mini.commands->cmd);
+	/*
+	char	**t;
+	t = ft_split(g_mini.commands->wf_cmd, '\"');
+	for (size_t i = 0; t[i]; i++)
+	{
+		printf("%s\n", t[i]);
+	}
+	*/
+	/*
 	local = check_path(g_mini.commands->cmd[0], g_mini.env_table->nodes);
 	env = hash_to_env(g_mini.env_table->nodes);
 	redir_exec(g_mini.commands);
@@ -24,6 +34,7 @@ int pipe_parse(char *s)
 	free_matrix(env);
 	if (g_mini.cont_pipe == 0)
 		fd_to_fd(g_mini.fd_in, g_mini.commands->files_redir);
+	*/
 	// fazer isso quando executar o comando
 	// fechar os fds abertos
 	while (g_mini.commands->wf_cmd != NULL)

@@ -69,16 +69,27 @@ void	to_variable(char **str)
 {
 	int		i;
 	int		j;
+	int		quote_s;
+	int		quote_p;
 	char	**var;
 
 	i = 0;
 	var = NULL;
+	quote_s = 0;
+	quote_p = 0;
 	while (str[i])
 	{
 		j = 0;
 		while (str[i][j])
 		{
-			if (str[i][j] == '$')
+			if (str[i][j] == '\'' && quote_p == 0)
+				quote_s = 1;
+			if (str[i][j] == '\"')
+			{
+				quote_p = 1;
+				quote_s = 0;
+			}
+			if (str[i][j] == '$' && quote_s == 0)
 			{
 				var = ft_split(str[i], '$');
 				if (j != 0)
@@ -94,4 +105,64 @@ void	to_variable(char **str)
 		}
 		i++;
 	}
+}
+
+static int		quote_expacion(char *str, int posi)
+{
+	int		i;
+	int		expancion[2];
+
+	i = 0;
+	expancion[0] = -1;
+	expancion[1] = 1;
+	while (i < posi)
+	{
+		if (str[i] == '\'' || str[i] == '\"')
+		{
+			if (expancion[0] == -1)
+			{
+				expancion[0] = i;
+				if (str[i] == '\'')
+					expancion[1] = 0;
+				else
+					expancion[1] = 1;
+			}
+			else
+			{
+				if (str[i] == str[expancion[0]])
+				{
+					expancion[1] = 1;
+					expancion[0] = -1;
+				}
+			}
+		}
+		i++;
+	}
+	return (expancion[1]);
+}
+
+void	ft_test(char *str)
+{
+	int		i;
+	int		j;
+	char	*aux;
+	char	*value;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '$' && quote_expacion(str, i))
+		{
+			j = i + 1;
+			while (str[j] && str[j] != ' ' && str[j] != '\'' && str[j] != '\"')
+				j++;
+			value = ft_substr(str + i + 1, 0, (j - 1) - i);
+			value = hash_search(g_mini.env_table->nodes, value, ft_strlen(value));
+			aux = ft_strjoin(ft_substr(str, 0, i), value);
+			str = ft_strjoin(aux, ft_substr(str, j, ft_strlen(str)));
+			i = - 1;
+		}
+		i++;
+	}
+	printf("%s\n",str);
 }

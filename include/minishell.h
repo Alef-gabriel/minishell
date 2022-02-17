@@ -113,6 +113,9 @@ void clean_matrix_redir(void);
 t_files	*file_init(char *filename);
 t_files	*parser(char *s, char iten, t_files *(*save)(char *, t_files *anchor, int finish, int sig), int (*check)(char *cmd_line));
 
+
+void	ft_test(char *str);
+
 /*pipe parsing*/
 int pipe_parse(char *s);
 void separate_in_pipes(char *s);
