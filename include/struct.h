@@ -6,13 +6,18 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 01:26:37 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/17 23:28:54 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/02/18 00:08:36 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
+enum	e_bool
+{
+	false,
+	true
+};
 typedef struct s_node{
 	char			*key;
 	char			*value;
@@ -53,6 +58,7 @@ typedef struct s_minishell{
 	int			open_quotes_sig;
 	int			quote_type_sig;
 	int			pipes;
+	int			on_child;
 	char		*pwd;
 	char		*color_folder;
 	t_commands	*commands;

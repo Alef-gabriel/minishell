@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 00:57:51 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/17 23:42:56 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/02/18 00:09:25 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ void	shell_loop(void)
 	char	*input;
 	char	*s;
 
-	while (1)
+	while (true)
 	{
 		get_directory();
+		get_sig();
 		input = takeinput();
 		s = ft_strtrim(input, " ");
 		if (s[0] != '\0')
@@ -36,9 +37,7 @@ void	shell_loop(void)
 int	main(int argc __attribute__((unused)),
 		char **argv __attribute__((unused)), char **envp)
 {
-
 	init_vars();
-	//pwd_build();
 	g_mini.env_table = env_to_hash(envp);
 	shell_loop();
 	return (0);
