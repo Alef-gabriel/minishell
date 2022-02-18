@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 00:58:23 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/12 23:38:31 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/02/17 23:33:05 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,7 @@
 // executar as dups caso necessario (em caso de redirect)
 // criar a commat_commands, linkando todos os pipes antes
 // de começar com os execs
-char	*takeinput(void)
-{
-	char	*buffer;
 
-	buffer = readline("MINIHELL: ");
-	add_history(buffer);
-	return (buffer);
-}
 
 int	count_cmd_len(char *s, int init)
 {
@@ -74,7 +67,7 @@ void	separate_in_pipes(char *s)
 	g_mini.commands = save_init;
 }
 
-void	parse_input(char *s, char **env)
+void	parse_input(char *s)
 {
 	//criar função de erro de syntax
 	if (check_sintax(s) == -1)

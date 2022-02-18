@@ -8,7 +8,7 @@ LIBFT 	= -L ./libft -lft
 RM = rm -rf
 
 INCLUDE = -I ./include/
-
+HEADER = ./include/minishell.h
 
 PATH_SRC = ./src/
 PATH_UTILS = $(PATH_SRC)utils/
@@ -18,6 +18,8 @@ PATH_MESSAGE = $(PATH_SRC)messages/
 PATH_PARSE = $(PATH_SRC)parse/
 PATH_EXEC = $(PATH_SRC)exec_comand/
 PATH_BUILTINS = $(PATH_SRC)builtins/
+PATH_PROMPT = $(PATH_SRC)prompt/
+
 PATH_OBJS = ./objs/
 
 SRCS = $(PATH_MAIN)minishell.c $(PATH_MAIN)initial_func.c\
@@ -29,15 +31,13 @@ SRCS = $(PATH_MAIN)minishell.c $(PATH_MAIN)initial_func.c\
 		$(PATH_HASH)hash.c $(PATH_HASH)create_env.c $(PATH_HASH)hash_search.c\
 		$(PATH_UTILS)free_matrix.c $(PATH_UTILS)ft_strstr.c \
 		$(PATH_BUILTINS)export.c $(PATH_BUILTINS)unset.c $(PATH_BUILTINS)pwd.c \
-		$(PATH_PARSE)ultils.c
+		$(PATH_PARSE)ultils.c $(PATH_PROMPT)prompt.c
 
 OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(SRCS))
 
-
-
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(HEADER)
 	rm -rf $(NAME)
 	make all -C ./libft
 	$(CC) $(CFLAGS) $(INCLUDE) ./objs/*/*.o $(LIBFT) -lreadline -o $(NAME)
@@ -51,7 +51,8 @@ $(PATH_OBJS)%.o: $(PATH_SRC)%.c
 	@mkdir -p $(PATH_OBJS)parse/
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)utils/
-	$(CC) $(CFLAGS) $(INCLUDE) -I. -c $< -o $@ -lreadline
+	@mkdir -p $(PATH_OBJS)prompt/
+	$(CC) $(CFLAGS) $(INCLUDE) -lreadline -I. -c $< -o $@
 
 clean:
 	@echo "\033[1;33mCleaning objects\033[0m"

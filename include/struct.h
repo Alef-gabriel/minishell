@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 01:26:37 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/08 01:27:22 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/02/17 23:28:54 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ typedef struct s_minishell{
 	int			open_quotes_sig;
 	int			quote_type_sig;
 	int			pipes;
+	char		*pwd;
+	char		*color_folder;
 	t_commands	*commands;
 	t_hash		*env_table;
 }	t_minishell;
