@@ -4,9 +4,7 @@ char	*hash_search(t_node **nodes, char *key, int len)
 {
 	int	i;
 
-	printf("%s\n", key);
 	i = hash(key, g_mini.env_table->size);
-	//printf("hash %d\n", i);
 	if (i > g_mini.env_table->size)
 		return (NULL);
 	while (nodes[i] && nodes[i]->key != NULL)

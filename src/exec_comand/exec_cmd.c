@@ -9,34 +9,37 @@ void ft_exec(char *path, t_commands *cmds, char **env)
 
 	fd_in = 0;
 	aux = cmds;
-	while (cmds->next != NULL)
+	if (path != NULL)
 	{
-		if (g_mini.cont_pipe > 0 || cmds->files_redir != NULL)
-			pipe(piper);
-		if ((pid = fork()) == 0)
+		while (cmds->next != NULL)
 		{
-			g_mini.on_child = TRUE;
-			get_sig();
-			dup2(fd_in, STDIN_FILENO);
-			close(piper[0]);
 			if (g_mini.cont_pipe > 0 || cmds->files_redir != NULL)
-				dup2(piper[1], STDOUT_FILENO);
-			execve(ft_conect(path, "/", cmds->cmd[0]), cmds->cmd, env);
+				pipe(piper);
+			if ((pid = fork()) == 0)
+			{
+				g_mini.on_child = TRUE;
+				get_sig();
+				dup2(fd_in, STDIN_FILENO);
+				close(piper[0]);
+				if (g_mini.cont_pipe > 0 || cmds->files_redir != NULL)
+					dup2(piper[1], STDOUT_FILENO);
+				execve(ft_conect(path, "/", cmds->cmd[0]), cmds->cmd, env);
+			}
+			else
+			{
+				//verificar os files
+				waitpid(pid, &g_mini.exit_tmp, 0);
+				g_mini.on_child = FALSE;
+				g_mini.exit_code = WEXITSTATUS(g_mini.exit_tmp);
+				close(piper[1]);
+				fd_in = piper[0];
+				fd_to_fd(fd_in, cmds->files_redir);
+				cmds = cmds->next;
+			}
 		}
-		else
-		{
-			//verificar os files
-			waitpid(pid, &g_mini.exit_tmp, 0);
-			g_mini.on_child = FALSE;
-			g_mini.exit_code = WEXITSTATUS(g_mini.exit_tmp);
-			close(piper[1]);
-			fd_in = piper[0];
-			fd_to_fd(fd_in, cmds->files_redir);
-			cmds = cmds->next;
-		}
+		cmds = aux;
+		g_mini.fd_in = fd_in;
 	}
-	cmds = aux;
-	g_mini.fd_in = fd_in;
 }
 
 char **append_in_matrix(char **arrey, char *str)

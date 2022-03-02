@@ -99,7 +99,6 @@ char **append_in_matrix(char **arrey, char *str);
 char **hash_to_env(t_node **nodes);
 
 /* Parse */
-void	to_variable(char **str);
 char	*takeinput(void);
 void	parse_input(char *s, char **env);
 int		is_comand(char *s);
@@ -114,7 +113,8 @@ t_files	*file_init(char *filename);
 t_files	*parser(char *s, char iten, t_files *(*save)(char *, t_files *anchor, int finish, int sig), int (*check)(char *cmd_line));
 
 
-void	ft_test(char *str);
+char	*expansion(char *str);
+char	*treat_quotes(char *str);
 
 /*pipe parsing*/
 int pipe_parse(char *s);
