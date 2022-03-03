@@ -24,7 +24,7 @@ PATH_OBJS = ./objs/
 
 SRCS = $(PATH_MAIN)minishell.c $(PATH_MAIN)initial_func.c $(PATH_MAIN)signal.c \
 		$(PATH_PARSE)is_comand.c $(PATH_PARSE)swap_chars.c $(PATH_PARSE)verify_what.c\
-		$(PATH_PARSE)parse_input.c $(PATH_PARSE)pipe_parse.c $(PATH_PARSE)redir_parse.c\
+		$(PATH_PARSE)parse_input.c $(PATH_PARSE)readline_parser.c $(PATH_PARSE)redir_parse.c\
 		$(PATH_PARSE)check_sintax.c $(PATH_PARSE)here_doc_parse.c  $(PATH_PARSE)here_doc_parse_2.c\
 		$(PATH_MESSAGE)errors.c\
 		$(PATH_EXEC)exec_cmd.c $(PATH_EXEC)exec_redir.c $(PATH_EXEC)fd_to_fd.c \

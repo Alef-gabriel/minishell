@@ -48,7 +48,7 @@ typedef struct s_commands{
 	t_files				*files_here_doc;
 	char				**cmd;
 	char				*wf_cmd;
-	char				*input;
+	char				*input;//elemento sob suspeita
 	int					redir_type;
 	struct s_commands	*next;
 }	t_commands;

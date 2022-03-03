@@ -73,7 +73,7 @@ void	parse_input(char *s, char **env)
 		printf ("erro de sintax funcionando\n");
 		return ;
 	}
-	if (pipe_parse(s) == -1)
+	if (readline_output_parser(s) == -1)
 		return ;
 
 	// verify_what_is(s);

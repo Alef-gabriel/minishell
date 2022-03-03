@@ -70,8 +70,11 @@ t_files			*parser(char *s, char iten, \
 char	*expansion(char *str);
 char	*treat_quotes(char *str);
 
+/*readline parser*/
+int	readline_output_parser(char *s);
+int	exec_commands(t_commands *commands_struct);
+void	delete_commands(t_commands *commands_struct);
 /*pipe parsing*/
-int				pipe_parse(char *s);
 void			separate_in_pipes(char *s);
 char			*ft_conect(char	*first, char *mid, char *end);
 
