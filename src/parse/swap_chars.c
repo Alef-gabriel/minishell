@@ -1,20 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   swap_chars.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 01:15:46 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/08 01:15:47 by anhigo-s         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "minishell.h"
 
-char	*swap_chars(char *cmd, char to_find, char to_put)
+char *swap_chars(char *cmd, char to_find, char to_put)
 {
-	int	i;
+	int i;
 
 	i = 0;
 /*colocar tratamento caso nao tenha sido fechado as aspas*/
@@ -35,9 +23,9 @@ char	*swap_chars(char *cmd, char to_find, char to_put)
 	return (cmd);
 }
 
-char	**search_matrix(char **matrix)
+char **search_matrix(char **matrix)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (matrix[i])

@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 01:26:37 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/18 00:08:36 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/02 23:47:04 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ typedef struct s_minishell{
 	int			quote_type_sig;
 	int			pipes;
 	int			on_child;
+	int			cont_pipe;
+	int			fd_in;
+	int			exit_tmp;
+	int			exit_code;
 	char		*pwd;
 	char		*color_folder;
 	t_commands	*commands;

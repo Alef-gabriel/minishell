@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/02 23:44:06 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/03 00:24:39 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,10 @@ t_node			*create_new_node(char *key, char *value);
 void			print_table(t_node **nodes, int size);
 
 void	get_directory(void);
+
+char		*swap_chars(char *cmd, char to_find, char to_put);
+t_commands	*init_comands(void);
+void		get_sig(void);
+void	fd_to_fd(int fd_in, t_files *fd_out);
 
 #endif

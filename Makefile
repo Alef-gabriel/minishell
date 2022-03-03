@@ -34,6 +34,9 @@ SRCS = $(PATH_MAIN)minishell.c $(PATH_MAIN)initial_func.c $(PATH_MAIN)signal.c \
 		$(PATH_PARSE)ultils.c $(PATH_PROMPT)prompt.c $(PATH_PARSE)expansion.c \
 		$(PATH_PARSE)quotes_treat.c
 
+# .c.o:
+# 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $(<:%.c=%.o)
+
 OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(SRCS))
 
 all: $(NAME)

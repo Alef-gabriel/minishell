@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 23:22:37 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/12 00:42:07 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/02/27 14:36:01 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,15 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+# define BUFFER_SIZE 100
+
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+
 
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
@@ -136,6 +140,7 @@ void	ft_putendl_fd(char *s, int fd);
 */
 void	ft_putnbr_fd(int n, int fd);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+char	*my_strnstr(char *haystack, char *needle, size_t len);
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_memchr(const void *s, int c, size_t n);
@@ -261,4 +266,6 @@ int		ft_strcmp(const char *s1, const char *s2);
 
 int		ft_isspace(int c);
 char	*ft_strtok(char *input, char d);
+
+char	*get_next_line(int fd);
 #endif

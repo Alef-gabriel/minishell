@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   exec_cmd.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 00:58:42 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/02 23:30:05 by anhigo-s         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "minishell.h"
 
 void ft_exec(char *path, t_commands *cmds, char **env)
@@ -54,7 +42,7 @@ void ft_exec(char *path, t_commands *cmds, char **env)
 	}
 }
 
-char	**append_in_matrix(char **arrey, char *str)
+char **append_in_matrix(char **arrey, char *str)
 {
 	int		i;
 	char	**res;
@@ -74,7 +62,7 @@ char	**append_in_matrix(char **arrey, char *str)
 	return (res);
 }
 
-char	**hash_to_env(t_node **nodes)
+char **hash_to_env(t_node **nodes)
 {
 	int		i;
 	char	**env;

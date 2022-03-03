@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 00:57:37 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/08 00:57:38 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/03 00:24:53 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	atribute_node(char *key, char *value, t_hash *hash, int index)
 
 void	create_node(t_hash *hash)
 {
-	t_node	*aux;
+	// t_node	*aux;
 	int		i;
 
 	i = 0;

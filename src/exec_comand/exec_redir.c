@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 21:08:49 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/02 23:30:11 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/03 00:00:07 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	redir_exec(t_commands *commands)
 {
-	t_files	*save;
-	t_commands	*aux;
+	t_files		*save;
+	// t_commands	*aux;
 
 	while (commands->next)
 	{
