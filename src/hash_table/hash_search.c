@@ -17,9 +17,15 @@ char	*hash_search(t_node **nodes, char *key, int len)
 	int	i;
 
 	i = hash(key, g_mini.env_table->size);
-	while (nodes[i] && ft_memcmp(nodes[i]->key, key, len) != 0)
+	if (i > g_mini.env_table->size)
+		return (NULL);
+	while (nodes[i] && nodes[i]->key != NULL)
+	{
+		if (ft_memcmp(nodes[i]->key, key, len) == 0)
+			return(nodes[i]->value);
 		nodes[i] = nodes[i]->next;
-	return (nodes[i]->value);
+	}
+	return (NULL);
 }
 
 void	print_table(t_node **nodes, int size)

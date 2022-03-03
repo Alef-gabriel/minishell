@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   chdir.c                                            :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/12 23:49:18 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/02 23:29:55 by anhigo-s         ###   ########.fr       */
+/*   Created: 2021/09/20 10:48:09 by algabrie          #+#    #+#             */
+/*   Updated: 2021/09/29 23:55:21 by algabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+void	ft_delete(char **buf)
+{
+	int		i;
 
-// 	x = 0;
-// 	while (str && str[x] != '\0')
-// 	{
-// 		x++;
-// 	}
-// 	return (x);
-// }
+	i = 0;
+	if (*buf)
+	{
+		while ((*buf)[i])
+			(*buf)[i++] = 0;
+		free(*buf);
+		*buf = NULL;
+	}
+}
+
+int	ft_buf_verify(char *buf)
+{
+	if (*buf)
+		return (BUFFER_SIZE);
+	return (0);
+}

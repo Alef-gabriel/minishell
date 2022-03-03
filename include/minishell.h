@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/17 23:36:42 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/02 23:44:06 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char			**hash_to_env(t_node **nodes);
 
 /* Parse */
 char			*takeinput(void);
-void			parse_input(char *s);
+void	parse_input(char *s, char **env);
 int				is_comand(char *s);
 int				check_sintax(char *s);
 char			*check_path(char *cmd, t_node **nodes);
@@ -65,6 +65,10 @@ t_files			*file_init(char *filename);
 t_files			*parser(char *s, char iten, \
 	t_files *(*save)(char *, t_files *anchor, int finish, int sig), \
 	int (*check)(char *cmd_line));
+
+
+char	*expansion(char *str);
+char	*treat_quotes(char *str);
 
 /*pipe parsing*/
 int				pipe_parse(char *s);
@@ -85,11 +89,10 @@ char			**cmd_parser(char *cmd);
 t_files			*files_save(char *s, t_files *anchor, int finish, int sig);
 
 /* Exec */
-void			ft_exec(char *path, char **cmd, char **env);
-int				export(t_hash *data, char *cmd);
-int				unset(t_hash *data, char *key);
-
-void			redir_exec(t_files *files);
+void ft_exec(char *path, t_commands *cmds, char **env);
+int		export(t_hash *data, char *cmd);
+int		unset(t_hash *data, char *key);
+void	redir_exec(t_commands *commands);
 
 /*hash*/
 t_hash			*create_hash(int size);

@@ -27,8 +27,10 @@ char	*check_path(char *cmd, t_node **nodes)
 		command_which = ft_conect(path_comand[pos], "/", cmd);
 		if (access(command_which, F_OK) == 0)
 		{
+			path = ft_strdup(path_comand[pos]);
 			free_matrix(path_comand);
-			return (command_which);
+			free(command_which);
+			return (path);
 		}
 		free(command_which);
 		pos++;

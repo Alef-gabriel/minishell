@@ -1,27 +1,24 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parse_input.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 00:58:23 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/17 23:33:05 by anhigo-s         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "minishell.h"
 
+
 // executar as dups caso necessario (em caso de redirect)
-// criar a commat_commands, linkando todos os pipes antes
-// de começar com os execs
+// criar a commat_commands, linkando todos os pipes antes de começar com os execs
 
-
-int	count_cmd_len(char *s, int init)
+char *takeinput(void)
 {
-	int	ret;
+	char *buffer;
+
+	get_sig();
+	buffer = readline("MINIHELL: ");
+	return (buffer);
+}
+
+int count_cmd_len(char *s, int init)
+{
+	int ret;
 
 	ret = 0;
+
 	while (s[init] != '|' && s[init])
 	{
 		ret++;
@@ -30,7 +27,7 @@ int	count_cmd_len(char *s, int init)
 	return (ret);
 }
 
-void	separate_in_pipes(char *s)
+void separate_in_pipes(char *s)
 {
 	int			i;
 	int			j;
@@ -50,13 +47,13 @@ void	separate_in_pipes(char *s)
 		}
 		if (s[j] == '\0' || s[j] == '|')
 		{
-			if (s[j] == '|')
-				g_mini.pipes++;
+			if(s[j] == '|')
+				g_mini.cont_pipe++;
 			len = count_cmd_len(s, i);
 			g_mini.commands->wf_cmd = ft_substr(s, i, len);
 			if (g_mini.commands->next == NULL)
 			{
-				g_mini.commands->next = (t_commands *)ft_calloc(sizeof(t_commands), 1);
+				g_mini.commands->next = init_comands();
 			}
 			g_mini.commands = g_mini.commands->next;
 		}
@@ -67,8 +64,9 @@ void	separate_in_pipes(char *s)
 	g_mini.commands = save_init;
 }
 
-void	parse_input(char *s)
+void	parse_input(char *s, char **env)
 {
+
 	//criar função de erro de syntax
 	if (check_sintax(s) == -1)
 	{
@@ -77,7 +75,10 @@ void	parse_input(char *s)
 	}
 	if (pipe_parse(s) == -1)
 		return ;
+
 	// verify_what_is(s);
+
 	// if(is_comand(s))
 	// 	try_to_exec(s, env);
+
 }

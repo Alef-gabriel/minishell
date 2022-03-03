@@ -97,3 +97,13 @@ char	*ft_conect(char	*first, char *mid, char *end)
 	free(path);
 	return (res);
 }
+
+int	ft_matrixlen(char **str)
+{
+	int		i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
