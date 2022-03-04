@@ -4,9 +4,7 @@ int	fd_to_fd(int fd_in, t_files *fd_out)
 {
 	char	*aux;
 	char	*join;
-	t_files *save;
 
-	save = fd_out;
 	if (fd_out != NULL && fd_in != 0)
 	{
 		while (fd_out)
@@ -24,7 +22,6 @@ int	fd_to_fd(int fd_in, t_files *fd_out)
 			fd_in = fd_out->fd;
 			fd_out = fd_out->next;
 		}
-		fd_out = save;
 	}
 	return(fd_in);
 }

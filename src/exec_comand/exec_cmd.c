@@ -1,13 +1,34 @@
 #include "minishell.h"
 
-void	ft_exec(char *path, t_commands *cmds, char **env)
+static void dup_in_exec(int	*piper, int fd_in, t_commands *cmds, char *path)
+{
+	g_mini.on_child = TRUE;
+	get_sig();
+	dup2(fd_in, STDIN_FILENO);
+	close(piper[0]);
+	if (g_mini.cont_pipe > 0 || cmds->files_redir != NULL)
+		dup2(piper[1], STDOUT_FILENO);
+	execve(ft_conect(path, "/", cmds->cmd[0]), cmds->cmd, g_mini.env);
+}
+
+static void	redirect_in_exec_resut(int	*piper, t_commands *cmds)
+{
+	g_mini.on_child = FALSE;
+	g_mini.exit_code = WEXITSTATUS(g_mini.exit_tmp);
+	close(piper[1]);
+	g_mini.fd_in = piper[0];
+	g_mini.fd_in = fd_to_fd(g_mini.fd_in, cmds->files_redir);
+	if (g_mini.cont_pipe > 0)
+		g_mini.cont_pipe--;
+}
+
+void	ft_exec(char *path, t_commands *cmds)
 {
 	int			pid;
 	t_commands	*aux;
 	int			piper[2];
-	int			fd_in;
 
-	fd_in = 0;
+	g_mini.fd_in = 0;
 	aux = cmds;
 	if (path != NULL)
 	{
@@ -16,31 +37,15 @@ void	ft_exec(char *path, t_commands *cmds, char **env)
 			if (g_mini.cont_pipe > 0 || cmds->files_redir != NULL)
 				pipe(piper);
 			if ((pid = fork()) == 0)
-			{
-				g_mini.on_child = TRUE;
-				get_sig();
-				dup2(fd_in, STDIN_FILENO);
-				close(piper[0]);
-				if (g_mini.cont_pipe > 0 || cmds->files_redir != NULL)
-					dup2(piper[1], STDOUT_FILENO);
-				execve(ft_conect(path, "/", cmds->cmd[0]), cmds->cmd, env);
-			}
+				dup_in_exec(piper, g_mini.fd_in, cmds, path);
 			else
 			{
-				//verificar os files
 				waitpid(pid, &g_mini.exit_tmp, 0);
-				g_mini.on_child = FALSE;
-				g_mini.exit_code = WEXITSTATUS(g_mini.exit_tmp);
-				close(piper[1]);
-				fd_in = piper[0];
-				fd_in = fd_to_fd(fd_in, cmds->files_redir);
-				if (g_mini.cont_pipe > 0)
-					g_mini.cont_pipe--;
+				redirect_in_exec_resut(piper, cmds);
 				cmds = cmds->next;
 			}
 		}
 		cmds = aux;
-		g_mini.fd_in = fd_in;
 	}
 }
 

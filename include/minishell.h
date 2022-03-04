@@ -92,7 +92,7 @@ char			**cmd_parser(char *cmd);
 t_files			*files_save(char *s, t_files *anchor, int finish, int sig);
 
 /* Exec */
-void ft_exec(char *path, t_commands *cmds, char **env);
+void ft_exec(char *path, t_commands *cmds);
 int		export(t_hash *data, char *cmd);
 int		unset(t_hash *data, char *key);
 void	redir_exec(t_commands *commands);

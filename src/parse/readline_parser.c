@@ -23,14 +23,13 @@ int	readline_output_parser(char *s)
 
 int	exec_commands(t_commands *commands_struct)
 {
-	char	**env;
 	char	*local;
 
 	local = check_path(commands_struct->cmd[0], g_mini.env_table->nodes);
-	env = hash_to_env(g_mini.env_table->nodes);
+	g_mini.env = hash_to_env(g_mini.env_table->nodes);
 	redir_exec(commands_struct);
-	ft_exec(local, commands_struct, env);
-	free_matrix(env);
+	ft_exec(local, commands_struct);
+	free_matrix(g_mini.env);
 	delete_commands(commands_struct);
 	//caso de erro e para retornar -1
 	return (0);

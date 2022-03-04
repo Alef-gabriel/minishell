@@ -65,6 +65,7 @@ typedef struct s_minishell{
 	int			exit_code;
 	char		*pwd;
 	char		*color_folder;
+	char		**env;
 	t_commands	*commands;
 	t_hash		*env_table;
 }	t_minishell;
