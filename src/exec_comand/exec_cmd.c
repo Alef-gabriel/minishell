@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-void ft_exec(char *path, t_commands *cmds, char **env)
+void	ft_exec(char *path, t_commands *cmds, char **env)
 {
 	int			pid;
 	t_commands	*aux;
@@ -34,6 +34,8 @@ void ft_exec(char *path, t_commands *cmds, char **env)
 				close(piper[1]);
 				fd_in = piper[0];
 				fd_in = fd_to_fd(fd_in, cmds->files_redir);
+				if (g_mini.cont_pipe > 0)
+					g_mini.cont_pipe--;
 				cmds = cmds->next;
 			}
 		}
@@ -42,7 +44,7 @@ void ft_exec(char *path, t_commands *cmds, char **env)
 	}
 }
 
-char **append_in_matrix(char **arrey, char *str)
+char	**append_in_matrix(char **arrey, char *str)
 {
 	int		i;
 	char	**res;
@@ -62,7 +64,7 @@ char **append_in_matrix(char **arrey, char *str)
 	return (res);
 }
 
-char **hash_to_env(t_node **nodes)
+char	**hash_to_env(t_node **nodes)
 {
 	int		i;
 	char	**env;

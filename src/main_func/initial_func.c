@@ -35,7 +35,7 @@ void init_vars(void)
 {
 	g_mini.cont_pipe = 0;
 	g_mini.comand = 0;
-	g_mini.fd_in = 1;
+	g_mini.fd_in = -1;
 	g_mini.on_child = FALSE;
 	g_mini.commands = init_comands();
 }

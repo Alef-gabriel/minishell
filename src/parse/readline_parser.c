@@ -31,10 +31,6 @@ int	exec_commands(t_commands *commands_struct)
 	redir_exec(commands_struct);
 	ft_exec(local, commands_struct, env);
 	free_matrix(env);
-	/*
-	if (g_mini.cont_pipe == 0)
-		fd_to_fd(g_mini.fd_in, commands_struct->files_redir);
-	*/
 	delete_commands(commands_struct);
 	//caso de erro e para retornar -1
 	return (0);
