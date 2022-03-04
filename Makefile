@@ -1,11 +1,11 @@
-NAME	= minishell
-CC		= gcc
-CFLAGS	= -g3 -Wall #-Werror
-LIBFT 	= -L ./libft -lft
-RM		= rm -rf
+NAME			= minishell
+CC				= gcc
+CFLAGS			= -Wall -Wextra -g3 #-Werror
+LIBFT 			= -L ./libft -lft
+RM				= rm -rf
 
-INCLUDE = -I ./include/
-HEADER	= ./include/minishell.h
+INCLUDE 		= -I ./include/
+HEADER			= ./include/minishell.h
 
 PATH_SRC		= ./src/
 
@@ -31,11 +31,11 @@ PATH_EXEC		= $(addprefix 4-exec_comand/, \
 		exec_cmd.c exec_redir.c fd_to_fd.c \
 )
 
-PATH_BUILTINS		= $(addprefix 5-builtins/, \
+PATH_BUILTINS	= $(addprefix 5-builtins/, \
 		chdir.c export.c pwd.c unset.c \
 )
 
-PATH_MESSAGE		= $(addprefix 6-messages/, \
+PATH_MESSAGE	= $(addprefix 6-messages/, \
 		errors.c \
 )
 
@@ -43,15 +43,15 @@ PATH_UTILS		= $(addprefix utils/, \
 		free_matrix.c ft_strstr.c \
 )
 
-PATH_OBJS = ./objs/
+PATH_OBJS 		= ./objs/
 
-SRCS		= $(addprefix $(PATH_SRC), \
+SRCS			= $(addprefix $(PATH_SRC), \
 		$(PATH_MAIN) $(PATH_PROMPT) $(PATH_HASH) \
 		$(PATH_PARSE) $(PATH_EXEC) $(PATH_BUILTINS) \
 		$(PATH_MESSAGE) $(PATH_UTILS) \
 )
 
-OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(SRCS))
+OBJS 			= $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(SRCS))
 
 all: $(NAME)
 
