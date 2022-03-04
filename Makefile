@@ -1,28 +1,30 @@
-NAME = minishell
+NAME	= minishell
 
-CC = gcc
+CC		= gcc
 
 CFLAGS	= -g3 -Wall #-Werror
+
 LIBFT 	= -L ./libft -lft
 
-RM = rm -rf
+RM		= rm -rf
 
 INCLUDE = -I ./include/
-HEADER = ./include/minishell.h
 
-PATH_SRC = ./src/
-PATH_UTILS = $(PATH_SRC)utils/
-PATH_HASH = $(PATH_SRC)hash_table/
-PATH_MAIN = $(PATH_SRC)main_func/
-PATH_MESSAGE = $(PATH_SRC)messages/
-PATH_PARSE = $(PATH_SRC)parse/
-PATH_EXEC = $(PATH_SRC)exec_comand/
-PATH_BUILTINS = $(PATH_SRC)builtins/
-PATH_PROMPT = $(PATH_SRC)prompt/
+HEADER	= ./include/minishell.h
+
+PATH_SRC		= ./src/
+PATH_MAIN		= $(PATH_SRC)0-main/
+PATH_UTILS		= $(PATH_SRC)utils/
+PATH_HASH		= $(PATH_SRC)1-hash_table/
+PATH_MESSAGE	= $(PATH_SRC)messages/
+PATH_PARSE		= $(PATH_SRC)parse/
+PATH_EXEC		= $(PATH_SRC)exec_comand/
+PATH_BUILTINS	= $(PATH_SRC)builtins/
+PATH_PROMPT		= $(PATH_SRC)prompt/
 
 PATH_OBJS = ./objs/
 
-SRCS = $(PATH_MAIN)minishell.c $(PATH_MAIN)initial_func.c $(PATH_MAIN)signal.c \
+SRCS	= $(PATH_MAIN)minishell.c $(PATH_MAIN)initial_func.c $(PATH_MAIN)signal.c \
 		$(PATH_PARSE)is_comand.c $(PATH_PARSE)swap_chars.c $(PATH_PARSE)verify_what.c\
 		$(PATH_PARSE)parse_input.c $(PATH_PARSE)readline_parser.c $(PATH_PARSE)redir_parse.c\
 		$(PATH_PARSE)check_sintax.c $(PATH_PARSE)here_doc_parse.c  $(PATH_PARSE)here_doc_parse_2.c\
@@ -34,8 +36,6 @@ SRCS = $(PATH_MAIN)minishell.c $(PATH_MAIN)initial_func.c $(PATH_MAIN)signal.c \
 		$(PATH_PARSE)ultils.c $(PATH_PROMPT)prompt.c $(PATH_PARSE)expansion.c \
 		$(PATH_PARSE)quotes_treat.c
 
-# .c.o:
-# 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $(<:%.c=%.o)
 
 OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(SRCS))
 
@@ -48,26 +48,26 @@ $(NAME): $(OBJS) $(HEADER)
 
 $(PATH_OBJS)%.o: $(PATH_SRC)%.c
 	@mkdir -p $(PATH_OBJS)
+	@mkdir -p $(PATH_OBJS)0-main/
+	@mkdir -p $(PATH_OBJS)1-hash_table/
 	@mkdir -p $(PATH_OBJS)exec_comand/
-	@mkdir -p $(PATH_OBJS)hash_table/
-	@mkdir -p $(PATH_OBJS)main_func/
 	@mkdir -p $(PATH_OBJS)messages/
 	@mkdir -p $(PATH_OBJS)parse/
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)utils/
 	@mkdir -p $(PATH_OBJS)prompt/
-	$(CC) $(CFLAGS) $(INCLUDE) -lreadline -I. -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
-	@echo "\033[1;33mCleaning objects\033[0m"
+	@echo "Cleaning objects"
 	make clean -C ./libft
 	@$(RM) $(PATH_OBJS)
-	@echo "\033[1;32mDone!\033[0m"
+	@echo "Done!"
 
 fclean: clean
 	make fclean -C ./libft
 	@$(RM) minishell
-	@echo  "\033[1;33mCleaning all\033[0m"
+	@echo  "Cleaning all"
 
 re: fclean all
 
