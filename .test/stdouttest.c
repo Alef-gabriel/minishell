@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   stdouttest.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 01:20:07 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/08 01:20:08 by anhigo-s         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -18,28 +6,31 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-void	test(void)
+void	ft_deletcmp(char *str, int posi)
 {
-	exit(0);
+	while (str[posi + 1])
+	{
+		str[posi] = str[posi + 1];
+		posi++;
+	}
+	str[posi] = 0;
 }
 
-int	main(void)
+int	reverse_search(char *str, char iten, int len)
 {
-	int		fd[2];
-	pid_t	pid;
-	int		ft;
+	len = len - 1;
+	while (len >= 0 && str[len] != iten)
+		len--;
+	return (len);
+}
 
-	pipe(fd);
-	pid = fork();
-	if (pid == 0)
-	{
-		test();
-		ft = open("tt", O_WRONLY | O_TRUNC | O_CREAT, 0644);
-		//dup(STDOUT_FILENO);
-		dup2(fd[1], STDOUT_FILENO);
-		write(ft, "hello guys\n", 11);
-	}
-	waitpid(pid, NULL, 0);
-	printf("hello\n");
+int main()
+{
+	char	go[] = {"helllo"};
+
+	printf("%s\n",go);
+	printf("%d\n",reverse_search(go, 'e', 6));
+	ft_deletcmp(go, 5);
+	printf("%s\n",go);
 	return (0);
 }

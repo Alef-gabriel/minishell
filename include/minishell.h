@@ -112,6 +112,6 @@ void	get_directory(void);
 char		*swap_chars(char *cmd, char to_find, char to_put);
 t_commands	*init_comands(void);
 void		get_sig(void);
-void	fd_to_fd(int fd_in, t_files *fd_out);
+int		fd_to_fd(int fd_in, t_files *fd_out);
 
 #endif

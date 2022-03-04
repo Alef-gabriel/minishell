@@ -33,7 +33,7 @@ void ft_exec(char *path, t_commands *cmds, char **env)
 				g_mini.exit_code = WEXITSTATUS(g_mini.exit_tmp);
 				close(piper[1]);
 				fd_in = piper[0];
-				fd_to_fd(fd_in, cmds->files_redir);
+				fd_in = fd_to_fd(fd_in, cmds->files_redir);
 				cmds = cmds->next;
 			}
 		}

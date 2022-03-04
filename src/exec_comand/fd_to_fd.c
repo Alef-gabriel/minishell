@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-void	fd_to_fd(int fd_in, t_files *fd_out)
+int	fd_to_fd(int fd_in, t_files *fd_out)
 {
 	char	*aux;
 	char	*join;
@@ -26,4 +26,5 @@ void	fd_to_fd(int fd_in, t_files *fd_out)
 		}
 		fd_out = save;
 	}
+	return(fd_in);
 }
