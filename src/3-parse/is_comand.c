@@ -28,7 +28,7 @@ char	*check_path(char *cmd, t_node **nodes)
 }
 
 
-int is_comand(char *s)
+int	is_comand(char *s)
 {
 	char *cmd;
 	char **matrix;

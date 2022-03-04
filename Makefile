@@ -1,41 +1,55 @@
 NAME	= minishell
-
 CC		= gcc
-
 CFLAGS	= -g3 -Wall #-Werror
-
 LIBFT 	= -L ./libft -lft
-
 RM		= rm -rf
 
 INCLUDE = -I ./include/
-
 HEADER	= ./include/minishell.h
 
 PATH_SRC		= ./src/
-PATH_MAIN		= $(PATH_SRC)0-main/
-PATH_UTILS		= $(PATH_SRC)utils/
-PATH_HASH		= $(PATH_SRC)1-hash_table/
-PATH_MESSAGE	= $(PATH_SRC)messages/
-PATH_PARSE		= $(PATH_SRC)parse/
-PATH_EXEC		= $(PATH_SRC)exec_comand/
-PATH_BUILTINS	= $(PATH_SRC)builtins/
-PATH_PROMPT		= $(PATH_SRC)prompt/
+
+PATH_MAIN		= $(addprefix 0-main/, \
+		minishell.c initial_func.c signal.c \
+)
+
+PATH_PROMPT		= $(addprefix 1-prompt/, \
+		prompt.c \
+)
+
+PATH_HASH		= $(addprefix 2-hash_table/, \
+		create_env.c hash_search.c hash.c \
+)
+
+PATH_PARSE		= $(addprefix 3-parse/, \
+		check_sintax.c expansion.c here_doc_parse_2.c here_doc_parse.c \
+		check_sintax.c is_comand.c parse_input.c quotes_treat.c \
+		readline_parser.c redir_parse.c swap_chars.c utils.c verify_what.c \
+)
+
+PATH_EXEC		= $(addprefix 4-exec_comand/, \
+		exec_cmd.c exec_redir.c fd_to_fd.c \
+)
+
+PATH_BUILTINS		= $(addprefix 5-builtins/, \
+		chdir.c export.c pwd.c unset.c \
+)
+
+PATH_MESSAGE		= $(addprefix 6-messages/, \
+		errors.c \
+)
+
+PATH_UTILS		= $(addprefix utils/, \
+		free_matrix.c ft_strstr.c \
+)
 
 PATH_OBJS = ./objs/
 
-SRCS	= $(PATH_MAIN)minishell.c $(PATH_MAIN)initial_func.c $(PATH_MAIN)signal.c \
-		$(PATH_PARSE)is_comand.c $(PATH_PARSE)swap_chars.c $(PATH_PARSE)verify_what.c\
-		$(PATH_PARSE)parse_input.c $(PATH_PARSE)readline_parser.c $(PATH_PARSE)redir_parse.c\
-		$(PATH_PARSE)check_sintax.c $(PATH_PARSE)here_doc_parse.c  $(PATH_PARSE)here_doc_parse_2.c\
-		$(PATH_MESSAGE)errors.c\
-		$(PATH_EXEC)exec_cmd.c $(PATH_EXEC)exec_redir.c $(PATH_EXEC)fd_to_fd.c \
-		$(PATH_HASH)hash.c $(PATH_HASH)create_env.c $(PATH_HASH)hash_search.c\
-		$(PATH_UTILS)free_matrix.c $(PATH_UTILS)ft_strstr.c \
-		$(PATH_BUILTINS)export.c $(PATH_BUILTINS)unset.c $(PATH_BUILTINS)pwd.c \
-		$(PATH_PARSE)ultils.c $(PATH_PROMPT)prompt.c $(PATH_PARSE)expansion.c \
-		$(PATH_PARSE)quotes_treat.c
-
+SRCS		= $(addprefix $(PATH_SRC), \
+		$(PATH_MAIN) $(PATH_PROMPT) $(PATH_HASH) \
+		$(PATH_PARSE) $(PATH_EXEC) $(PATH_BUILTINS) \
+		$(PATH_MESSAGE) $(PATH_UTILS) \
+)
 
 OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(SRCS))
 
@@ -49,13 +63,13 @@ $(NAME): $(OBJS) $(HEADER)
 $(PATH_OBJS)%.o: $(PATH_SRC)%.c
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)0-main/
-	@mkdir -p $(PATH_OBJS)1-hash_table/
-	@mkdir -p $(PATH_OBJS)exec_comand/
-	@mkdir -p $(PATH_OBJS)messages/
-	@mkdir -p $(PATH_OBJS)parse/
-	@mkdir -p $(PATH_OBJS)builtins/
+	@mkdir -p $(PATH_OBJS)1-prompt/
+	@mkdir -p $(PATH_OBJS)2-hash_table/
+	@mkdir -p $(PATH_OBJS)3-parse/
+	@mkdir -p $(PATH_OBJS)4-exec_comand/
+	@mkdir -p $(PATH_OBJS)5-builtins/
+	@mkdir -p $(PATH_OBJS)6-messages/
 	@mkdir -p $(PATH_OBJS)utils/
-	@mkdir -p $(PATH_OBJS)prompt/
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
