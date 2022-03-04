@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 23:22:37 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/27 14:36:01 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/04 00:39:29 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
-
-
 
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);

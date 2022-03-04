@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/03 00:24:39 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/04 00:38:37 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,13 @@ char			**hash_to_env(t_node **nodes);
 
 /* Parse */
 char			*takeinput(void);
-void	parse_input(char *s, char **env);
+void			parse_input(char *s, char **env);
 int				is_comand(char *s);
 int				check_sintax(char *s);
 char			*check_path(char *cmd, t_node **nodes);
+
 //char 	*swap_chars(char *, char to_find, char to_put);
+
 char			**search_matrix(char **matrix);
 void			verify_what_is(char *s);
 char			**treat_cmd(char *cmd);
@@ -66,14 +68,13 @@ t_files			*parser(char *s, char iten, \
 	t_files *(*save)(char *, t_files *anchor, int finish, int sig), \
 	int (*check)(char *cmd_line));
 
-
-char	*expansion(char *str);
-char	*treat_quotes(char *str);
+char			*expansion(char *str);
+char			*treat_quotes(char *str);
 
 /*readline parser*/
-int	readline_output_parser(char *s);
-int	exec_commands(t_commands *commands_struct);
-void	delete_commands(t_commands *commands_struct);
+int				readline_output_parser(char *s);
+int				exec_commands(t_commands *commands_struct);
+void			delete_commands(t_commands *commands_struct);
 /*pipe parsing*/
 void			separate_in_pipes(char *s);
 char			*ft_conect(char	*first, char *mid, char *end);
@@ -92,10 +93,10 @@ char			**cmd_parser(char *cmd);
 t_files			*files_save(char *s, t_files *anchor, int finish, int sig);
 
 /* Exec */
-void ft_exec(char *path, t_commands *cmds, char **env);
-int		export(t_hash *data, char *cmd);
-int		unset(t_hash *data, char *key);
-void	redir_exec(t_commands *commands);
+void			ft_exec(char *path, t_commands *cmds, char **env);
+int				export(t_hash *data, char *cmd);
+int				unset(t_hash *data, char *key);
+void			redir_exec(t_commands *commands);
 
 /*hash*/
 t_hash			*create_hash(int size);
@@ -107,11 +108,11 @@ t_hash			*env_to_hash(char **env);
 t_node			*create_new_node(char *key, char *value);
 void			print_table(t_node **nodes, int size);
 
-void	get_directory(void);
+void			get_directory(void);
 
-char		*swap_chars(char *cmd, char to_find, char to_put);
-t_commands	*init_comands(void);
-void		get_sig(void);
-void	fd_to_fd(int fd_in, t_files *fd_out);
+char			*swap_chars(char *cmd, char to_find, char to_put);
+t_commands		*init_comands(void);
+void			get_sig(void);
+void			fd_to_fd(int fd_in, t_files *fd_out);
 
 #endif
