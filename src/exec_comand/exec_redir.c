@@ -32,33 +32,41 @@ void	redir_exec(t_commands *commands)
 	}
 }
 
+void	ft_filecmp(int	destination_fd, int fd)
+{
+	char	*join;
+	char	*aux;
+
+	join = NULL;
+	aux = get_next_line(fd);
+	while (aux)
+	{
+		join = ft_strjoin(join, aux);
+		aux = get_next_line(fd);
+	}
+	write(destination_fd, join, ft_strlen(join));
+}
+
 int	redir_input_exec(t_files *files)
 {
 	int		fd;
 	int		var_fd;
-	char	*join;
-	char	*aux;
 
-	fd = 0;
+	fd = g_mini.fd_in;
 	if (files != NULL)
 	{
 		fd = open("temp", O_WRONLY | O_TRUNC | O_CREAT, 0644);
+		if (g_mini.fd_in != 0)
+		{
+			ft_filecmp(fd, g_mini.fd_in);
+			close(g_mini.fd_in);
+		}
 		while (files)
 		{
 			var_fd = open(files->file_name, O_RDONLY, 0644);
 			if (var_fd == -1)
-			{
-				printf("error file \'%s\' not found", files->file_name);
-				exit(1);
-			}
-			join = NULL;
-			aux = get_next_line(var_fd);
-			while (aux)
-			{
-				join = ft_strjoin(join, aux);
-				aux = get_next_line(var_fd);
-			}
-			write(fd, join, ft_strlen(join));
+				file_error(files->file_name);
+			ft_filecmp(fd, var_fd);
 			close(var_fd);
 			files = files->next;
 		}

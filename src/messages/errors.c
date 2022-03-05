@@ -12,7 +12,8 @@
 
 #include "minishell.h"
 
-void	sintax_error(char *s)
+void	file_error(char *s)
 {
-	
+	printf("error file \'%s\' not found", s);
+	exit(1);
 }

@@ -86,7 +86,7 @@ int				check_redir(char *cmd_line);
 int				check_here_doc(char *cmd);
 
 /*errors messages*/
-void			sintax_error(char *s);
+void			file_error(char *s);
 
 char			**cmd_parser(char *cmd);
 
@@ -97,6 +97,7 @@ void ft_exec(char *path, t_commands *cmds);
 int		export(t_hash *data, char *cmd);
 int		unset(t_hash *data, char *key);
 void	redir_exec(t_commands *commands);
+void	ft_filecmp(int	destination_fd, int fd);
 
 /*hash*/
 t_hash			*create_hash(int size);
