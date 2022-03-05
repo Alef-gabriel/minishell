@@ -45,11 +45,10 @@ typedef struct s_limiter{
 typedef struct s_commands{
 	t_limiter			*limiter;
 	t_files				*files_redir;
-	t_files				*files_here_doc;
+	t_files				*files_input_redir;
 	char				**cmd;
 	char				*wf_cmd;
-	char				*input;//elemento sob suspeita
-	int					redir_type;
+	int					fd_in;
 	struct s_commands	*next;
 }	t_commands;
 

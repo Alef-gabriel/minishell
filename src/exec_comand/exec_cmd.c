@@ -16,6 +16,7 @@ static void	redirect_in_exec_resut(int	*piper, t_commands *cmds)
 	g_mini.on_child = FALSE;
 	g_mini.exit_code = WEXITSTATUS(g_mini.exit_tmp);
 	close(piper[1]);
+	unlink("temp");
 	g_mini.fd_in = piper[0];
 	g_mini.fd_in = fd_to_fd(g_mini.fd_in, cmds->files_redir);
 	if (g_mini.cont_pipe > 0)
@@ -34,7 +35,8 @@ void	ft_exec(char *path, t_commands *cmds)
 	{
 		while (cmds->next != NULL)
 		{
-			if (g_mini.cont_pipe > 0 || cmds->files_redir != NULL)
+			g_mini.fd_in = redir_input_exec(cmds->files_input_redir);
+			if (g_mini.cont_pipe > 0 || cmds->files_redir != NULL || cmds->files_input_redir != NULL)
 				pipe(piper);
 			if ((pid = fork()) == 0)
 				dup_in_exec(piper, g_mini.fd_in, cmds, path);

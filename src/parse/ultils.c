@@ -27,7 +27,7 @@ static int	signal_type(char *s)
 	return (0);
 }
 
-t_files	*parser(char *s, char iten, t_files *(*save)(char *, t_files *anchor, int finish, int sig), int (*check)(char *cmd_line))
+t_files	*parser(char *s, char iten, t_files *(*save)(char *, t_files *anchor, int finish, int sig))
 {
 	int			i;
 	int			j;
@@ -35,10 +35,8 @@ t_files	*parser(char *s, char iten, t_files *(*save)(char *, t_files *anchor, in
 	int			sig;
 	t_files *save_file;
 
-	save_file = NULL;
-	if (check(s) <= 0)
-		return (NULL);
 	i = 0;
+	save_file = NULL;
 	len = ft_strlen(s);
 	while (i < len && s[i])
 	{
@@ -48,7 +46,7 @@ t_files	*parser(char *s, char iten, t_files *(*save)(char *, t_files *anchor, in
 			sig = signal_type(s + i);
 			while (s[i] && (s[i] == iten || s[i] == ' '))
 				i++;
-			while (s[i + j] && s[i + j] != '>' && s[i + j] != '<' && s[i + j] != '|')
+			while (s[i + j] && s[i + j] != '>' && s[i + j] != '<' && s[i + j] != '|' && s[i + j] != ' ')
 				j++;
 			save_file = save(s + i, save_file, j, sig);
 			i = i + j;

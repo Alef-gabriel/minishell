@@ -26,7 +26,7 @@ t_commands	*init_comands(void)
 	commands->files_redir = NULL;
 	commands->cmd = NULL;
 	commands->wf_cmd = NULL;
-	commands->input = NULL;
+	commands->fd_in = 0;
 	commands->next = NULL;
 	return (commands);
 }
@@ -35,7 +35,7 @@ void init_vars(void)
 {
 	g_mini.cont_pipe = 0;
 	g_mini.comand = 0;
-	g_mini.fd_in = -1;
+	g_mini.fd_in = 0;
 	g_mini.on_child = FALSE;
 	g_mini.commands = init_comands();
 }

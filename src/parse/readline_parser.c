@@ -12,7 +12,8 @@ int	readline_output_parser(char *s)
 	{
 		g_mini.commands->wf_cmd = expansion(g_mini.commands->wf_cmd);
 		g_mini.commands->wf_cmd = treat_quotes(g_mini.commands->wf_cmd);
-		g_mini.commands->files_redir = parser(g_mini.commands->wf_cmd, '>', &files_save, &check_redir);
+		g_mini.commands->files_redir = parser(g_mini.commands->wf_cmd, '>', &files_save);
+		g_mini.commands->files_input_redir = parser(g_mini.commands->wf_cmd, '<', &redirect_input_files);
 		g_mini.commands->cmd = cmd_parser(g_mini.commands->wf_cmd);
 		g_mini.commands = g_mini.commands->next;
 	}
@@ -31,7 +32,6 @@ int	exec_commands(t_commands *commands_struct)
 	ft_exec(local, commands_struct);
 	free_matrix(g_mini.env);
 	delete_commands(commands_struct);
-	//caso de erro e para retornar -1
 	return (0);
 }
 

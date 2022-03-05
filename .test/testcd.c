@@ -3,9 +3,6 @@
 
 int	main()
 {
-	if (chdir("/home/dinossauro/")==0)
-		printf("foi\n");
-	else
-		printf("error\n");
+	unlink("pipetest.c");
 	return (0);
 }
