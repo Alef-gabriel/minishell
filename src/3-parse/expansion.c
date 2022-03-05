@@ -3,32 +3,32 @@
 static int	verify_quotes(char *str, int posi)
 {
 	int		i;
-	int		expancion[2];
+	int		expansion[2];
 
 	i = 0;
-	expancion[0] = -1;
-	expancion[1] = 1;
+	expansion[0] = -1;
+	expansion[1] = 1;
 	while (i < posi)
 	{
 		if (str[i] == '\'' || str[i] == '\"')
 		{
-			if (expancion[0] == -1)
+			if (expansion[0] == -1)
 			{
-				expancion[0] = str[i];
+				expansion[0] = str[i];
 				if (str[i] == '\'')
-					expancion[1] = 0;
+					expansion[1] = 0;
 				else
-					expancion[1] = 1;
+					expansion[1] = 1;
 			}
-			else if (str[i] == expancion[0])
+			else if (str[i] == expansion[0])
 			{
-				expancion[1] = 1;
-				expancion[0] = -1;
+				expansion[1] = 1;
+				expansion[0] = -1;
 			}
 		}
 		i++;
 	}
-	return (expancion[1]);
+	return (expansion[1]);
 }
 
 static char	*value_to_hash(char *str)
