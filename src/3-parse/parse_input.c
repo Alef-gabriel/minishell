@@ -59,7 +59,7 @@ void	parse_input(char *s, char **env)
 	//criar função de erro de syntax
 	if (check_sintax(s) == -1)
 	{
-		printf ("erro de sintax funcionando\n");
+		printf ("minishell: syntax error near unexpected token `<token>'\n");
 		return ;
 	}
 	if (readline_output_parser(s) == -1)

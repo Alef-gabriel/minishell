@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 00:59:52 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/08 00:59:53 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/05 23:24:20 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,15 @@ char	*hash_search(t_node **nodes, char *key, int len)
 	while (nodes[i] && nodes[i]->key != NULL)
 	{
 		if (ft_memcmp(nodes[i]->key, key, len) == 0)
+		{
 			return(nodes[i]->value);
+		}
 		nodes[i] = nodes[i]->next;
 	}
 	return (NULL);
 }
 
+//verificar se é necessario
 void	print_table(t_node **nodes, int size)
 {
 	int	i;

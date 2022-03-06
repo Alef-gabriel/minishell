@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 21:30:36 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/08 00:59:46 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/05 23:23:25 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ t_hash	*env_to_hash(char **env)
 	char	*value;
 
 	i = 0;
-	j = 0;
 	while (env[i])
 		i++;
 	table = create_hash(i);
