@@ -12,6 +12,7 @@ int main(int argc, char **argv, char **envp)
 	g_mini.env_table = env_to_hash(envp);
 	while (1)
 	{
+		g_mini.on_child = FALSE;
 		input = takeinput();
 		if (!ft_strncmp("exit", input, 4))
 			exit(0);
