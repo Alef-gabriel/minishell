@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-char	*hash_search(t_node **nodes, char *key, int len)
+t_node	*hash_search(t_node **nodes, char *key, int len)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ char	*hash_search(t_node **nodes, char *key, int len)
 	while (nodes[i] && nodes[i]->key != NULL)
 	{
 		if (ft_memcmp(nodes[i]->key, key, len) == 0)
-			return(nodes[i]->value);
+			return(nodes[i]);
 		nodes[i] = nodes[i]->next;
 	}
 	return (NULL);

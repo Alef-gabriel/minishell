@@ -38,7 +38,7 @@ static char	*value_to_hash(char *str)
 	if (str[0] == '?')
 		value = ft_strjoin(ft_itoa(g_mini.exit_code), str + 1);
 	else
-		value = hash_search(g_mini.env_table->nodes, str, ft_strlen(str));
+		value = hash_search(g_mini.env_table->nodes, str, ft_strlen(str))->value;
 	return (value);
 }
 

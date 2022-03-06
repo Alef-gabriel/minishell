@@ -8,7 +8,7 @@ char	*check_path(char *cmd, t_node **nodes)
 	char	*path;
 
 	pos = 0;
-	path = hash_search(nodes, "PATH", 5);
+	path = hash_search(nodes, "PATH", 5)->value;
 	path_comand = ft_split(path, ':');
 	while (path_comand[pos] != NULL)
 	{
