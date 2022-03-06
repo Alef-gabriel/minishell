@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/04 00:38:37 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/04 23:03:37 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <unistd.h>
 # include <errno.h>
 # include <fcntl.h>
-# include <dirent.h>
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <stdlib.h>

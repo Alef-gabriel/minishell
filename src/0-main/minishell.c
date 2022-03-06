@@ -21,13 +21,13 @@ void	shell_loop(char **envp)
 	while (true)
 	{
 		input = takeinput();
-		if (!ft_strcmp("exit", input))
+		if (!ft_strcmp("exit", input) || input == NULL)
 		{
 			//adicionar funções de free
 			exit(0);
 		}
 		s = ft_strtrim(input, " ");
-		if(s[0] != '\0')
+		if(input[0] != '\0')
 			parse_input(s, envp);
 		free(s);
 		free(input);

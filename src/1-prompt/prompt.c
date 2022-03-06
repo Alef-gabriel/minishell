@@ -12,6 +12,7 @@ char	*takeinput(void)
 
 	get_sig();
 	buffer = readline("MINIHELL $ ");
+	
 	add_history(buffer);
 	return (buffer);
 }
