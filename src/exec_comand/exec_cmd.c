@@ -22,8 +22,8 @@ static void	redirect_in_exec_resut(int	*piper, t_commands *cmds)
 	if (g_mini.cont_pipe > 0)
 		g_mini.cont_pipe--;
 }
-
-void	ft_exec(char *path, t_commands *cmds)
+//make for return int for errors
+int	ft_exec(char *path, t_commands *cmds)
 {
 	int			pid;
 	t_commands	*aux;
@@ -35,20 +35,19 @@ void	ft_exec(char *path, t_commands *cmds)
 	{
 		while (cmds->next != NULL)
 		{
-			g_mini.fd_in = redir_input_exec(cmds->files_input_redir);
+			if (redir_input_exec(cmds->files_input_redir) == -1)
+				return (-1);
 			if (g_mini.cont_pipe > 0 || cmds->files_redir != NULL || cmds->files_input_redir != NULL)
 				pipe(piper);
 			if ((pid = fork()) == 0)
 				dup_in_exec(piper, g_mini.fd_in, cmds, path);
-			else
-			{
-				waitpid(pid, &g_mini.exit_tmp, 0);
-				redirect_in_exec_resut(piper, cmds);
-				cmds = cmds->next;
-			}
+			waitpid(pid, &g_mini.exit_tmp, 0);
+			redirect_in_exec_resut(piper, cmds);
+			cmds = cmds->next;
 		}
 		cmds = aux;
 	}
+	return (0);
 }
 
 char	**append_in_matrix(char **arrey, char *str)

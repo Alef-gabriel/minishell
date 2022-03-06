@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	file_error(char *s)
+//make int and return -1
+int	file_error(char *s)
 {
-	printf("error file \'%s\' not found", s);
-	exit(1);
+	printf("error file \'%s\' not found\n", s);
+	return(-1);
 }

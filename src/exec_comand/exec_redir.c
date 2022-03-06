@@ -46,7 +46,7 @@ void	ft_filecmp(int	destination_fd, int fd)
 	}
 	write(destination_fd, join, ft_strlen(join));
 }
-
+//return -1 in error
 int	redir_input_exec(t_files *files)
 {
 	int		fd;
@@ -65,7 +65,7 @@ int	redir_input_exec(t_files *files)
 		{
 			var_fd = open(files->file_name, O_RDONLY, 0644);
 			if (var_fd == -1)
-				file_error(files->file_name);
+				return(file_error(files->file_name));
 			ft_filecmp(fd, var_fd);
 			close(var_fd);
 			files = files->next;
@@ -73,5 +73,6 @@ int	redir_input_exec(t_files *files)
 		close(fd);
 		fd = open("temp", O_RDONLY, 0644);
 	}
+	g_mini.fd_in = fd;
 	return (fd);
 }

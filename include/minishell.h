@@ -86,14 +86,14 @@ int				check_redir(char *cmd_line);
 int				check_here_doc(char *cmd);
 
 /*errors messages*/
-void			file_error(char *s);
+int				file_error(char *s);
 int				cd_dir(char *local);
 char			**cmd_parser(char *cmd);
 
 t_files			*files_save(char *s, t_files *anchor, int finish, int sig);
 
 /* Exec */
-void ft_exec(char *path, t_commands *cmds);
+int		ft_exec(char *path, t_commands *cmds);
 int		export(t_hash *data, char *cmd);
 int		unset(t_hash *data, char *key);
 void	redir_exec(t_commands *commands);
