@@ -15,14 +15,15 @@ static void	redirect_in_exec_resut(int	*piper, t_commands *cmds)
 {
 	g_mini.on_child = FALSE;
 	g_mini.exit_code = WEXITSTATUS(g_mini.exit_tmp);
-	close(piper[1]);
+	if (g_mini.cont_pipe > 0 || cmds->files_redir != NULL || cmds->files_input_redir != NULL)
+		close(piper[1]);
 	unlink("temp");
 	g_mini.fd_in = piper[0];
 	g_mini.fd_in = fd_to_fd(g_mini.fd_in, cmds->files_redir);
 	if (g_mini.cont_pipe > 0)
 		g_mini.cont_pipe--;
 }
-//make for return int for errors
+
 int	ft_exec(char *path, t_commands *cmds)
 {
 	int			pid;
@@ -76,24 +77,19 @@ char	**hash_to_env(t_node **nodes)
 	char	**env;
 	char	*path;
 	t_node	*aux;
-	//the exec error is here
+
 	i = 0;
 	env = (char **)ft_calloc(sizeof(char *), 1);
-	while (i < g_mini.env_table->size)
+	while (i <= g_mini.env_table->size)
 	{
-		if (nodes[i] && nodes[i]->key != NULL)
+		aux = nodes[i];
+		while (nodes[i])
 		{
-			aux = nodes[i];
-			while (nodes[i]->next != NULL)
-			{
-				path = ft_conect(nodes[i]->key, "=", nodes[i]->value);
-				env = append_in_matrix(env, path);
-				nodes[i] = nodes[i]->next;
-			}
-			nodes[i] = aux;
 			path = ft_conect(nodes[i]->key, "=", nodes[i]->value);
 			env = append_in_matrix(env, path);
+			nodes[i] = nodes[i]->next;
 		}
+		nodes[i] = aux;
 		i++;
 	}
 	return (env);

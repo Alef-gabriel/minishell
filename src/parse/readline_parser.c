@@ -29,8 +29,11 @@ int	exec_commands(t_commands *commands_struct)
 	local = check_path(commands_struct->cmd[0], g_mini.env_table->nodes);
 	g_mini.env = hash_to_env(g_mini.env_table->nodes);
 	redir_exec(commands_struct);
-	if (ft_exec(local, commands_struct) == -1)
-		return (-1);
+	if (exec_builtins(g_mini.commands->cmd) == 0)
+	{
+		if (ft_exec(local, commands_struct) == -1)
+			return (-1);
+	}
 	free_matrix(g_mini.env);
 	delete_commands(commands_struct);
 	return (0);

@@ -17,8 +17,8 @@ t_node	*create_new_node(char *key, char *value)
 	t_node	*ret;
 
 	ret = (t_node *)ft_calloc(sizeof(t_node), 1);
-	ret->key = ft_strdup(key);
-	ret->value = ft_strdup(value);
+	ret->key = key;
+	ret->value = value;
 	ret->next = NULL;
 	return (ret);
 }
@@ -32,7 +32,7 @@ t_hash	*create_hash(int size)
 	hash = (t_hash *)ft_calloc(sizeof(t_hash), 1);
 	hash->size = size;
 	hash->nodes = (t_node **)ft_calloc(sizeof(t_node *), hash->size + 1);
-	while (i < size)
+	while (i <= size)
 	{
 		hash->nodes[i] = NULL;
 		i++;
@@ -61,19 +61,3 @@ void	atribute_node(char *key, char *value, t_hash *hash, int index)
 	hash->nodes[index]->value = ft_strdup(value);
 }
 
-
-void	create_node(t_hash *hash)
-{
-	// t_node	*aux;
-	int		i;
-
-	i = 0;
-	while (i < hash->size)
-	{
-
-		hash->nodes[i] = (t_node *)ft_calloc(sizeof(t_node), 1);
-		hash->nodes[i]->key = NULL;
-		hash->nodes[i]->value = NULL;
-		i++;
-	}
-}

@@ -87,7 +87,7 @@ int				check_here_doc(char *cmd);
 
 /*errors messages*/
 int				file_error(char *s);
-int				cd_dir(char *local);
+int				cd_dir(char **cmd);
 char			**cmd_parser(char *cmd);
 
 t_files			*files_save(char *s, t_files *anchor, int finish, int sig);
@@ -101,13 +101,17 @@ void	ft_filecmp(int	destination_fd, int fd);
 
 /*hash*/
 t_hash			*create_hash(int size);
-void			create_node(t_hash *hash);
 unsigned int	hash(char *str, unsigned int len);
 void			atribute_node(char *key, char *value, t_hash *hash, int index);
 t_node			*hash_search(t_node **nodes, char *key, int len);
 t_hash			*env_to_hash(char **env);
 t_node			*create_new_node(char *key, char *value);
-void			print_table(t_node **nodes, int size);
+void			print_table(t_node **nodes);
+
+int	exec_builtins(char **cmd);
+int	arguments_error(void);
+void	pwd_build(void);
+
 
 void	get_directory(void);
 

@@ -1,17 +1,14 @@
 #include "minishell.h"
-
-void	print_table(t_node **nodes, int size)
+//corrigir
+void	print_table(t_node **nodes)
 {
 	int	i;
+	t_node *save;
 
 	i = 0;
-	while (i < size && nodes[i])
+	while (g_mini.env[i])
 	{
-		while (nodes[i] && nodes[i]->key != NULL)
-		{
-			printf("%s=%s\n", nodes[i]->key, nodes[i]->value);
-			nodes[i] = nodes[i]->next;
-		}
+		printf("%s\n", g_mini.env[i]);
 		i++;
 	}
 }

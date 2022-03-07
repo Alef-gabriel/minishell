@@ -17,3 +17,9 @@ int	file_error(char *s)
 	printf("error file \'%s\' not found\n", s);
 	return(-1);
 }
+
+int	arguments_error(void)
+{
+	printf("too many arguments\n");
+	return(-1);
+}

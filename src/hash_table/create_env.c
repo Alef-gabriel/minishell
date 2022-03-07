@@ -12,6 +12,33 @@
 
 #include "minishell.h"
 
+t_node	*nodelast(t_node *node)
+{
+	while (node)
+	{
+		if (node->next == NULL)
+			return (node);
+		node = node->next;
+	}
+	return (node);
+}
+
+void	addlast(t_node **node, t_node *new)
+{
+	t_node	*last;
+
+	if (node)
+	{
+		if (*node)
+		{
+			last = nodelast(*node);
+			last->next = new;
+		}
+		else
+			*node = new;
+	}
+}
+
 t_hash	*env_to_hash(char **env)
 {
 	t_hash	*table;
@@ -27,7 +54,6 @@ t_hash	*env_to_hash(char **env)
 		i++;
 	table = create_hash(i);
 	i = 0;
-	create_node(table);
 	while (env[i])
 	{
 		j = 0;
@@ -36,19 +62,7 @@ t_hash	*env_to_hash(char **env)
 		key = ft_substr(env[i], 0, j);
 		hash_index = hash(key, table->size);
 		value = ft_substr(env[i], j + 1, ft_strlen(env[i]) - j + 1);
-		if (table->nodes[hash_index]->key == NULL)
-		{
-			table->nodes[hash_index]->key = ft_strdup(key);
-			table->nodes[hash_index]->value = ft_strdup(value);
-		}
-		else
-		{
-			while (table->nodes[hash_index]->next != NULL)
-				table->nodes[hash_index] = table->nodes[hash_index]->next;
-			table->nodes[hash_index]->next = create_new_node(key, value);
-		}
-		free(key);
-		free(value);
+		addlast(&table->nodes[hash_index], create_new_node(key, value));
 		i++;
 	}
 	return (table);

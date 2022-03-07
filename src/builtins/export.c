@@ -24,7 +24,7 @@ int	export(t_hash *data, char *cmd)
 		j++;
 	key = ft_substr(cmd, 0, j);
 	index = hash(key, data->size);
-	value = ft_substr(cmd, j + 1, ft_strlen(cmd) - j + 1);
+	value = ft_substr(cmd, j + 1, ft_strlen(cmd) - j);
 	if (data->nodes[index]->key == NULL)
 	{
 		data->nodes[index]->key = ft_strdup(key);

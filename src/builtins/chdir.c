@@ -12,12 +12,14 @@
 
 #include "minishell.h"
 
-int	cd_dir(char *local)
+int	cd_dir(char **cmd)
 {
 	t_node *aux;
 	char	dir[100];
 
-	if (chdir(local) != 0)
+	if (cmd[2] != NULL)
+		return(arguments_error());
+	if (chdir(cmd[1]) != 0)
 	{
 		printf("error\n");
 		return (-1);

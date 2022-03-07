@@ -18,6 +18,4 @@ void	pwd_build(void)
 	char	folder[PATH_MAX];
 
 	getcwd(folder, sizeof(folder));
-	ft_putendl_fd(folder, STDOUT_FILENO);
-	//free(folder);
 }
