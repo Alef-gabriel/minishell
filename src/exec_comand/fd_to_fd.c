@@ -19,7 +19,7 @@ int	fd_to_fd(int fd_in, t_files *fd_out)
 int	exec_builtins(char **cmd)
 {
 	if (!(ft_strcmp(cmd[0], "cd\0")))
-		cd_dir(cmd);//rever
+		cd_dir(cmd);
 	else if (!(ft_strcmp(cmd[0], "env\0")))
 		print_table(g_mini.env_table->nodes);
 	else if (!(ft_strcmp(cmd[0], "export\0")))

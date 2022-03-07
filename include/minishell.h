@@ -107,6 +107,8 @@ t_node			*hash_search(t_node **nodes, char *key, int len);
 t_hash			*env_to_hash(char **env);
 t_node			*create_new_node(char *key, char *value);
 void			print_table(t_node **nodes);
+void		addlast(t_node **node, t_node *new);
+t_node		*nodelast(t_node *node);
 
 int	exec_builtins(char **cmd);
 int	arguments_error(void);

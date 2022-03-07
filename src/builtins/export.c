@@ -20,21 +20,13 @@ int	export(t_hash *data, char *cmd)
 	int		j;
 
 	j = 0;
-	while (cmd[j] != '=')
+	while (cmd[j] && cmd[j] != '=')
 		j++;
+	if (cmd[j] != '=')
+		return(0);
 	key = ft_substr(cmd, 0, j);
 	index = hash(key, data->size);
 	value = ft_substr(cmd, j + 1, ft_strlen(cmd) - j);
-	if (data->nodes[index]->key == NULL)
-	{
-		data->nodes[index]->key = ft_strdup(key);
-		data->nodes[index]->value = ft_strdup(value);
-	}
-	else
-	{
-		while (data->nodes[index]->next != NULL)
-			data->nodes[index] = data->nodes[index]->next;
-		data->nodes[index]->next = create_new_node(key, value);
-	}
+	addlast(&data->nodes[index], create_new_node(key, value));
 	return (0);
 }
