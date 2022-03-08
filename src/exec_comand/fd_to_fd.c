@@ -26,6 +26,8 @@ int	exec_builtins(char **cmd)
 		export(g_mini.env_table, cmd[1]);
 	else if (!(ft_strcmp(cmd[0], "pwd\0")))
 		pwd_build();
+	else if (!(ft_strcmp(cmd[0], "unset\0")))
+		unset(g_mini.env_table, cmd[1]);
 	else
 		return(0);
 	return (1);

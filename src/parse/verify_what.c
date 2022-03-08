@@ -19,6 +19,7 @@ char **treat_cmd(char *cmd)
 	return(matrix);
 }
 
+/*
 int is_builtin(char *cmd)
 {
 	// criar a builtin de cad um epaasar como função no if
@@ -33,7 +34,6 @@ int is_builtin(char *cmd)
 		return (TRUE);
 	if (!(ft_strstr(cmd, "env")))
 		return (TRUE);
-	if (!(ft_strstr(cmd, "unset")))
-		return (TRUE);
 	return (FALSE);
 }
+*/

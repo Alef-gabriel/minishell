@@ -12,22 +12,11 @@
 
 #include "minishell.h"
 
-int	unset(t_hash *data, char *key)
+static void	node_switch(t_node *aux, int depth_cont, t_hash *data, int index)
 {
-	t_node	*aux;
 	int		i;
-	int		len;
-	int		j;
 
-	j = 0;
-	i = hash(key, data->size);
-	len = ft_strlen(key);
-	aux = data->nodes[i];
-	while (ft_memcmp(aux->key, key, len) != 0)
-	{
-		aux = aux->next;
-		j++;
-	}
+	i = 0;
 	while (aux)
 	{
 		free(aux->key);
@@ -36,18 +25,37 @@ int	unset(t_hash *data, char *key)
 		{
 			aux->key = ft_strdup(aux->next->key);
 			aux->value = ft_strdup(aux->next->value);
-			j++;
+			depth_cont++;
 		}
 		aux = aux->next;
 	}
-	len = 0;
-	while (len < (j - 1))
+	while (i < (depth_cont - 1))
 	{
-		data->nodes[i] = data->nodes[i]->next;
-		len++;
+		data->nodes[index] = data->nodes[index]->next;
+		i++;
 	}
-	if (data->nodes[i]->next != NULL)
-		free(data->nodes[i]->next);
-	data->nodes[i]->next = NULL;
+	if (data->nodes[index]->next != NULL)
+		free(data->nodes[index]->next);
+	data->nodes[index]->next = NULL;
+}
+
+int	unset(t_hash *data, char *key)
+{
+	t_node	*aux;
+	int		key_len;
+	int		index;
+	int		depth_cont;
+
+	depth_cont = 0;
+	key_len = ft_strlen(key);
+	index = hash(key, data->size);
+	aux = data->nodes[index];
+	while (aux)
+	{
+		if (ft_memcmp(aux->key, key, key_len) == 0)
+			node_switch(aux, depth_cont, data, index);
+		aux = aux->next;
+		depth_cont++;
+	}
 	return (0);
 }
