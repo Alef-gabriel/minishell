@@ -15,11 +15,15 @@
 int	cd_dir(char **cmd)
 {
 	t_node *aux;
+	char	*diretory;
 	char	dir[100];
 
-	if (cmd[2] != NULL)
+	diretory = cmd[1];
+	if (diretory == NULL)
+		diretory = "/home/";
+	else if (cmd[2] != NULL)
 		return(arguments_error());
-	if (chdir(cmd[1]) != 0)
+	if (chdir(diretory) != 0)
 	{
 		printf("error\n");
 		return (-1);

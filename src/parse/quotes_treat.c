@@ -32,16 +32,16 @@ char	*treat_quotes(char *str)
 			if (u == -1)
 			{
 				u = t;
-				str[i] = 105;
+				str[i] = 1;
 			}
 			else if (u == t)
 			{
 				u = - 1;
-				str[i] = 105;
+				str[i] = 1;
 			}
 		}
 		i++;
 	}
-	split = ft_split(str, 105);
+	split = ft_split(str, 1);
 	return (join_matrix(split));
 }

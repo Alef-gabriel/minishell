@@ -113,7 +113,7 @@ t_node		*nodelast(t_node *node);
 int	exec_builtins(char **cmd);
 int	arguments_error(void);
 void	pwd_build(void);
-
+void	heredoc(char *cmd);
 
 void	get_directory(void);
 
