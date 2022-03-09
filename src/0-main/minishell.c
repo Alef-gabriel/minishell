@@ -4,6 +4,36 @@ t_minishell g_mini;
 
 void	shell_loop(char **envp);
 
+void	signal_handler(int	signumber)
+{
+	if (signumber == SIGINT)
+	{
+		ft_putchar_fd('\n', 1);
+		rl_replace_line("", 0);
+		rl_on_new_line();
+		rl_redisplay();
+		errno = 130;
+	}
+	if (signumber == SIGQUIT)
+	{
+		write(1, "\b TESTE\b", 3);;
+		errno = 131;
+	}
+
+}
+
+void	start_sigaction(void)
+{
+	struct sigaction	marks;
+
+	marks.sa_handler = signal_handler;
+	marks.sa_flags = SA_NODEFER;
+	sigemptyset(&marks.sa_mask);
+	sigaction(SIGINT, &marks, 0);
+	sigaction(SIGQUIT, &marks, 0);
+	return ;
+}
+
 int	main(int argc __attribute__((unused)),
 	char **argv __attribute__((unused)), char **envp)
 {
