@@ -14,16 +14,24 @@
 
 t_node	*hash_search(t_node **nodes, char *key, int len)
 {
-	int	i;
+	t_node	*save;
+	t_node	*aux;
+	int		i;
 
 	i = hash(key, g_mini.env_table->size);
 	if (i > g_mini.env_table->size)
 		return (NULL);
+	save = nodes[i];
 	while (nodes[i] && nodes[i]->key != NULL)
 	{
 		if (ft_memcmp(nodes[i]->key, key, len) == 0)
-			return(nodes[i]);
+		{
+			aux = nodes[i];
+			nodes[i] = save;
+			return(aux);
+		}
 		nodes[i] = nodes[i]->next;
 	}
+	nodes[i] = save;
 	return (NULL);
 }

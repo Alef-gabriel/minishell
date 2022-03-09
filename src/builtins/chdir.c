@@ -14,7 +14,8 @@
 
 int	cd_dir(char **cmd)
 {
-	t_node *aux;
+	t_node	*aux;
+	t_node *old;
 	char	*diretory;
 	char	dir[100];
 
@@ -29,7 +30,8 @@ int	cd_dir(char **cmd)
 		return (-1);
 	}
 	aux = hash_search(g_mini.env_table->nodes, "PWD", 3);
-	hash_search(g_mini.env_table->nodes, "OLDPWD", 6)->value = aux->value;
+	old = hash_search(g_mini.env_table->nodes, "OLDPWD", 6);
+	old->value = aux->value;
 	aux->value = getcwd(dir,100);
 	return (0);
 }
