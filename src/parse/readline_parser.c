@@ -30,11 +30,8 @@ int	exec_commands(t_commands *commands_struct)
 	g_mini.env = hash_to_env(g_mini.env_table->nodes);
 	redir_exec(commands_struct);
 	//heredoc("EOF");
-	if (exec_builtins(g_mini.commands->cmd) == 0)
-	{
-		if (ft_exec(local, commands_struct) == -1)
-			return (-1);
-	}
+	if (ft_exec(local, commands_struct) == -1)
+		return (-1);
 	free_matrix(g_mini.env);
 	delete_commands(commands_struct);
 	return (0);

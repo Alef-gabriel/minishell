@@ -19,19 +19,26 @@ char **treat_cmd(char *cmd)
 	return(matrix);
 }
 
-int	exec_builtins(char **cmd)
+int	exec_builtins(char **cmd, t_files *redirect)
 {
+	int	fd;
+
+	fd = 1;
+	if (g_mini.cont_pipe > 0 || redirect != NULL)
+		fd = 0;
 	if (!(ft_strcmp(cmd[0], "cd\0")))
 		cd_dir(cmd);
 	else if (!(ft_strcmp(cmd[0], "env\0")))
-		print_table(g_mini.env_table->nodes);
+		fd = print_table(g_mini.env_table->nodes, fd);
 	else if (!(ft_strcmp(cmd[0], "export\0")))
 		export(g_mini.env_table, cmd[1]);
 	else if (!(ft_strcmp(cmd[0], "pwd\0")))
-		pwd_build();
+		fd = pwd_build(fd);
 	else if (!(ft_strcmp(cmd[0], "unset\0")))
 		unset(g_mini.env_table, cmd[1]);
 	else
 		return(0);
+	if (fd != 1)
+		g_mini.fd_in = fd;
 	return (1);
 }

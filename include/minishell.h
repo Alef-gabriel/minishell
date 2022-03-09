@@ -106,13 +106,13 @@ void			atribute_node(char *key, char *value, t_hash *hash, int index);
 t_node			*hash_search(t_node **nodes, char *key, int len);
 t_hash			*env_to_hash(char **env);
 t_node			*create_new_node(char *key, char *value);
-void			print_table(t_node **nodes);
+int			print_table(t_node **nodes, int fd);
 void		addlast(t_node **node, t_node *new);
 t_node		*nodelast(t_node *node);
 
-int	exec_builtins(char **cmd);
+int		exec_builtins(char **cmd, t_files *redirect);
 int	arguments_error(void);
-void	pwd_build(void);
+int		pwd_build(int fd);
 void	heredoc(char *cmd);
 
 void	get_directory(void);

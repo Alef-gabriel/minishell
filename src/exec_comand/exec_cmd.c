@@ -13,13 +13,14 @@ static void dup_in_exec(int	*piper, int fd_in, t_commands *cmds, char *path)
 
 static void	redirect_in_exec_resut(int	*piper, t_commands *cmds)
 {
+	if (g_mini.on_child == TRUE)
+		g_mini.fd_in = piper[0];
 	g_mini.on_child = FALSE;
 	g_mini.exit_code = WEXITSTATUS(g_mini.exit_tmp);
 	if (g_mini.cont_pipe > 0 || cmds->files_redir != NULL || cmds->files_input_redir != NULL)
 		close(piper[1]);
-	unlink("temp");
-	g_mini.fd_in = piper[0];
 	g_mini.fd_in = fd_to_fd(g_mini.fd_in, cmds->files_redir);
+	unlink("temp");
 	if (g_mini.cont_pipe > 0)
 		g_mini.cont_pipe--;
 }
@@ -40,9 +41,12 @@ int	ft_exec(char *path, t_commands *cmds)
 				return (-1);
 			if (g_mini.cont_pipe > 0 || cmds->files_redir != NULL || cmds->files_input_redir != NULL)
 				pipe(piper);
-			if ((pid = fork()) == 0)
-				dup_in_exec(piper, g_mini.fd_in, cmds, path);
-			waitpid(pid, &g_mini.exit_tmp, 0);
+			if (exec_builtins(cmds->cmd, cmds->files_redir) == 0)
+			{
+				if ((pid = fork()) == 0)
+					dup_in_exec(piper, g_mini.fd_in, cmds, path);
+				waitpid(pid, &g_mini.exit_tmp, 0);
+			}
 			redirect_in_exec_resut(piper, cmds);
 			cmds = cmds->next;
 		}
