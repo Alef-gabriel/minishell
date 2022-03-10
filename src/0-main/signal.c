@@ -1,9 +1,8 @@
 #include "minishell.h"
 
-static void	abort_sig(int sig)
+//write a cmd, take ctrl c and backspace;
+static void	abort_sig(int sig __attribute__((unused)))
 {
-	(void)sig;
-	//write a cmd, take ctrl c and backspace;
 	ft_putchar_fd('\n', 1);
 	rl_replace_line("", 0);
 	rl_on_new_line();

@@ -27,15 +27,7 @@ void	shell_loop(char **envp)
 	{
 		input = takeinput();
 		add_history(input);
-		if (!ft_strcmp("exit", input) || input == NULL)
-		{
-			//adicionar funções de free
-			exit(0);
-		}
-		s = ft_strtrim(input, " ");
-		if(input[0] != '\0')
-			parse_input(s, envp);
-		free(s);
+		parse_input(input, envp);
 		free(input);
 		g_mini.cont_pipe = 0;
 	}

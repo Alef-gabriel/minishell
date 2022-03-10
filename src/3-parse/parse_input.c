@@ -3,7 +3,7 @@
 // executar as dups caso necessario (em caso de redirect)
 // criar a commat_commands, linkando todos os pipes antes de começar com os execs
 
-int count_cmd_len(char *s, int init)
+int	count_cmd_len(char *s, int init)
 {
 	int	ret;
 
@@ -53,20 +53,26 @@ void	separate_in_pipes(char *s)
 	g_mini.commands = save_init;
 }
 
-void	parse_input(char *s, char **env)
+void	parse_input(char *input, char **env)
 {
+	char	*temp;
 
-	//criar função de erro de syntax
-	if (check_sintax(s) == -1)
+	if (!ft_strcmp("exit", input) || input == NULL)
 	{
-		printf ("minishell: syntax error near unexpected token `<token>'\n");
-		return ;
+		//adicionar funções de free
+		exit(0);
 	}
-	if (readline_output_parser(s) == -1)
-		return ;
-
-	// verify_what_is(s);
-
-	// if(is_comand(s))
-	// 	try_to_exec(s, env);
+	temp = ft_strtrim(input, " ");
+	if(input[0] != '\0')
+	{
+		if (check_sintax(temp) == -1)
+		{
+			printf ("minishell: syntax error near unexpected token `<token>'\n");
+			return ;
+		}
+		if (readline_output_parser(temp) == -1)
+			return ;
+	}
+	free(temp);
+	return ;
 }
