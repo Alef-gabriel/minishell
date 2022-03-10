@@ -13,16 +13,19 @@ char	*get_directory(void)
 	return (color_string);
 }
 
-
 char	*takeinput(void)
 {
 	char	*buffer;
 	char	*folder;
+	char	*temp;
 
 	get_sig();
 	folder = get_directory();
-	buffer = readline(folder);
+	temp = ft_strtjoin(BOLDWHITE, "Minishell", folder);
+	buffer = readline(temp);
 	free(folder);
+	free(temp);
 	folder = NULL;
+	temp = NULL;
 	return (buffer);
 }
