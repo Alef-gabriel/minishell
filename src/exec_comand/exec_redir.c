@@ -34,45 +34,34 @@ void	redir_exec(t_commands *commands)
 
 void	ft_filecmp(int	destination_fd, int fd)
 {
-	char	*join;
 	char	*aux;
 
-	join = NULL;
 	aux = get_next_line(fd);
 	while (aux)
 	{
-		join = ft_strjoin(join, aux);
+		write(destination_fd, aux, ft_strlen(aux));
 		aux = get_next_line(fd);
 	}
-	write(destination_fd, join, ft_strlen(join));
 }
 //return -1 in error
-int	redir_input_exec(t_files *files)
+void	redir_input_exec(t_files *files, int *piper)
 {
-	int		fd;
 	int		var_fd;
 
-	fd = g_mini.fd_in;
-	if (files != NULL)
+	if (files)
 	{
-		fd = open("temp", O_WRONLY | O_TRUNC | O_CREAT, 0644);
-		if (g_mini.fd_in != 0)
-		{
-			ft_filecmp(fd, g_mini.fd_in);
-			close(g_mini.fd_in);
-		}
 		while (files)
 		{
 			var_fd = open(files->file_name, O_RDONLY, 0644);
 			if (var_fd == -1)
-				return(file_error(files->file_name));
-			ft_filecmp(fd, var_fd);
+			{
+				file_error(files->file_name);
+				return ;
+			}
+			ft_filecmp(piper[1], var_fd);
 			close(var_fd);
 			files = files->next;
 		}
-		close(fd);
-		fd = open("temp", O_RDONLY, 0644);
+		g_mini.fd_in = piper[0];
 	}
-	g_mini.fd_in = fd;
-	return (fd);
 }

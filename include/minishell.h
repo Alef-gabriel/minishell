@@ -28,8 +28,8 @@
 # include "../libft/libft.h"
 # include "./struct.h"
 
-# define TRUE 0
-# define FALSE 1
+# define TRUE 1
+# define FALSE 0
 # define PATH_MAX 4096
 
 # define SIZE 255
@@ -79,7 +79,7 @@ char			*ft_conect(char	*first, char *mid, char *end);
 
 /*here_doc and redirect*/
 t_files			*redirect_input_files(char *s, t_files *anchor, int finish, int sig);
-int				redir_input_exec(t_files *files);
+void	redir_input_exec(t_files *files, int *piper);
 int				have_pipe(char *input);
 int				is_redir(char *cmd);
 int				check_redir(char *cmd_line);
@@ -110,10 +110,11 @@ int			print_table(t_node **nodes, int fd);
 void		addlast(t_node **node, t_node *new);
 t_node		*nodelast(t_node *node);
 
-int		exec_builtins(char **cmd, t_files *redirect);
+int	exec_builtins(char **cmd, t_files *redirect, int *piper);
 int	arguments_error(void);
 int		pwd_build(int fd);
-void	heredoc(char *cmd);
+void	heredoc(t_limiter *limiters);
+int	signal_type(char *s);
 
 void	get_directory(void);
 

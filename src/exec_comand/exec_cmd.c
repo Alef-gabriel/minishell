@@ -5,29 +5,29 @@ static void dup_in_exec(int	*piper, int fd_in, t_commands *cmds, char *path)
 	g_mini.on_child = TRUE;
 	get_sig();
 	dup2(fd_in, STDIN_FILENO);
-	close(piper[0]);
 	if (g_mini.cont_pipe > 0 || cmds->files_redir != NULL)
+	{
+		close(piper[0]);
 		dup2(piper[1], STDOUT_FILENO);
+	}
 	execve(ft_conect(path, "/", cmds->cmd[0]), cmds->cmd, g_mini.env);
 }
 
 static void	redirect_in_exec_resut(int	*piper, t_commands *cmds)
 {
-	if (g_mini.on_child == TRUE)
-		g_mini.fd_in = piper[0];
+	g_mini.fd_in = piper[0];
 	g_mini.on_child = FALSE;
 	g_mini.exit_code = WEXITSTATUS(g_mini.exit_tmp);
 	if (g_mini.cont_pipe > 0 || cmds->files_redir != NULL || cmds->files_input_redir != NULL)
 		close(piper[1]);
 	g_mini.fd_in = fd_to_fd(g_mini.fd_in, cmds->files_redir);
-	unlink("temp");
 	if (g_mini.cont_pipe > 0)
 		g_mini.cont_pipe--;
 }
 
 int	ft_exec(char *path, t_commands *cmds)
 {
-	int			pid;
+	pid_t		pid;
 	t_commands	*aux;
 	int			piper[2];
 
@@ -37,11 +37,10 @@ int	ft_exec(char *path, t_commands *cmds)
 	{
 		while (cmds->next != NULL)
 		{
-			if (redir_input_exec(cmds->files_input_redir) == -1)
-				return (-1);
 			if (g_mini.cont_pipe > 0 || cmds->files_redir != NULL || cmds->files_input_redir != NULL)
 				pipe(piper);
-			if (exec_builtins(cmds->cmd, cmds->files_redir) == 0)
+			redir_input_exec(cmds->files_input_redir, piper);
+			if (exec_builtins(cmds->cmd, cmds->files_redir, piper) == 0)
 			{
 				if ((pid = fork()) == 0)
 					dup_in_exec(piper, g_mini.fd_in, cmds, path);

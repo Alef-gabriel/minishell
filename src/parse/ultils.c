@@ -12,7 +12,7 @@ t_files	*file_init(char *filename)
 	return (file);
 }
 
-static int	signal_type(char *s)
+int	signal_type(char *s)
 {
 	while (*s == ' ')
 		s++;

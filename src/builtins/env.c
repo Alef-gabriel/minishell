@@ -2,21 +2,15 @@
 //corrigir
 int	print_table(t_node **nodes, int fd)
 {
-	int	i;
+	int		i;
+	char	*aux;
 
 	i = 0;
-	if (fd != 1)
-		fd = open("temp", O_WRONLY | O_TRUNC | O_CREAT, 0644);
 	while (g_mini.env[i])
 	{
-		write(fd, g_mini.env[i], ft_strlen(g_mini.env[i]));
-		write(fd, "\n", 1);
+		aux = ft_strjoin(g_mini.env[i], "\n");
+		write(fd, aux, ft_strlen(aux));
 		i++;
 	}
-	if (fd != 1)
-	{
-		close(fd);
-		return (open("temp", O_RDONLY, 0644));
-	}
-	return (1);
+	return (0);
 }
