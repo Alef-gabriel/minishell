@@ -10,9 +10,8 @@ char	*takeinput(void)
 {
 	char	*buffer;
 
-	get_sig();
-	buffer = readline("MINIHELL $ ");
-	
+	buffer = readline(BOLDGREEN"MINIHELL"RESET);
+
 	add_history(buffer);
 	return (buffer);
 }

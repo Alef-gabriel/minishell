@@ -14,9 +14,10 @@ void	signal_handler(int	signumber)
 		rl_redisplay();
 		errno = 130;
 	}
-	if (signumber == SIGQUIT)
+	else if (signumber == SIGQUIT)
 	{
-		write(1, "\b TESTE\b", 3);;
+		printf("TESTE\n\n");
+		write(1, "\b \b", 3);
 		errno = 131;
 	}
 
@@ -37,6 +38,7 @@ void	start_sigaction(void)
 int	main(int argc __attribute__((unused)),
 	char **argv __attribute__((unused)), char **envp)
 {
+	start_sigaction();
 	init_vars();
 	g_mini.env_table = env_to_hash(envp);
 	shell_loop(envp);
