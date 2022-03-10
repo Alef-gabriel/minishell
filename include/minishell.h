@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/04 23:03:37 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/09 23:11:46 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@
 # define PATH_MAX 4096
 
 # define SIZE 255
-# define BOLDGREEN		"\033[1m\033[32m"
+# define BOLDGREEN		"\033[1m\033[32m "
 # define BOLDWHITE		"\033[1m\033[37m"
 # define BOLDMAGENTA	"\033[1m\033[35m"
-# define RESET			" $ \033[0m "
+# define RESET			" ] $ \033[0m "
 
 extern t_minishell	g_mini;
 
@@ -106,8 +106,6 @@ char			*hash_search(t_node **nodes, char *key, int len);
 t_hash			*env_to_hash(char **env);
 t_node			*create_new_node(char *key, char *value);
 void			print_table(t_node **nodes, int size);
-
-void			get_directory(void);
 
 char			*swap_chars(char *cmd, char to_find, char to_put);
 t_commands		*init_comands(void);
