@@ -11,7 +11,10 @@ char	*takeinput(void)
 	char	*buffer;
 
 	buffer = readline(BOLDGREEN"MINIHELL"RESET);
-
+	if (*buffer == '\0')
+	{
+		free(buffer);
+	}
 	add_history(buffer);
 	return (buffer);
 }

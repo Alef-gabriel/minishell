@@ -35,13 +35,18 @@ void	start_sigaction(void)
 	return ;
 }
 
-int	main(int argc __attribute__((unused)),
-	char **argv __attribute__((unused)), char **envp)
+int	main(int argc, char **argv, char **envp)
 {
+	if (argc > 1 && argv != NULL)
+	{
+		printf("Minishell is an interactive shell\n");
+		exit (EXIT_SUCCESS);
+	}
 	start_sigaction();
 	init_vars();
 	g_mini.env_table = env_to_hash(envp);
 	shell_loop(envp);
+	rl_clear_history();
 	return (0);
 }
 
