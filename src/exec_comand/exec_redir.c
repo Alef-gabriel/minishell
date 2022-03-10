@@ -63,5 +63,6 @@ void	redir_input_exec(t_files *files, int *piper)
 			files = files->next;
 		}
 		g_mini.fd_in = piper[0];
+		close(piper[1]);
 	}
 }
