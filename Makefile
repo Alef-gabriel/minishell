@@ -32,7 +32,8 @@ SRCS = $(PATH_MAIN)minishell.c $(PATH_MAIN)initial_func.c $(PATH_MAIN)signal.c \
 		$(PATH_UTILS)free_matrix.c $(PATH_UTILS)ft_strstr.c \
 		$(PATH_BUILTINS)export.c $(PATH_BUILTINS)unset.c $(PATH_BUILTINS)pwd.c \
 		$(PATH_PARSE)ultils.c $(PATH_PROMPT)prompt.c $(PATH_PARSE)expansion.c \
-		$(PATH_PARSE)quotes_treat.c $(PATH_BUILTINS)chdir.c $(PATH_BUILTINS)env.c
+		$(PATH_PARSE)quotes_treat.c $(PATH_BUILTINS)chdir.c $(PATH_BUILTINS)env.c \
+		./src/exit/exit_fun.c
 
 # .c.o:
 # 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $(<:%.c=%.o)
@@ -56,6 +57,7 @@ $(PATH_OBJS)%.o: $(PATH_SRC)%.c
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)utils/
 	@mkdir -p $(PATH_OBJS)prompt/
+	@mkdir -p $(PATH_OBJS)exit/
 	$(CC) $(CFLAGS) $(INCLUDE) -lreadline -I. -c $< -o $@
 
 clean:

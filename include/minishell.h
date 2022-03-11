@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/11 01:06:59 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/11 02:38:42 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char			**hash_to_env(t_node **nodes);
 
 /* Parse */
 char			*takeinput(void);
-void	parse_input(char *s, char **env);
+void			parse_input(char *s, char **env);
 int				is_comand(char *s);
 int				check_sintax(char *s);
 char			*check_path(char *cmd, t_node **nodes);
@@ -83,7 +83,7 @@ char			*ft_conect(char	*first, char *mid, char *end);
 
 /*here_doc and redirect*/
 t_files			*redirect_input_files(char *s, t_files *anchor, int finish, int sig);
-void	redir_input_exec(t_files *files, int *piper);
+void			redir_input_exec(t_files *files, int *piper);
 int				have_pipe(char *input);
 int				is_redir(char *cmd);
 int				check_redir(char *cmd_line);
@@ -113,6 +113,10 @@ t_node			*create_new_node(char *key, char *value);
 int			print_table(t_node **nodes, int fd);
 void		addlast(t_node **node, t_node *new);
 t_node		*nodelast(t_node *node);
+
+/*Exit Functions*/
+void	exit_signal(void);
+
 
 int	exec_builtins(char **cmd, t_files *redirect, int *piper);
 int	arguments_error(void);
