@@ -33,24 +33,21 @@ int	ft_exec(char *path, t_commands *cmds)
 
 	g_mini.fd_in = 0;
 	aux = cmds;
-	if (path != NULL)
+	while (cmds->next != NULL)
 	{
-		while (cmds->next != NULL)
+		if (g_mini.cont_pipe > 0 || cmds->files_redir != NULL || cmds->files_input_redir != NULL)
+			pipe(piper);
+		redir_input_exec(cmds->files_input_redir, piper);
+		if (exec_builtins(cmds->cmd, cmds->files_redir, piper) == 0)
 		{
-			if (g_mini.cont_pipe > 0 || cmds->files_redir != NULL || cmds->files_input_redir != NULL)
-				pipe(piper);
-			redir_input_exec(cmds->files_input_redir, piper);
-			if (exec_builtins(cmds->cmd, cmds->files_redir, piper) == 0)
-			{
-				if ((pid = fork()) == 0)
-					dup_in_exec(piper, g_mini.fd_in, cmds, path);
-				waitpid(pid, &g_mini.exit_tmp, 0);
-			}
-			redirect_in_exec_resut(piper, cmds);
-			cmds = cmds->next;
+			if ((pid = fork()) == 0)
+				dup_in_exec(piper, g_mini.fd_in, cmds, path);
+			waitpid(pid, &g_mini.exit_tmp, 0);
 		}
-		cmds = aux;
+		redirect_in_exec_resut(piper, cmds);
+		cmds = cmds->next;
 	}
+	cmds = aux;
 	return (0);
 }
 
