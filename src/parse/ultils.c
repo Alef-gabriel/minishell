@@ -14,17 +14,16 @@ t_files	*file_init(char *filename)
 
 int	signal_type(char *s)
 {
-	while (*s == ' ')
+	while (*s == SPACECHAR)
 		s++;
-	if (!(ft_strstr(s, ">>")))
-		return (2);
-	if (!(ft_strstr(s, ">")))
-		return (1);
-	if (!(ft_strstr(s, "<")))
-		return (1);
-	if (!(ft_strstr(s, "<<")))
-		return (2);
-	return (0);
+	if (*s == REDIRECT)
+	{
+		if (*(s + 1) == REDIRECT)
+			return (2);
+		else
+			return (1);
+	}
+	return (1);
 }
 
 t_files	*parser(char *s, char iten, t_files *(*save)(char *, t_files *anchor, int finish, int sig))
@@ -44,9 +43,9 @@ t_files	*parser(char *s, char iten, t_files *(*save)(char *, t_files *anchor, in
 		if (s[i] == iten)
 		{
 			sig = signal_type(s + i);
-			while (s[i] && (s[i] == iten || s[i] == ' '))
+			while (s[i] && (s[i] == iten || s[i] == SPACECHAR))
 				i++;
-			while (s[i + j] && s[i + j] != '>' && s[i + j] != '<' && s[i + j] != '|' && s[i + j] != ' ')
+			while (s[i + j] && s[i + j] != REDIRECT && s[i + j] != REDIRECT_INPUT && s[i + j] != PIPE && s[i + j] != SPACECHAR)
 				j++;
 			save_file = save(s + i, save_file, j, sig);
 			i = i + j;
@@ -63,10 +62,10 @@ char	**cmd_parser(char *cmd)
 	char	**n_cmd;
 	char	*s_cmd;
 	i = 0;
-	while (cmd[i] && cmd[i] != '>' && cmd[i] != '<' && cmd[i] != '|')
+	while (cmd[i] && cmd[i] != REDIRECT && cmd[i] != REDIRECT_INPUT && cmd[i] != PIPE)
 		i++;
 	s_cmd = ft_substr(cmd, 0, i);
-	n_cmd = ft_split(s_cmd, ' ');
+	n_cmd = ft_split(s_cmd, SPACECHAR);
 	free(s_cmd);
 	return (n_cmd);
 }

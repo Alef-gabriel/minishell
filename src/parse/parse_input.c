@@ -19,7 +19,7 @@ int count_cmd_len(char *s, int init)
 
 	ret = 0;
 
-	while (s[init] != '|' && s[init])
+	while (s[init] != PIPE && s[init])
 	{
 		ret++;
 		init++;
@@ -41,13 +41,13 @@ void separate_in_pipes(char *s)
 	while (s[i])
 	{
 		j = i;
-		while (s[j] != '|' && s[j])
+		while (s[j] != PIPE && s[j])
 		{
 			j++;
 		}
-		if (s[j] == '\0' || s[j] == '|')
+		if (s[j] == '\0' || s[j] == PIPE)
 		{
-			if(s[j] == '|')
+			if(s[j] == PIPE)
 				g_mini.cont_pipe++;
 			len = count_cmd_len(s, i);
 			g_mini.commands->wf_cmd = ft_substr(s, i, len);

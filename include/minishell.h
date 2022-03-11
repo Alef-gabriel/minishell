@@ -37,6 +37,10 @@
 # define BOLDWHITE		"\033[1m\033[37m"
 # define BOLDMAGENTA	"\033[1m\033[35m"
 # define RESET			" $ \033[0m "
+# define SPACECHAR 2
+# define PIPE 3
+# define REDIRECT 5
+# define REDIRECT_INPUT 4
 
 extern t_minishell	g_mini;
 

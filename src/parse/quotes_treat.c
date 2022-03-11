@@ -40,6 +40,14 @@ char	*treat_quotes(char *str)
 				str[i] = 1;
 			}
 		}
+		else if(u == -1 && str[i] == ' ')
+			str[i] = SPACECHAR;
+		else if(u == -1 && str[i] == '|')
+			str[i] = PIPE;
+		else if(u == -1 && str[i] == '<')
+			str[i] = REDIRECT_INPUT;
+		else if(u == -1 && str[i] == '>')
+			str[i] = REDIRECT;
 		i++;
 	}
 	split = ft_split(str, 1);
