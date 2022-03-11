@@ -34,11 +34,17 @@ static int	verify_quotes(char *str, int posi)
 static char	*value_to_hash(char *str)
 {
 	char	*value;
+	t_node	*node;
 
 	if (str[0] == '?')
 		value = ft_strjoin(ft_itoa(g_mini.exit_code), str + 1);
 	else
-		value = hash_search(g_mini.env_table->nodes, str, ft_strlen(str))->value;
+	{
+		node = hash_search(g_mini.env_table->nodes, str, ft_strlen(str));
+		if (node == NULL)
+			return ("\0");
+		value = node->value;
+	}
 	return (value);
 }
 
@@ -60,7 +66,10 @@ char	*expansion(char *str)
 			value = ft_substr(str + i + 1, 0, (j - 1) - i);
 			value = value_to_hash(value);
 			aux = ft_strjoin(ft_substr(str, 0, i), value);
-			str = ft_strjoin(aux, ft_substr(str, j, ft_strlen(str)));
+			value = ft_substr(str, j, ft_strlen(str));
+			if (!(ft_memcmp(value, "\2", ft_strlen(value))))
+				value = "\0";
+			str = ft_strjoin(aux, value);
 			i = - 1;
 		}
 		i++;

@@ -9,7 +9,7 @@ void	ft_echo(char **cmd, int fd)
 	i = 0;
 	space = ' ';
 	booption = 0;
-	if (!(ft_strcmp(cmd[0], "-n\0")))
+	if (cmd[0] && !(ft_strcmp(cmd[0], "-n\0")))
 	{
 		booption = 1;
 		cmd = cmd + 1;
