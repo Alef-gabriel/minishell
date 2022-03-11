@@ -19,7 +19,7 @@ int	readline_output_parser(char *s)
 	}
 	g_mini.commands = save_init;
 	status = exec_commands(g_mini.commands);
-	return (0);
+	return (status);
 }
 
 int	exec_commands(t_commands *commands_struct)
