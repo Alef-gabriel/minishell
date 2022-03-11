@@ -34,6 +34,7 @@ int	exec_commands(t_commands *commands_struct)
 	g_mini.on_child = FALSE;
 	if (ft_exec(local, commands_struct) == -1)
 		return (-1);
+	free(local);
 	delete_commands(commands_struct);
 	return (0);
 }

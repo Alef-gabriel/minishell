@@ -5,20 +5,22 @@ char	*check_path(char *cmd, t_node **nodes)
 	int		pos;
 	char	**path_comand;
 	char	*command_which;
-	char	*path;
+	t_node	*path;
 
 	pos = 0;
-	path = hash_search(nodes, "PATH", 5)->value;
-	path_comand = ft_split(path, ':');
+	path = hash_search(nodes, "PATH", 5);
+	if (path == NULL)
+		return (NULL);
+	path_comand = ft_split(path->value, ':');
 	while (path_comand[pos] != NULL)
 	{
 		command_which = ft_conect(path_comand[pos], "/", cmd);
 		if (access(command_which, F_OK) == 0)
 		{
-			path = ft_strdup(path_comand[pos]);
-			free_matrix(path_comand);
 			free(command_which);
-			return (path);
+			command_which = ft_strdup(path_comand[pos]);
+			free_matrix(path_comand);
+			return (command_which);
 		}
 		free(command_which);
 		pos++;
