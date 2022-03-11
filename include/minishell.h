@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/03 00:24:39 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/11 01:06:59 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@
 # define PATH_MAX 4096
 
 # define SIZE 255
-# define BOLDGREEN		"\033[1m\033[32m"
+# define BOLDGREEN		"\033[1m\033[32m ["
 # define BOLDWHITE		"\033[1m\033[37m"
 # define BOLDMAGENTA	"\033[1m\033[35m"
-# define RESET			" $ \033[0m "
+# define RESET			"]$ \033[0m"
 # define SPACECHAR 2
 # define PIPE 3
 # define REDIRECT 5
@@ -120,7 +120,6 @@ int		pwd_build(int fd);
 void	heredoc(t_limiter *limiters);
 int	signal_type(char *s);
 
-void	get_directory(void);
 void	ft_echo(char **cmd, int fd);
 
 char		*swap_chars(char *cmd, char to_find, char to_put);

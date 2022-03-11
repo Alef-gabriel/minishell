@@ -1,18 +1,5 @@
 #include "minishell.h"
 
-
-// executar as dups caso necessario (em caso de redirect)
-// criar a commat_commands, linkando todos os pipes antes de começar com os execs
-
-char *takeinput(void)
-{
-	char *buffer;
-
-	get_sig();
-	buffer = readline("MINIHELL: ");
-	return (buffer);
-}
-
 int count_cmd_len(char *s, int init)
 {
 	int ret;

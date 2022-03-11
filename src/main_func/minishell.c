@@ -2,17 +2,37 @@
 
 t_minishell g_mini;
 
+void	shell_loop(char **envp);
+
 int main(int argc, char **argv, char **envp)
 {
-	char *input;
-	char *s;
-
+	if (argc > 1 && argv != NULL)
+	{
+		printf("Minishell is an interactive shell\n");
+		exit (EXIT_SUCCESS);
+	}
 	init_vars();
 	g_mini.env_table = env_to_hash(envp);
-	g_mini.env = NULL;
+	shell_loop(envp);
+	rl_clear_history();
+	return(0);
+}
+
+void	shell_loop(char **envp)
+{
+	char	*s;
+	char	*input;
+
 	while (1)
 	{
+		g_mini.on_child = FALSE;
 		input = takeinput();
+		if (input == NULL)
+		{
+			ft_putendl_fd("exit", 1);
+			//verificar o que está alocado e fazer free
+			exit(0);
+		}
 		if (!ft_strncmp("exit", input, 4))
 			exit(0);
 		s = ft_strtrim(input, " ");
@@ -22,17 +42,5 @@ int main(int argc, char **argv, char **envp)
 		free(input);
 		g_mini.cont_pipe = 0;
 	}
-	return(0);
+	return ;
 }
-
-
-
-// int	main(int argc __attribute__((unused)),
-// 		char **argv __attribute__((unused)), char **envp)
-// {
-// 	init_vars();
-// 	g_mini.env_table = env_to_hash(envp);
-// 	shell_loop();
-// 	rl_clear_history();
-// 	return (0);
-// }
