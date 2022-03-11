@@ -20,26 +20,22 @@ int main(int argc, char **argv, char **envp)
 
 void	shell_loop(char **envp)
 {
-	char	*s;
 	char	*input;
 
-	while (1)
+	while (true)
 	{
 		g_mini.on_child = FALSE;
 		input = takeinput();
 		if (input == NULL)
 		{
 			ft_putendl_fd("exit", 1);
-			//verificar o que está alocado e fazer free
+			//fazer free nas funções de hash table caso do ctrl + d
 			exit(0);
 		}
 		if (!ft_strncmp("exit", input, 4))
 			exit(0);
 		add_history(input);
-		s = ft_strtrim(input, " ");
-		if(s[0] != '\0')
-			parse_input(s, envp);
-		free(s);
+		parse_input(input, envp);
 		free(input);
 		g_mini.cont_pipe = 0;
 	}

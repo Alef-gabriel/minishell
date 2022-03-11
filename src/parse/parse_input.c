@@ -51,13 +51,16 @@ void separate_in_pipes(char *s)
 	g_mini.commands = save_init;
 }
 
-void	parse_input(char *s, char **env)
+void	parse_input(char *input, char **env)
 {
+	char	*s;
 
-	//criar função de erro de syntax
+	s = ft_strtrim(input, " ");
+	if(s[0] == '\0')
+		return ;
 	if (check_sintax(s) == -1)
 	{
-		printf ("erro de sintax funcionando\n");
+		printf("minishell: syntax error near unexpected token `<token>'\n");
 		return ;
 	}
 	if (readline_output_parser(s) == -1)
@@ -67,5 +70,4 @@ void	parse_input(char *s, char **env)
 
 	// if(is_comand(s))
 	// 	try_to_exec(s, env);
-
 }
