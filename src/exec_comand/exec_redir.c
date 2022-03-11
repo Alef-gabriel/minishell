@@ -44,7 +44,7 @@ void	ft_filecmp(int	destination_fd, int fd)
 	}
 }
 //return -1 in error
-void	redir_input_exec(t_files *files, int *piper)
+int	redir_input_exec(t_files *files, int *piper)
 {
 	int		var_fd;
 
@@ -56,7 +56,8 @@ void	redir_input_exec(t_files *files, int *piper)
 			if (var_fd == -1)
 			{
 				file_error(files->file_name);
-				return ;
+				g_mini.exit_code = 1;
+				return (g_mini.exit_code);
 			}
 			ft_filecmp(piper[1], var_fd);
 			close(var_fd);
@@ -65,4 +66,5 @@ void	redir_input_exec(t_files *files, int *piper)
 		g_mini.fd_in = piper[0];
 		close(piper[1]);
 	}
+	return (0);
 }

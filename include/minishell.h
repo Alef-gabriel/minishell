@@ -83,7 +83,7 @@ char			*ft_conect(char	*first, char *mid, char *end);
 
 /*here_doc and redirect*/
 t_files			*redirect_input_files(char *s, t_files *anchor, int finish, int sig);
-void			redir_input_exec(t_files *files, int *piper);
+int			redir_input_exec(t_files *files, int *piper);
 int				have_pipe(char *input);
 int				is_redir(char *cmd);
 int				check_redir(char *cmd_line);

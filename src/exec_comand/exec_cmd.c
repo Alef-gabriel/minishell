@@ -37,7 +37,8 @@ int	ft_exec(char *path, t_commands *cmds)
 	{
 		if (g_mini.cont_pipe > 0 || cmds->files_redir != NULL || cmds->files_input_redir != NULL)
 			pipe(piper);
-		redir_input_exec(cmds->files_input_redir, piper);
+		if (redir_input_exec(cmds->files_input_redir, piper) == 1)
+			return (1);
 		if (exec_builtins(cmds->cmd, cmds->files_redir, piper) == 0)
 		{
 			if ((pid = fork()) == 0)

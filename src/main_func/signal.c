@@ -8,6 +8,7 @@ static void	abort_sig(int sig)
 	rl_replace_line("", 0);
 	rl_on_new_line();
 	rl_redisplay();
+	g_mini.exit_code = 130;
 	if (g_mini.on_child == TRUE)
 	{
 		g_mini.on_child = FALSE;
