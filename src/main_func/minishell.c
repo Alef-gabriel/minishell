@@ -35,6 +35,7 @@ void	shell_loop(char **envp)
 		}
 		if (!ft_strncmp("exit", input, 4))
 			exit(0);
+		add_history(input);
 		s = ft_strtrim(input, " ");
 		if(s[0] != '\0')
 			parse_input(s, envp);
