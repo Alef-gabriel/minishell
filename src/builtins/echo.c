@@ -1,7 +1,26 @@
 #include "minishell.h"
 
-int	ft_echo(char **cmd, int fd)
+void	ft_echo(char **cmd, int fd)
 {
-	if (fd != 1)
+	int		i;
+	int		booption;
+	char	space;
 
+	i = 0;
+	space = ' ';
+	booption = 0;
+	if (!(ft_strcmp(cmd[0], "-n\0")))
+	{
+		booption = 1;
+		cmd = cmd + 1;
+	}
+	while (cmd[i])
+	{
+		write(fd, cmd[i], ft_strlen(cmd[i]));
+		if (cmd[i + 1] != NULL)
+			write(fd, &space, 1);
+		i++;
+	}
+	if (!booption)
+		write(fd, "\n", 1);
 }

@@ -26,7 +26,9 @@ int	exec_builtins(char **cmd, t_files *redirect, int *piper)
 	fd = 1;
 	if (g_mini.cont_pipe > 0 || redirect != NULL)
 		fd = piper[1];
-	if (!(ft_strcmp(cmd[0], "cd\0")))
+	if (!(ft_strcmp(cmd[0], "echo\0")))
+		ft_echo(cmd + 1, fd);
+	else if (!(ft_strcmp(cmd[0], "cd\0")))
 		cd_dir(cmd);
 	else if (!(ft_strcmp(cmd[0], "env\0")))
 		print_table(g_mini.env_table->nodes, fd);

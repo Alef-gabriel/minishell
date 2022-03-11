@@ -117,6 +117,7 @@ void	heredoc(t_limiter *limiters);
 int	signal_type(char *s);
 
 void	get_directory(void);
+void	ft_echo(char **cmd, int fd);
 
 char		*swap_chars(char *cmd, char to_find, char to_put);
 t_commands	*init_comands(void);
