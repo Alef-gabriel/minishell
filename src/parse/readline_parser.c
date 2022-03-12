@@ -7,8 +7,6 @@ int	readline_output_parser(char *s)
 
 	s = expansion(s);
 	s = treat_quotes(s);
-	while (*s == REDIRECT || *s == REDIRECT_INPUT)
-		s++;
 	save_init = g_mini.commands;
 	separate_in_pipes(s);
 	g_mini.commands = save_init;
