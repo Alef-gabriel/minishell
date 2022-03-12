@@ -33,32 +33,31 @@ int	signal_type(char *s)
 	return (1);
 }
 
-t_files	*parser(char *s, char iten, t_files *(*save)(char *, t_files *anchor, int finish, int sig))
+t_files	*parser(char iten, t_files *(*save)(char *, t_files *anchor, int sig))
 {
-	int			i;
-	int			j;
-	int			len;
-	int			sig;
-	t_files *save_file;
+	int		i;
+	int		j;
+	char	*aux;
+	t_files	*save_file;
 
 	i = 0;
 	save_file = NULL;
-	len = ft_strlen(s);
-	while (i < len && s[i])
+	while (g_mini.commands->wf_cmd[i])
 	{
-		j = 0;
-		if (s[i] == iten)
+		j = i;
+		if (g_mini.commands->wf_cmd[i] == iten)
 		{
-			sig = signal_type(s + i);
-			while (s[i] && (s[i] == iten || s[i] == SPACECHAR))
-				i++;
-			while (s[i + j] && s[i + j] != REDIRECT && s[i + j] != REDIRECT_INPUT && s[i + j] != PIPE && s[i + j] != SPACECHAR)
+			aux = "\0";
+			while (g_mini.commands->wf_cmd[j] && (g_mini.commands->wf_cmd[j] == iten || g_mini.commands->wf_cmd[j] == SPACECHAR))
 				j++;
-			save_file = save(s + i, save_file, j, sig);
-			i = i + j;
+			save_file = save(g_mini.commands->wf_cmd + j, save_file, signal_type(g_mini.commands->wf_cmd + i));
+			if (i != 0)
+				aux = ft_substr(g_mini.commands->wf_cmd, 0, i);
+			i = file_trima(g_mini.commands->wf_cmd + j);
+			g_mini.commands->wf_cmd = ft_strjoin(aux, ft_substr(g_mini.commands->wf_cmd + j + i, 0, ft_strlen(g_mini.commands->wf_cmd + j + i)));
+			i = -1;
 		}
-		if (j == 0)
-			i++;
+		i++;
 	}
 	return (save_file);
 }

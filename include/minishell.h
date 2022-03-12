@@ -66,8 +66,8 @@ void			verify_what_is(char *s);
 char			**treat_cmd(char *cmd);
 void			clean_matrix_redir(void);
 t_files			*file_init(char *filename);
-t_files			*parser(char *s, char iten, \
-	t_files *(*save)(char *, t_files *anchor, int finish, int sig));
+t_files			*parser(char iten, \
+	t_files *(*save)(char *, t_files *anchor, int sig));
 
 
 char	*expansion(char *str);
@@ -82,19 +82,20 @@ void			separate_in_pipes(char *s);
 char			*ft_conect(char	*first, char *mid, char *end);
 
 /*here_doc and redirect*/
-t_files			*redirect_input_files(char *s, t_files *anchor, int finish, int sig);
+t_files			*redirect_input_files(char *s, t_files *anchor, int sig);
 int			redir_input_exec(t_files *files, int *piper);
 int				have_pipe(char *input);
 int				is_redir(char *cmd);
 int				check_redir(char *cmd_line);
 int				check_here_doc(char *cmd);
+int			file_trima(char *s);
 
 /*errors messages*/
 int				file_error(char *s);
 int				cd_dir(char **cmd);
 char			**cmd_parser(char *cmd);
 
-t_files			*files_save(char *s, t_files *anchor, int finish, int sig);
+t_files			*files_save(char *s, t_files *anchor, int sig);
 
 /* Exec */
 int		ft_exec(char *path, t_commands *cmds);
