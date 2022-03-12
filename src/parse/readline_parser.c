@@ -7,6 +7,8 @@ int	readline_output_parser(char *s)
 
 	s = expansion(s);
 	s = treat_quotes(s);
+	while (*s == REDIRECT || *s == REDIRECT_INPUT)
+		s++;
 	save_init = g_mini.commands;
 	separate_in_pipes(s);
 	g_mini.commands = save_init;
@@ -26,6 +28,8 @@ int	exec_commands(t_commands *commands_struct)
 {
 	char	*local;
 
+	if (commands_struct->cmd == NULL)
+		return (0);
 	local = check_path(commands_struct->cmd[0], g_mini.env_table->nodes);
 	if (g_mini.env != NULL)
 		free_matrix(g_mini.env);

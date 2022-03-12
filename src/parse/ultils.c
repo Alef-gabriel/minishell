@@ -72,7 +72,7 @@ char	**cmd_parser(char *cmd)
 	i = 0;
 	while (cmd[i] && cmd[i] != REDIRECT && cmd[i] != REDIRECT_INPUT && cmd[i] != PIPE)
 		i++;
-	if (i == 0)
+	if (i == 0 && cmd[i])
 		i++;
 	s_cmd = ft_substr(cmd, 0, i);
 	n_cmd = ft_split(s_cmd, SPACECHAR);
