@@ -36,9 +36,12 @@ t_files	*redirect_input_files(char *s, t_files *anchor, int finish, int sig)
 {
 	t_files *save_f;
 
-	save_f = anchor;
-	anchor = file_init(ft_substr(s, 0, finish));
-	anchor->doc_sig = sig;
-	anchor->next = save_f;
+	if (sig == 1)
+	{
+		save_f = anchor;
+		anchor = file_init(ft_substr(s, 0, finish));
+		anchor->doc_sig = sig;
+		anchor->next = save_f;
+	}
 	return (anchor);
 }

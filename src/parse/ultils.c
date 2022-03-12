@@ -23,6 +23,13 @@ int	signal_type(char *s)
 		else
 			return (1);
 	}
+	else
+	{
+		if (*(s + 1) == REDIRECT_INPUT)
+			return (2);
+		else
+			return (1);
+	}
 	return (1);
 }
 
@@ -61,8 +68,11 @@ char	**cmd_parser(char *cmd)
 	int		i;
 	char	**n_cmd;
 	char	*s_cmd;
+
 	i = 0;
 	while (cmd[i] && cmd[i] != REDIRECT && cmd[i] != REDIRECT_INPUT && cmd[i] != PIPE)
+		i++;
+	if (i == 0)
 		i++;
 	s_cmd = ft_substr(cmd, 0, i);
 	n_cmd = ft_split(s_cmd, SPACECHAR);
