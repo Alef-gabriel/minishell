@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-static void dup_in_exec(int	*piper, int fd_in, t_commands *cmds, char *path)
+static void	dup_in_exec(int	*piper, int fd_in, t_commands *cmds, char *path)
 {
 	g_mini.on_child = TRUE;
 	get_sig();

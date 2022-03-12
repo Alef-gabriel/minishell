@@ -63,8 +63,9 @@ int	redir_input_exec(t_files *files, int *piper)
 			close(var_fd);
 			files = files->next;
 		}
-		g_mini.fd_in = piper[0];
+		g_mini.fd_in = dup(piper[0]);
 		close(piper[1]);
+		pipe(piper);
 	}
 	return (0);
 }
