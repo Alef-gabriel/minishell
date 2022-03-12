@@ -13,6 +13,7 @@ int	readline_output_parser(char *s)
 	while (g_mini.commands->next != NULL)
 	{
 		g_mini.commands->files_redir = parser(REDIRECT, &files_save);
+		g_mini.commands->limiter = heredoc_limiter();
 		g_mini.commands->files_input_redir = parser(REDIRECT_INPUT, &redirect_input_files);
 		g_mini.commands->cmd = cmd_parser(g_mini.commands->wf_cmd);
 		g_mini.commands = g_mini.commands->next;
@@ -26,9 +27,9 @@ int	exec_commands(t_commands *commands_struct)
 {
 	char	*local;
 
-	if (commands_struct->cmd == NULL)
+	if (commands_struct->limiter == NULL && commands_struct->cmd == NULL)
 		return (0);
-	local = check_path(commands_struct->cmd[0], g_mini.env_table->nodes);
+	local = check_path(commands_struct->cmd, g_mini.env_table->nodes);
 	if (g_mini.env != NULL)
 		free_matrix(g_mini.env);
 	g_mini.env = hash_to_env(g_mini.env_table->nodes);

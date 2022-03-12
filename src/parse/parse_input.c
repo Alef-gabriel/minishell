@@ -69,9 +69,4 @@ void	parse_input(char *input, char **env)
 	{
 		return ;
 	}
-
-	// verify_what_is(s);
-
-	// if(is_comand(s))
-	// 	try_to_exec(s, env);
 }

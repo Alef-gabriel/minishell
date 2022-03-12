@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-int check_quotes(char *s)
+static int check_quotes(char *s)
 {
 	int i;
 	int quote_s;

@@ -69,14 +69,18 @@ char	**cmd_parser(char *cmd)
 	char	*s_cmd;
 
 	i = 0;
-	while (cmd[i] && cmd[i] != REDIRECT && cmd[i] != REDIRECT_INPUT && cmd[i] != PIPE)
-		i++;
-	if (i == 0 && cmd[i])
-		i++;
-	s_cmd = ft_substr(cmd, 0, i);
-	n_cmd = ft_split(s_cmd, SPACECHAR);
-	free(s_cmd);
-	return (n_cmd);
+	if (cmd && *cmd)
+	{
+		while (cmd[i] && cmd[i] != REDIRECT && cmd[i] != REDIRECT_INPUT && cmd[i] != PIPE)
+			i++;
+		if (i == 0 && cmd[i])
+			i++;
+		s_cmd = ft_substr(cmd, 0, i);
+		n_cmd = ft_split(s_cmd, SPACECHAR);
+		free(s_cmd);
+		return (n_cmd);
+	}
+	return (NULL);
 }
 
 char	*ft_conect(char	*first, char *mid, char *end)

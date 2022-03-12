@@ -57,11 +57,8 @@ char			**hash_to_env(t_node **nodes);
 /* Parse */
 char			*takeinput(void);
 void			parse_input(char *s, char **env);
-int				is_comand(char *s);
 int				check_sintax(char *s);
-char			*check_path(char *cmd, t_node **nodes);
-//char 	*swap_chars(char *, char to_find, char to_put);
-char			**search_matrix(char **matrix);
+char			*check_path(char **cmd, t_node **nodes);
 void			verify_what_is(char *s);
 char			**treat_cmd(char *cmd);
 void			clean_matrix_redir(void);
@@ -89,6 +86,8 @@ int				is_redir(char *cmd);
 int				check_redir(char *cmd_line);
 int				check_here_doc(char *cmd);
 int			file_trima(char *s);
+t_limiter	*heredoc_limiter(void);
+void	heredoc(t_limiter *limiters);
 
 /*errors messages*/
 int				file_error(char *s);
@@ -127,7 +126,6 @@ int	signal_type(char *s);
 
 void	ft_echo(char **cmd, int fd);
 
-char		*swap_chars(char *cmd, char to_find, char to_put);
 t_commands	*init_comands(void);
 void		get_sig(void);
 int		fd_to_fd(int fd_in, t_files *fd_out);
