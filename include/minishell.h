@@ -80,14 +80,13 @@ char			*ft_conect(char	*first, char *mid, char *end);
 
 /*here_doc and redirect*/
 t_files			*redirect_input_files(char *s, t_files *anchor, int sig);
-int			redir_input_exec(t_files *files, int *piper);
+int	input_to_exec(t_files *files, int *piper, t_limiter *heredoc_limiter);
 int				have_pipe(char *input);
 int				is_redir(char *cmd);
 int				check_redir(char *cmd_line);
 int				check_here_doc(char *cmd);
 int			file_trima(char *s);
-t_limiter	*heredoc_limiter(void);
-void	heredoc(t_limiter *limiters);
+void	heredoc(t_limiter *limiters, int fd);
 
 /*errors messages*/
 int				file_error(char *s);
@@ -121,7 +120,6 @@ void	exit_signal(void);
 int	exec_builtins(char **cmd, t_files *redirect, int *piper);
 int	arguments_error(void);
 int		pwd_build(int fd);
-void	heredoc(t_limiter *limiters);
 int	signal_type(char *s);
 
 void	ft_echo(char **cmd, int fd);

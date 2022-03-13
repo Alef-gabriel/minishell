@@ -44,12 +44,13 @@ void	ft_filecmp(int	destination_fd, int fd)
 	}
 }
 //return -1 in error
-int	redir_input_exec(t_files *files, int *piper)
+int	input_to_exec(t_files *files, int *piper, t_limiter *heredoc_limiter)
 {
 	int		var_fd;
 
-	if (files)
+	if (files || heredoc_limiter)
 	{
+		heredoc(heredoc_limiter, piper[1]);
 		while (files)
 		{
 			var_fd = open(files->file_name, O_RDONLY, 0644);
