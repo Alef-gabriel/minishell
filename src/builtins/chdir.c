@@ -31,7 +31,8 @@ int	cd_dir(char **cmd)
 	}
 	aux = hash_search(g_mini.env_table->nodes, "PWD", 3);
 	old = hash_search(g_mini.env_table->nodes, "OLDPWD", 6);
+	free(old->value);
 	old->value = aux->value;
-	aux->value = getcwd(dir,100);
+	aux->value = ft_strdup(getcwd(dir,100));
 	return (0);
 }

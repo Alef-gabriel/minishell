@@ -46,7 +46,7 @@ t_limiter	*heredoc_limiter(void)
 
 	i = 0;
 	limiter_list = NULL;
-	while (g_mini.commands->wf_cmd[i])
+	while (g_mini.commands->wf_cmd && g_mini.commands->wf_cmd[i])
 	{
 		j = i;
 		if (g_mini.commands->wf_cmd[i] == 4 && signal_type(g_mini.commands->wf_cmd + i) == 2)

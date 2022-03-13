@@ -12,31 +12,25 @@
 
 #include "minishell.h"
 
-static void	node_switch(t_node *aux, int depth_cont, t_hash *data, int index)
+//aux tem que ter o poneiro next para o node depois do que tem que excluir
+static void	node_switch(int depth_cont, t_hash *data, int index)
 {
 	int		i;
+	t_node	*aux;
 
 	i = 0;
-	while (aux)
+	while (i < depth_cont)
 	{
-		free(aux->key);
-		free(aux->value);
-		if (aux->next != NULL)
+		aux = data->nodes[index]->next;
+		if (i + 1 == depth_cont)
 		{
-			aux->key = ft_strdup(aux->next->key);
-			aux->value = ft_strdup(aux->next->value);
-			depth_cont++;
+			free(data->nodes[index]->key);
+			free(data->nodes[index]->value);
+			free(data->nodes[index]);
 		}
-		aux = aux->next;
-	}
-	while (i < (depth_cont - 1))
-	{
-		data->nodes[index] = data->nodes[index]->next;
+		data->nodes[index] = aux;
 		i++;
 	}
-	if (data->nodes[index]->next != NULL)
-		free(data->nodes[index]->next);
-	data->nodes[index]->next = NULL;
 }
 
 int	unset(t_hash *data, char *key)
@@ -46,14 +40,19 @@ int	unset(t_hash *data, char *key)
 	int		index;
 	int		depth_cont;
 
-	depth_cont = 0;
+	depth_cont = 1;
 	key_len = ft_strlen(key);
 	index = hash(key, data->size);
 	aux = data->nodes[index];
+	if (aux == NULL)
+		return (0);
 	while (aux)
 	{
 		if (ft_memcmp(aux->key, key, key_len) == 0)
-			node_switch(aux, depth_cont, data, index);
+		{
+			node_switch(depth_cont, data, index);
+			break ;
+		}
 		aux = aux->next;
 		depth_cont++;
 	}

@@ -42,7 +42,7 @@ t_files	*parser(char iten, t_files *(*save)(char *, t_files *anchor, int sig))
 
 	i = 0;
 	save_file = NULL;
-	while (g_mini.commands->wf_cmd[i])
+	while (g_mini.commands->wf_cmd && g_mini.commands->wf_cmd[i])
 	{
 		j = i;
 		if (g_mini.commands->wf_cmd[i] == iten)

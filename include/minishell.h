@@ -87,6 +87,7 @@ int				check_redir(char *cmd_line);
 int				check_here_doc(char *cmd);
 int			file_trima(char *s);
 void	heredoc(t_limiter *limiters, int fd);
+t_limiter	*heredoc_limiter(void);
 
 /*errors messages*/
 int				file_error(char *s);
