@@ -16,7 +16,7 @@ t_node	*create_new_node(char *key, char *value)
 {
 	t_node	*ret;
 
-	ret = (t_node *)ft_calloc(sizeof(t_node), 1);
+	ret = (t_node *)malloc(sizeof(t_node));
 	ret->key = key;
 	ret->value = value;
 	ret->next = NULL;

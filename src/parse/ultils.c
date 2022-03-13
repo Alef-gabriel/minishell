@@ -89,10 +89,7 @@ char	*ft_conect(char	*first, char *mid, char *end)
 	char *res;
 
 	if (first == NULL)
-	{
-		first = '\0';
-		mid = '\0';
-	}
+		return (end);
 	path = ft_strjoin(first, mid);
 	res = ft_strjoin(path, end);
 	free(path);
