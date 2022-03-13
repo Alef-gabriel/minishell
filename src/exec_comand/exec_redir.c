@@ -43,7 +43,7 @@ void	ft_filecmp(int	destination_fd, int fd)
 		aux = get_next_line(fd);
 	}
 }
-//return -1 in error
+
 int	input_to_exec(t_files *files, int *piper, t_limiter *heredoc_limiter)
 {
 	int		var_fd;

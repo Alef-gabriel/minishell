@@ -66,18 +66,15 @@ char	**cmd_parser(char *cmd)
 {
 	int		i;
 	char	**n_cmd;
-	char	*s_cmd;
 
 	i = 0;
 	if (cmd && *cmd)
 	{
-		while (cmd[i] && cmd[i] != REDIRECT && cmd[i] != REDIRECT_INPUT && cmd[i] != PIPE)
+		while (cmd[i] == SPACECHAR)
 			i++;
-		if (i == 0 && cmd[i])
-			i++;
-		s_cmd = ft_substr(cmd, 0, i);
-		n_cmd = ft_split(s_cmd, SPACECHAR);
-		free(s_cmd);
+		if (i == ft_strlen(cmd))
+			return (NULL);
+		n_cmd = ft_split(cmd, SPACECHAR);
 		return (n_cmd);
 	}
 	return (NULL);
