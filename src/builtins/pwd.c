@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 01:01:38 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/08 01:47:00 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/14 02:27:27 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 //verificar se o "echo $?" retorna 0
 int	pwd_build(int fd)
 {
-	char	folder[PATH_MAX];
 	char	*pwd;
 
-	pwd = getcwd(folder, sizeof(folder));
-	pwd = ft_strjoin(pwd, "\n");
-	write(fd, pwd, ft_strlen(pwd));
+	pwd = getcwd(NULL, 0);
+	ft_putendl_fd(pwd, 1);
+	free(pwd);
+	g_mini.exit_code = 2;
 	return (0);
 }

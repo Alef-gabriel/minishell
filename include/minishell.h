@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/14 01:56:41 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/14 02:23:03 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,21 @@
 
 extern t_minishell	g_mini;
 
-/* Main */
+/*
+** Main
+*/
 
 void			shell_loop(char **envp);
 
-/* Buildin */
+/*
+** Buildin
+*/
 
 int				exit_shell(char **cmd);
 
-/* Utils */
+/*
+** Utils
+*/
 
 void			free_matrix(char **matrix);
 int				ft_strstr(const char *str, const char *tofind);

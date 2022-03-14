@@ -6,14 +6,15 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 01:47:10 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/14 01:47:11 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/14 02:23:51 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-//corrigir
+
 int	print_table(t_node **nodes, int fd)
 {
+//corrigir
 	int	i;
 
 	i = 0;
