@@ -14,7 +14,8 @@ char	*get_directory(void)
 }
 
 // executar as dups caso necessario (em caso de redirect)
-// criar a commat_commands, linkando todos os pipes antes de começar com os execs
+// criar a commat_commands, linkando todos os
+// pipes antes de começar com os execs
 char	*takeinput(void)
 {
 	char	*buffer;

@@ -26,14 +26,14 @@ PATH_OBJS = ./objs/
 SRCS = $(PATH_MAIN)minishell.c $(PATH_MAIN)initial_func.c $(PATH_MAIN)signal.c \
 		$(PATH_PARSE)is_comand.c $(PATH_PARSE)verify_what.c\
 		$(PATH_PARSE)parse_input.c $(PATH_PARSE)readline_parser.c $(PATH_PARSE)redir_parse.c\
-		$(PATH_PARSE)here_doc_parse.c \
+		$(PATH_PARSE)here_doc_parse.c $(PATH_PARSE)utils.c \
 		$(PATH_MESSAGE)errors.c $(PATH_EXEC)here_doc.c $(PATH_BUILTINS)echo.c\
 		$(PATH_EXEC)exec_cmd.c $(PATH_EXEC)exec_redir.c $(PATH_EXEC)fd_to_fd.c \
 		$(PATH_HASH)hash.c $(PATH_HASH)create_env.c $(PATH_HASH)hash_search.c\
 		$(PATH_UTILS)free_matrix.c $(PATH_UTILS)ft_strstr.c \
-		$(PATH_BUILTINS)export.c $(PATH_BUILTINS)unset.c $(PATH_BUILTINS)pwd.c \
-		$(PATH_BUILTINS)exit.c \
-		$(PATH_PARSE)ultils.c $(PATH_PROMPT)prompt.c $(PATH_PARSE)expansion.c \
+		$(PATH_BUILTINS)export.c $(PATH_BUILTINS)unset.c \
+		$(PATH_BUILTINS)pwd.c $(PATH_BUILTINS)exit.c \
+		$(PATH_PROMPT)prompt.c $(PATH_PARSE)expansion.c \
 		$(PATH_PARSE)quotes_treat.c $(PATH_BUILTINS)chdir.c $(PATH_BUILTINS)env.c \
 		$(PATH_INSPECT)inspect_pipe.c $(PATH_INSPECT)inspect_quotation.c \
 		$(PATH_INSPECT)inspect_redir.c $(PATH_INSPECT)inspect.c \
@@ -79,10 +79,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re push
-
-push:clean
-	rm -rf push_swap
-	git add .
-	read -p "Message:" message; \
-	git commit -m "$$message"; \
-	git push
