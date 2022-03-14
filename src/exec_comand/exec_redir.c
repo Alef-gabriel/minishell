@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 21:08:49 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/03 00:00:07 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/14 02:32:37 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	redir_exec(t_commands *commands)
 {
-	t_files		*save;
+	t_files	*save;
 
 	while (commands->next)
 	{
@@ -40,7 +40,7 @@ void	ft_filecmp(int destination_fd, int fd)
 {
 	char	*aux;
 
-	while (1)
+	while (true)
 	{
 		aux = get_next_line(fd);
 		if (aux == NULL)

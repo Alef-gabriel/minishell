@@ -6,7 +6,7 @@ void	heredoc(t_limiter *limiters, int fd)
 
 	while (limiters)
 	{
-		while (1)
+		while (true)
 		{
 			input = readline("heredoc> ");
 			if (ft_strncmp(limiters->name, input,

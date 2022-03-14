@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/14 02:23:03 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/14 02:31:31 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int				ft_strstr(const char *str, const char *tofind);
 void			init_term(void);
 void			init_vars(void);
 
-char			**append_in_matrix(char **arrey, char *str);
+char			**append_in_matrix(char **array, char *str);
 char			**hash_to_env(t_node **nodes);
 
 /* Parse */

@@ -55,46 +55,46 @@ int	ft_exec(char *path, t_commands *cmds)
 	return (0);
 }
 
-char	**append_in_matrix(char **arrey, char *str)
+char	**append_in_matrix(char **array, char *str)
 {
-	int		i;
+	int		index;
 	char	**res;
 
-	i = 0;
-	while (arrey[i])
-		i++;
-	res = (char **)ft_calloc(sizeof(char *), i + 2);
-	i = 0;
-	while (arrey[i])
+	index = 0;
+	while (array[index])
+		index++;
+	res = (char **)ft_calloc(sizeof(char *), index + 2);
+	index = 0;
+	while (array[index])
 	{
-		res[i] = arrey[i];
-		i++;
+		res[index] = array[index];
+		index++;
 	}
-	free(arrey);
-	res[i] = str;
+	free(array);
+	res[index] = str;
 	return (res);
 }
 
 char	**hash_to_env(t_node **nodes)
 {
-	int		i;
+	int		index;
 	char	**env;
 	char	*path;
 	t_node	*aux;
 
-	i = 0;
+	index = 0;
 	env = (char **)ft_calloc(sizeof(char *), 1);
-	while (i <= g_mini.env_table->size)
+	while (index <= g_mini.env_table->size)
 	{
-		aux = nodes[i];
-		while (nodes[i])
+		aux = nodes[index];
+		while (nodes[index])
 		{
-			path = ft_conect(nodes[i]->key, "=", nodes[i]->value);
+			path = ft_conect(nodes[index]->key, "=", nodes[index]->value);
 			env = append_in_matrix(env, path);
-			nodes[i] = nodes[i]->next;
+			nodes[index] = nodes[index]->next;
 		}
-		nodes[i] = aux;
-		i++;
+		nodes[index] = aux;
+		index++;
 	}
 	return (env);
 }
