@@ -13,6 +13,8 @@ int	exec_builtins(char **cmd, t_files *redirect, int *piper)
 			ft_echo(cmd + 1, fd);
 		else if (!(ft_strcmp(cmd[0], "cd\0")))
 			cd_dir(cmd);
+		else if (!(ft_strcmp(cmd[0], "exit\0")))
+			exit_shell(cmd);
 		else if (!(ft_strcmp(cmd[0], "env\0")))
 			print_table(g_mini.env_table->nodes, fd);
 		else if (!(ft_strcmp(cmd[0], "export\0")))
