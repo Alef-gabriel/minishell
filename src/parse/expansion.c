@@ -69,7 +69,10 @@ char	*expansion(char *str)
 			value = ft_substr(str, j, ft_strlen(str));
 			if (!(ft_memcmp(value, "\2", ft_strlen(value))))
 				value = "\0";
+			free(str);
 			str = ft_strjoin(aux, value);
+			free(aux);
+			free(value);
 			index = -1;
 		}
 		index++;

@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-static char	*join_matrix(char **split)
+char	*join_matrix(char **split)
 {
 	char	*join;
 	int		i;
