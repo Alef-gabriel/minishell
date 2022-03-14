@@ -12,12 +12,27 @@ static char	*join_matrix(char **split)
 		join = ft_strjoin(join, split[i]);
 		i++;
 	}
+	free(split);
 	return (join);
+}
+
+static int quote_expacion_verify(char *quote, int expancion)
+{
+	int quote_value;
+
+	quote_value = *quote;
+	if (expancion == -1)
+	{
+		*quote = 1;
+		return (quote_value);
+	}
+	else if (expancion == quote_value)
+		*quote = 1;
+	return (-1);
 }
 
 char	*treat_quotes(char *str)
 {
-	int		t;
 	int		u;
 	int		i;
 	char	**split;
@@ -27,19 +42,7 @@ char	*treat_quotes(char *str)
 	while (str[i])
 	{
 		if (str[i] == '\'' || str[i] == '\"')
-		{
-			t = str[i];
-			if (u == -1)
-			{
-				u = t;
-				str[i] = 1;
-			}
-			else if (u == t)
-			{
-				u = - 1;
-				str[i] = 1;
-			}
-		}
+			u = quote_expacion_verify(str + i, u);
 		else if(u == -1 && str[i] == ' ')
 			str[i] = SPACECHAR;
 		else if(u == -1 && str[i] == '|')
