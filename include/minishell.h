@@ -89,7 +89,7 @@ int				readline_output_parser(char *s);
 int				exec_commands(t_commands *commands_struct);
 void			delete_commands(t_commands *commands_struct);
 /*pipe parsing*/
-void			separate_in_pipes(char *s);
+void	creat_commands(char *s);
 char			*ft_conect(char	*first, char *mid, char *end);
 
 /*here_doc and redirect*/
@@ -141,7 +141,7 @@ int				signal_type(char *s);
 
 void			ft_echo(char **cmd, int fd);
 
-t_commands		*init_comands(void);
+t_commands		*init_commands(void);
 void			get_sig(void);
 int				fd_to_fd(int fd_in, t_files *fd_out);
 

@@ -7,9 +7,8 @@ int	readline_output_parser(char *s)
 
 	s = expansion(s);
 	s = treat_quotes(s);
+	creat_commands(s);
 	save_init = g_mini.commands;
-	separate_in_pipes(s);
-	g_mini.commands = save_init;
 	while (g_mini.commands->next != NULL)
 	{
 		g_mini.commands->files_redir = parser(REDIRECT, &files_save);
@@ -42,12 +41,11 @@ int	exec_commands(t_commands *commands_struct)
 	return (0);
 }
 
-static void free_files(t_files *files)
+static void	free_files(t_files *files)
 {
 	t_files	*aux;
 
-	aux = files;
-	while (aux)
+	while (files)
 	{
 		aux = files->next;
 		free(files->file_name);
@@ -56,16 +54,33 @@ static void free_files(t_files *files)
 	}
 }
 
+static void	free_limiters(t_limiter *limiter)
+{
+	t_limiter	*aux;
+
+	while (limiter)
+	{
+		aux = limiter->next;
+		free(limiter->name);
+		free(limiter);
+		limiter = aux;
+	}
+}
+
 void	delete_commands(t_commands *commands_struct)
 {
-	while (commands_struct->wf_cmd != NULL)
+	t_commands	*aux;
+
+	while (commands_struct)
 	{
-		free(commands_struct->wf_cmd);
-		commands_struct->wf_cmd = NULL;
+		aux = commands_struct->next;
+		if (commands_struct->wf_cmd)
+			free(commands_struct->wf_cmd);
 		free_files(commands_struct->files_input_redir);
 		free_files(commands_struct->files_redir);
 		free_matrix(commands_struct->cmd);
-		commands_struct->cmd = NULL;
-		commands_struct = commands_struct->next;
+		free_limiters(commands_struct->limiter);
+		free(commands_struct);
+		commands_struct = aux;
 	}
 }

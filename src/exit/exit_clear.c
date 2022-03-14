@@ -12,10 +12,34 @@
 
 #include "minishell.h"
 
+static void	free_to_exit(void)
+{
+	int		index;
+	t_node	*aux;
+	t_node	**nodes;
+
+	index = 0;
+	nodes = g_mini.env_table->nodes;
+	while (index <= g_mini.env_table->size)
+	{
+		while (nodes[index])
+		{
+			aux = nodes[index]->next;
+			free(nodes[index]->key);
+			free(nodes[index]->value);
+			free(nodes[index]);
+			nodes[index] = aux;
+		}
+		index++;
+	}
+	free(g_mini.env_table->nodes);
+	free(g_mini.env_table);
+}
+
 void	exit_signal(void)
 {
 	ft_putendl_fd("exit", 1);
 	rl_clear_history();
-	//fazer free nas funções de hash table caso do ctrl + d
+	free_to_exit();
 	exit(0);
 }

@@ -17,7 +17,7 @@ void	init_term(void)
 	printf("\033[H\033[J");
 }
 
-t_commands	*init_comands(void)
+t_commands	*init_commands(void)
 {
 	t_commands	*commands;
 
@@ -37,5 +37,5 @@ void	init_vars(void)
 	g_mini.comand = 0;
 	g_mini.fd_in = 0;
 	g_mini.on_child = FALSE;
-	g_mini.commands = init_comands();
+	g_mini.commands = NULL;
 }

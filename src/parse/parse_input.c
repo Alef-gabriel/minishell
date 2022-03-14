@@ -14,41 +14,32 @@ int count_cmd_len(char *s, int init)
 	return (ret);
 }
 
-void separate_in_pipes(char *s)
+void	creat_commands(char *s)
 {
-	int			i;
-	int			j;
-	int			len;
-	t_commands	*save_init;
+	int	i;
+	int	j;
+	t_commands	*aux;
 
 	i = 0;
 	j = 0;
-	len = 0;
-	save_init = g_mini.commands;
-	while (s[i])
+	g_mini.commands = init_commands();
+	aux = g_mini.commands;
+	while (i < ft_strlen(s) && s[i])
 	{
 		j = i;
 		while (s[j] != PIPE && s[j])
-		{
 			j++;
-		}
 		if (s[j] == '\0' || s[j] == PIPE)
 		{
 			if(s[j] == PIPE)
 				g_mini.cont_pipe++;
-			len = count_cmd_len(s, i);
-			g_mini.commands->wf_cmd = ft_substr(s, i, len);
-			if (g_mini.commands->next == NULL)
-			{
-				g_mini.commands->next = init_comands();
-			}
-			g_mini.commands = g_mini.commands->next;
+			aux->wf_cmd = ft_substr(s, i, count_cmd_len(s, i));
+			if (aux->next == NULL)
+				aux->next = init_commands();
+			aux = aux->next;
 		}
 		i = j + 1;
-		if (i >= ft_strlen(s))
-			break ;
 	}
-	g_mini.commands = save_init;
 }
 
 void	parse_input(char *input, char **env)
