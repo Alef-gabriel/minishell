@@ -13,7 +13,7 @@ HEADER = ./include/minishell.h
 PATH_SRC = ./src/
 PATH_UTILS = $(PATH_SRC)utils/
 PATH_HASH = $(PATH_SRC)hash_table/
-PATH_MAIN = $(PATH_SRC)main_func/
+PATH_MAIN = $(PATH_SRC)main/
 PATH_MESSAGE = $(PATH_SRC)messages/
 PATH_PARSE = $(PATH_SRC)parse/
 PATH_EXEC = $(PATH_SRC)exec_comand/
@@ -55,7 +55,7 @@ $(PATH_OBJS)%.o: $(PATH_SRC)%.c
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)exec_comand/
 	@mkdir -p $(PATH_OBJS)hash_table/
-	@mkdir -p $(PATH_OBJS)main_func/
+	@mkdir -p $(PATH_OBJS)main/
 	@mkdir -p $(PATH_OBJS)messages/
 	@mkdir -p $(PATH_OBJS)parse/
 	@mkdir -p $(PATH_OBJS)builtins/
