@@ -21,7 +21,7 @@ int	signal_type(char *s)
 	return (1);
 }
 
-static char	*remove_iten_in_str(char *wf_cmd, int after_cont, int before_cont)
+char	*remove_iten_in_str(char *wf_cmd, int after_cont, int before_cont)
 {
 	char	*before_iten;
 	char	*after_iten;
@@ -37,6 +37,7 @@ static char	*remove_iten_in_str(char *wf_cmd, int after_cont, int before_cont)
 	join = ft_strjoin(before_iten, after_iten);
 	free(before_iten);
 	free(after_iten);
+	free(wf_cmd);
 	return (join);
 }
 

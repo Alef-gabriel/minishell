@@ -14,9 +14,13 @@ void	heredoc(t_limiter *limiters, int fd)
 			{
 				write(fd, input, ft_strlen(input));
 				write(fd, "\n", 1);
+				free(input);
 			}
 			else
+			{
+				free(input);
 				break ;
+			}
 		}
 		limiters = limiters->next;
 	}

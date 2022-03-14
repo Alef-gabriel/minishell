@@ -83,6 +83,7 @@ t_files			*parser(char iten, \
 
 char			*expansion(char *str);
 char			*treat_quotes(char *str);
+char	*remove_iten_in_str(char *wf_cmd, int after_cont, int before_cont);
 
 /*readline parser*/
 int				readline_output_parser(char *s);
