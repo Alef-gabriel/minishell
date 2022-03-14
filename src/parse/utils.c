@@ -1,17 +1,5 @@
 #include "minishell.h"
 
-t_files	*file_init(char *filename)
-{
-	t_files	*file;
-
-	file = (t_files *)ft_calloc(sizeof(t_files), 1);
-	file->fd = 0;
-	file->file_name = filename;
-	file->link = 0;
-	file->next = NULL;
-	return (file);
-}
-
 int	signal_type(char *s)
 {
 	while (*s == SPACECHAR)
@@ -33,32 +21,49 @@ int	signal_type(char *s)
 	return (1);
 }
 
+static char	*remove_iten_in_str(char *wf_cmd, int after_cont, int before_cont)
+{
+	char	*before_iten;
+	char	*after_iten;
+	char	*join;
+
+	if (before_cont != 0)
+		before_iten = ft_substr(wf_cmd, 0, before_cont);
+	else
+		before_iten = ft_strdup("\0");
+	before_cont = file_trima(wf_cmd + after_cont);
+	after_iten = ft_substr(wf_cmd + after_cont + before_cont, 0,
+			ft_strlen(wf_cmd + after_cont + before_cont));
+	join = ft_strjoin(before_iten, after_iten);
+	free(before_iten);
+	free(after_iten);
+	return (join);
+}
+
 t_files	*parser(char iten, t_files *(*save)(char *, t_files *anchor, int sig))
 {
-	int		i;
-	int		j;
-	char	*aux;
+	int		before;
+	int		after;
 	t_files	*save_file;
 
-	i = 0;
+	before = 0;
 	save_file = NULL;
-	while (g_mini.commands->wf_cmd && g_mini.commands->wf_cmd[i])
+	while (g_mini.commands->wf_cmd && g_mini.commands->wf_cmd[before])
 	{
-		j = i;
-		if (g_mini.commands->wf_cmd[i] == iten)
+		after = before;
+		if (g_mini.commands->wf_cmd[before] == iten)
 		{
-			aux = "\0";
-			while (g_mini.commands->wf_cmd[j] && (g_mini.commands->wf_cmd[j] == iten || g_mini.commands->wf_cmd[j] == SPACECHAR))
-				j++;
-			save_file = save(g_mini.commands->wf_cmd + j, save_file, signal_type(g_mini.commands->wf_cmd + i));
-			if (i != 0)
-				aux = ft_substr(g_mini.commands->wf_cmd, 0, i);
-			i = file_trima(g_mini.commands->wf_cmd + j);
-			g_mini.commands->wf_cmd = ft_strjoin(aux, ft_substr(g_mini.commands->wf_cmd + j + i, 0, ft_strlen(g_mini.commands->wf_cmd + j + i)));
-			free(aux);
-			i = -1;
+			while (g_mini.commands->wf_cmd[after]
+				&& (g_mini.commands->wf_cmd[after] == iten
+					|| g_mini.commands->wf_cmd[after] == SPACECHAR))
+				after++;
+			save_file = save(g_mini.commands->wf_cmd + after, save_file,
+					signal_type(g_mini.commands->wf_cmd + before));
+			g_mini.commands->wf_cmd
+				= remove_iten_in_str(g_mini.commands->wf_cmd, after, before);
+			before = -1;
 		}
-		i++;
+		before++;
 	}
 	return (save_file);
 }
@@ -83,8 +88,8 @@ char	**cmd_parser(char *cmd)
 
 char	*ft_conect(char	*first, char *mid, char *end)
 {
-	char *path;
-	char *res;
+	char	*path;
+	char	*res;
 
 	if (first == NULL)
 		return (end);

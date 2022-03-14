@@ -17,6 +17,18 @@ void	init_term(void)
 	printf("\033[H\033[J");
 }
 
+t_files	*file_init(char *filename)
+{
+	t_files	*file;
+
+	file = (t_files *)ft_calloc(sizeof(t_files), 1);
+	file->fd = 0;
+	file->file_name = filename;
+	file->link = 0;
+	file->next = NULL;
+	return (file);
+}
+
 t_commands	*init_commands(void)
 {
 	t_commands	*commands;
