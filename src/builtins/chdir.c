@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 23:49:18 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/02 23:29:55 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/14 01:46:53 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	cd_dir(char **cmd)
 {
 	t_node	*aux;
-	t_node *old;
+	t_node	*old;
 	char	*diretory;
 	char	dir[100];
 
@@ -23,7 +23,7 @@ int	cd_dir(char **cmd)
 	if (diretory == NULL)
 		diretory = "/home/";
 	else if (cmd[2] != NULL)
-		return(arguments_error());
+		return (arguments_error());
 	if (chdir(diretory) != 0)
 	{
 		printf("error\n");
@@ -33,6 +33,6 @@ int	cd_dir(char **cmd)
 	old = hash_search(g_mini.env_table->nodes, "OLDPWD", 6);
 	free(old->value);
 	old->value = aux->value;
-	aux->value = ft_strdup(getcwd(dir,100));
+	aux->value = ft_strdup(getcwd(dir, 100));
 	return (0);
 }

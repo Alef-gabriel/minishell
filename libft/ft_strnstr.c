@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 23:12:34 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/27 14:36:34 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/14 01:50:46 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	}
 	return (0);
 }
-
 
 char	*my_strnstr(char *haystack, char *needle, size_t len)
 {

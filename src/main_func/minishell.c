@@ -2,8 +2,6 @@
 
 t_minishell	g_mini;
 
-void	shell_loop(char **envp);
-
 int	main(int argc, char **argv, char **envp)
 {
 	if (argc > 1 && argv != NULL)
@@ -26,18 +24,8 @@ void	shell_loop(char **envp)
 	{
 		g_mini.on_child = FALSE;
 		input = takeinput();
-		if (input == NULL)
-		{
-			//adicionar free nas funções de hash na função exit_signal;
-			exit_signal();
-		}
-		if (!ft_strncmp("exit", input, 4))
-		{
-			//fazer free nas funções de hash table caso do ctrl + d
-			exit(0);
-		}
-		add_history(input);
-		parse_input(input, envp);
+		if (!init_inspect(input))
+			parse_input(input, envp);
 		free(input);
 		g_mini.cont_pipe = 0;
 	}
