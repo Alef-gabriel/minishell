@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 23:59:04 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/14 01:47:25 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/14 03:24:00 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	print_exit_error(char *string)
 
 void	clean_exit(int exit_code)
 {
+	//adicionar funçoes de free
 	rl_clear_history();
 	exit(exit_code);
 }
