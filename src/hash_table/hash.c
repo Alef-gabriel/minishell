@@ -60,4 +60,3 @@ void	atribute_node(char *key, char *value, t_hash *hash, int index)
 	hash->nodes[index]->key = ft_strdup(key);
 	hash->nodes[index]->value = ft_strdup(value);
 }
-

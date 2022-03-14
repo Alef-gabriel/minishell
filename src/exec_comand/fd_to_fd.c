@@ -13,5 +13,5 @@ int	fd_to_fd(int fd_in, t_files *fd_out)
 			fd_out = fd_out->next;
 		}
 	}
-	return(fd_in);
+	return (fd_in);
 }

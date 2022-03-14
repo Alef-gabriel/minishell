@@ -46,7 +46,6 @@ t_hash	*env_to_hash(char **env)
 	int		j;
 	int		hash_index;
 	char	*key;
-	char	*value;
 
 	i = 0;
 	j = 0;
@@ -61,8 +60,9 @@ t_hash	*env_to_hash(char **env)
 			j++;
 		key = ft_substr(env[i], 0, j);
 		hash_index = hash(key, table->size);
-		value = ft_substr(env[i], j + 1, ft_strlen(env[i]) - j + 1);
-		addlast(&table->nodes[hash_index], create_new_node(key, value));
+		addlast(&table->nodes[hash_index],
+			create_new_node(key, ft_substr(env[i], j + 1,
+					ft_strlen(env[i]) - j + 1)));
 		i++;
 	}
 	return (table);

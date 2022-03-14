@@ -22,9 +22,13 @@ void	redir_exec(t_commands *commands)
 		while (commands->files_redir)
 		{
 			if (commands->files_redir->doc_sig == 1)
-				commands->files_redir->fd = open(commands->files_redir->file_name, O_WRONLY | O_TRUNC | O_CREAT, 0644);
+				commands->files_redir->fd = open(
+						commands->files_redir->file_name, O_WRONLY
+						| O_TRUNC | O_CREAT, 0644);
 			else
-				commands->files_redir->fd = open(commands->files_redir->file_name, O_WRONLY | O_APPEND | O_CREAT, 0644);
+				commands->files_redir->fd = open(
+						commands->files_redir->file_name, O_WRONLY
+						| O_APPEND | O_CREAT, 0644);
 			commands->files_redir = commands->files_redir->next;
 		}
 		commands->files_redir = save;
@@ -32,7 +36,7 @@ void	redir_exec(t_commands *commands)
 	}
 }
 
-void	ft_filecmp(int	destination_fd, int fd)
+void	ft_filecmp(int destination_fd, int fd)
 {
 	char	*aux;
 

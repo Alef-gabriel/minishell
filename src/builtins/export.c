@@ -23,7 +23,7 @@ int	export(t_hash *data, char *cmd)
 	while (cmd[j] && cmd[j] != '=')
 		j++;
 	if (cmd[j] != '=')
-		return(0);
+		return (0);
 	key = ft_substr(cmd, 0, j);
 	index = hash(key, data->size);
 	value = ft_substr(cmd, j + 1, ft_strlen(cmd) - j);

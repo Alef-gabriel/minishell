@@ -70,7 +70,7 @@ char	*expansion(char *str)
 			if (!(ft_memcmp(value, "\2", ft_strlen(value))))
 				value = "\0";
 			str = ft_strjoin(aux, value);
-			i = - 1;
+			i = -1;
 		}
 		i++;
 	}

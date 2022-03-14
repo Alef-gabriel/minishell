@@ -16,9 +16,9 @@ static char	*join_matrix(char **split)
 	return (join);
 }
 
-static int quote_expacion_verify(char *quote, int expancion)
+static int	quote_expacion_verify(char *quote, int expancion)
 {
-	int quote_value;
+	int	quote_value;
 
 	quote_value = *quote;
 	if (expancion == -1)
@@ -37,19 +37,19 @@ char	*treat_quotes(char *str)
 	int		i;
 	char	**split;
 
-	u = - 1;
+	u = -1;
 	i = 0;
 	while (str[i])
 	{
 		if (str[i] == '\'' || str[i] == '\"')
 			u = quote_expacion_verify(str + i, u);
-		else if(u == -1 && str[i] == ' ')
+		else if (u == -1 && str[i] == ' ')
 			str[i] = SPACECHAR;
-		else if(u == -1 && str[i] == '|')
+		else if (u == -1 && str[i] == '|')
 			str[i] = PIPE;
-		else if(u == -1 && str[i] == '<')
+		else if (u == -1 && str[i] == '<')
 			str[i] = REDIRECT_INPUT;
-		else if(u == -1 && str[i] == '>')
+		else if (u == -1 && str[i] == '>')
 			str[i] = REDIRECT;
 		i++;
 	}

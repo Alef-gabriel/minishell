@@ -28,7 +28,7 @@ t_node	*hash_search(t_node **nodes, char *key, int len)
 		{
 			aux = nodes[i];
 			nodes[i] = save;
-			return(aux);
+			return (aux);
 		}
 		nodes[i] = nodes[i]->next;
 	}
