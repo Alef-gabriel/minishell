@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/11 02:38:42 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/13 23:44:13 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ t_limiter	*heredoc_limiter(void);
 int				file_error(char *s);
 int				cd_dir(char **cmd);
 char			**cmd_parser(char *cmd);
+void	print_error(char *err_msg_f, char *err_msg_s, int status);
+void	print_redir(int status);
 
 t_files			*files_save(char *s, t_files *anchor, int sig);
 
@@ -118,15 +120,21 @@ t_node		*nodelast(t_node *node);
 void	exit_signal(void);
 
 
-int	exec_builtins(char **cmd, t_files *redirect, int *piper);
-int	arguments_error(void);
-int		pwd_build(int fd);
-int	signal_type(char *s);
+int			exec_builtins(char **cmd, t_files *redirect, int *piper);
+int			arguments_error(void);
+int			pwd_build(int fd);
+int			signal_type(char *s);
 
-void	ft_echo(char **cmd, int fd);
+void		ft_echo(char **cmd, int fd);
 
 t_commands	*init_comands(void);
 void		get_sig(void);
-int		fd_to_fd(int fd_in, t_files *fd_out);
+int			fd_to_fd(int fd_in, t_files *fd_out);
 
+/*Inspect Functions*/
+int			init_inspect(char *input);
+int			inspect_quotation(char *input);
+int			inspect_redirection(char *input);
+int			inspect_pipe(char *input, int index);
+int			start_with_pipe(char *input);
 #endif

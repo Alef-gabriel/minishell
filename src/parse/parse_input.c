@@ -60,11 +60,6 @@ void	parse_input(char *input, char **env)
 	{
 		return ;
 	}
-	if (check_sintax(s) == -1)
-	{
-		printf("minishell: syntax error near unexpected token `<token>'\n");
-		return ;
-	}
 	if (readline_output_parser(s) == -1)
 	{
 		return ;
