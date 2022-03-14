@@ -55,6 +55,7 @@ t_files	*parser(char iten, t_files *(*save)(char *, t_files *anchor, int sig))
 				aux = ft_substr(g_mini.commands->wf_cmd, 0, i);
 			i = file_trima(g_mini.commands->wf_cmd + j);
 			g_mini.commands->wf_cmd = ft_strjoin(aux, ft_substr(g_mini.commands->wf_cmd + j + i, 0, ft_strlen(g_mini.commands->wf_cmd + j + i)));
+			free(aux);
 			i = -1;
 		}
 		i++;

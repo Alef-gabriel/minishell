@@ -69,4 +69,5 @@ void	parse_input(char *input, char **env)
 	{
 		return ;
 	}
+	free(s);
 }

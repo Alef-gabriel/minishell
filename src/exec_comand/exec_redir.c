@@ -36,11 +36,13 @@ void	ft_filecmp(int	destination_fd, int fd)
 {
 	char	*aux;
 
-	aux = get_next_line(fd);
-	while (aux)
+	while (1)
 	{
-		write(destination_fd, aux, ft_strlen(aux));
 		aux = get_next_line(fd);
+		if (aux == NULL)
+			break ;
+		write(destination_fd, aux, ft_strlen(aux));
+		free(aux);
 	}
 }
 

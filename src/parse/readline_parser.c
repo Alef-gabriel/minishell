@@ -30,8 +30,6 @@ int	exec_commands(t_commands *commands_struct)
 	if (commands_struct->limiter == NULL && commands_struct->cmd == NULL)
 		return (0);
 	local = check_path(commands_struct->cmd, g_mini.env_table->nodes);
-	if (g_mini.env != NULL)
-		free_matrix(g_mini.env);
 	g_mini.env = hash_to_env(g_mini.env_table->nodes);
 	redir_exec(commands_struct);
 	g_mini.on_child = FALSE;
@@ -39,8 +37,23 @@ int	exec_commands(t_commands *commands_struct)
 		return (-1);
 	if (local)
 		free(local);
+	free_matrix(g_mini.env);
 	delete_commands(commands_struct);
 	return (0);
+}
+
+static void free_files(t_files *files)
+{
+	t_files	*aux;
+
+	aux = files;
+	while (aux)
+	{
+		aux = files->next;
+		free(files->file_name);
+		free(files);
+		files = aux;
+	}
 }
 
 void	delete_commands(t_commands *commands_struct)
@@ -49,6 +62,8 @@ void	delete_commands(t_commands *commands_struct)
 	{
 		free(commands_struct->wf_cmd);
 		commands_struct->wf_cmd = NULL;
+		free_files(commands_struct->files_input_redir);
+		free_files(commands_struct->files_redir);
 		free_matrix(commands_struct->cmd);
 		commands_struct->cmd = NULL;
 		commands_struct = commands_struct->next;
