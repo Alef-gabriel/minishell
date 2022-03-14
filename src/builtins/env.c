@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 01:47:10 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/14 02:23:51 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/14 02:34:20 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	print_table(t_node **nodes, int fd)
 {
-//corrigir
+//corrigir ordem das variaveis
 	int	i;
 
 	i = 0;

@@ -2,33 +2,33 @@
 
 static int	verify_quotes(char *str, int posi)
 {
-	int		i;
-	int		expancion[2];
+	int		index;
+	int		expansion[2];
 
-	i = 0;
-	expancion[0] = -1;
-	expancion[1] = 1;
-	while (i < posi)
+	index = 0;
+	expansion[0] = -1;
+	expansion[1] = 1;
+	while (index < posi)
 	{
-		if (str[i] == '\'' || str[i] == '\"')
+		if (str[index] == '\'' || str[index] == '\"')
 		{
-			if (expancion[0] == -1)
+			if (expansion[0] == -1)
 			{
-				expancion[0] = str[i];
-				if (str[i] == '\'')
-					expancion[1] = 0;
+				expansion[0] = str[index];
+				if (str[index] == '\'')
+					expansion[1] = 0;
 				else
-					expancion[1] = 1;
+					expansion[1] = 1;
 			}
-			else if (str[i] == expancion[0])
+			else if (str[index] == expansion[0])
 			{
-				expancion[1] = 1;
-				expancion[0] = -1;
+				expansion[1] = 1;
+				expansion[0] = -1;
 			}
 		}
-		i++;
+		index++;
 	}
-	return (expancion[1]);
+	return (expansion[1]);
 }
 
 static char	*value_to_hash(char *str)
@@ -50,29 +50,29 @@ static char	*value_to_hash(char *str)
 
 char	*expansion(char *str)
 {
-	int		i;
+	int		index;
 	int		j;
 	char	*aux;
 	char	*value;
 
-	i = 0;
-	while (str[i])
+	index = 0;
+	while (str[index])
 	{
-		if (str[i] == '$' && verify_quotes(str, i))
+		if (str[index] == '$' && verify_quotes(str, index))
 		{
-			j = i + 1;
+			j = index + 1;
 			while (str[j] && str[j] != ' ' && str[j] != '\'' && str[j] != '\"')
 				j++;
-			value = ft_substr(str + i + 1, 0, (j - 1) - i);
+			value = ft_substr(str + index + 1, 0, (j - 1) - index);
 			value = value_to_hash(value);
-			aux = ft_strjoin(ft_substr(str, 0, i), value);
+			aux = ft_strjoin(ft_substr(str, 0, index), value);
 			value = ft_substr(str, j, ft_strlen(str));
 			if (!(ft_memcmp(value, "\2", ft_strlen(value))))
 				value = "\0";
 			str = ft_strjoin(aux, value);
-			i = -1;
+			index = -1;
 		}
-		i++;
+		index++;
 	}
 	return (str);
 }
