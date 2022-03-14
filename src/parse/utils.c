@@ -93,4 +93,3 @@ char	*ft_conect(char	*first, char *mid, char *end)
 	free(path);
 	return (res);
 }
-

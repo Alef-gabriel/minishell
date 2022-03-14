@@ -4,9 +4,9 @@ int check_redir(char *cmd_line)
 {
 	if (!ft_strstr(cmd_line, ">>>"))
 		return (-1);
-	if(!ft_strstr(cmd_line, ">>"))
+	if (!ft_strstr(cmd_line, ">>"))
 		return (1);
-	if(!ft_strstr(cmd_line, ">"))
+	if (!ft_strstr(cmd_line, ">"))
 		return (1);
 	return (0);
 }

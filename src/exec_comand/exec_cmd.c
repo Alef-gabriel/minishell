@@ -13,7 +13,7 @@ static void	dup_in_exec(int	*piper, int fd_in, t_commands *cmds, char *path)
 	execve(ft_conect(path, "/", cmds->cmd[0]), cmds->cmd, g_mini.env);
 }
 
-static void	redirect_in_exec_resut(int	*piper, t_commands *cmds)
+static void	redirect_in_exec_resut(int *piper, t_commands *cmds)
 {
 	g_mini.fd_in = piper[0];
 	g_mini.on_child = FALSE;
@@ -28,8 +28,8 @@ static void	redirect_in_exec_resut(int	*piper, t_commands *cmds)
 
 int	ft_exec(char *path, t_commands *cmds)
 {
-	pid_t		pid;
 	t_commands	*aux;
+	pid_t		pid;
 	int			piper[2];
 
 	g_mini.fd_in = 0;
