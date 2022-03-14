@@ -18,12 +18,12 @@ PATH_MESSAGE = $(PATH_SRC)messages/
 PATH_PARSE = $(PATH_SRC)parse/
 PATH_EXEC = $(PATH_SRC)exec_comand/
 PATH_BUILTINS = $(PATH_SRC)builtins/
-PATH_PROMPT = $(PATH_SRC)prompt/
 PATH_INSPECT = $(PATH_SRC)inspect/
 
 PATH_OBJS = ./objs/
 
 SRCS = $(PATH_MAIN)minishell.c $(PATH_MAIN)initial_func.c $(PATH_MAIN)signal.c \
+		$(PATH_MAIN)prompt.c \
 		$(PATH_PARSE)is_comand.c $(PATH_PARSE)verify_what.c\
 		$(PATH_PARSE)parse_input.c $(PATH_PARSE)readline_parser.c \
 		$(PATH_PARSE)redir_parse.c $(PATH_PARSE)utils.c \
@@ -34,7 +34,7 @@ SRCS = $(PATH_MAIN)minishell.c $(PATH_MAIN)initial_func.c $(PATH_MAIN)signal.c \
 		$(PATH_UTILS)free_matrix.c $(PATH_UTILS)ft_strstr.c \
 		$(PATH_BUILTINS)export.c $(PATH_BUILTINS)unset.c \
 		$(PATH_BUILTINS)pwd.c $(PATH_BUILTINS)exit.c \
-		$(PATH_PROMPT)prompt.c $(PATH_PARSE)expansion.c \
+		$(PATH_PARSE)expansion.c \
 		$(PATH_BUILTINS)chdir.c $(PATH_BUILTINS)env.c \
 		$(PATH_INSPECT)inspect_pipe.c $(PATH_INSPECT)inspect_quotation.c \
 		$(PATH_INSPECT)inspect_redir.c $(PATH_INSPECT)inspect.c \
@@ -61,7 +61,6 @@ $(PATH_OBJS)%.o: $(PATH_SRC)%.c
 	@mkdir -p $(PATH_OBJS)parse/
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)utils/
-	@mkdir -p $(PATH_OBJS)prompt/
 	@mkdir -p $(PATH_OBJS)exit/
 	@mkdir -p $(PATH_OBJS)inspect/
 	$(CC) $(CFLAGS) $(INCLUDE) -lreadline -I. -c $< -o $@
