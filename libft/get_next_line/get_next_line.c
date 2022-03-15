@@ -6,13 +6,13 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 00:39:01 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/25 16:49:23 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/15 02:50:06 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-static char	*gnl_strjoinfree(char *s1, char *s2)
+char	*gnl_strjoinfree(char *s1, char *s2)
 {
 	char	*nstring;
 	size_t	i;
