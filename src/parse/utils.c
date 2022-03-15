@@ -21,22 +21,22 @@ int	signal_type(char *s)
 	return (1);
 }
 
-char	*remove_iten_in_str(char *wf_cmd, int after_cont, int before_cont)
+char	*remove_item_in_str(char *wf_cmd, int after_cnt, int before_cnt)
 {
-	char	*before_iten;
-	char	*after_iten;
+	char	*before_item;
+	char	*after_item;
 	char	*join;
 
-	if (before_cont != 0)
-		before_iten = ft_substr(wf_cmd, 0, before_cont);
+	if (before_cnt != 0)
+		before_item = ft_substr(wf_cmd, 0, before_cnt);
 	else
-		before_iten = ft_strdup("\0");
-	before_cont = file_trima(wf_cmd + after_cont);
-	after_iten = ft_substr(wf_cmd + after_cont + before_cont, 0,
-			ft_strlen(wf_cmd + after_cont + before_cont));
-	join = ft_strjoin(before_iten, after_iten);
-	free(before_iten);
-	free(after_iten);
+		before_item = ft_strdup("\0");
+	before_cnt = file_trima(wf_cmd + after_cnt);
+	after_item = ft_substr(wf_cmd + after_cnt + before_cnt, 0,
+			ft_strlen(wf_cmd + after_cnt + before_cnt));
+	join = ft_strjoin(before_item, after_item);
+	free(before_item);
+	free(after_item);
 	free(wf_cmd);
 	return (join);
 }
@@ -61,7 +61,7 @@ t_files	*parser(char iten, t_files *(*save)(char *, t_files *anchor, int sig))
 			save_file = save(g_mini.commands->wf_cmd + after, save_file,
 					signal_type(g_mini.commands->wf_cmd + before));
 			g_mini.commands->wf_cmd
-				= remove_iten_in_str(g_mini.commands->wf_cmd, after, before);
+				= remove_item_in_str(g_mini.commands->wf_cmd, after, before);
 			before = -1;
 		}
 		before++;

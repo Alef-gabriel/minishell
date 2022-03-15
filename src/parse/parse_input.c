@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-int count_cmd_len(char *s, int init)
+static int count_cmd_len(char *s, int init)
 {
 	int ret;
 

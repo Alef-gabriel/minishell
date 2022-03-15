@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 01:16:02 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/08 01:16:03 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/15 02:04:25 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_limiter	*heredoc_limiter(void)
 			limiter_list = save_limiter(g_mini.commands->wf_cmd + j,
 					limiter_list);
 			g_mini.commands->wf_cmd
-				= remove_iten_in_str(g_mini.commands->wf_cmd, j, i);
+				= remove_item_in_str(g_mini.commands->wf_cmd, j, i);
 			i = -1;
 		}
 		i++;

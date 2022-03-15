@@ -6,16 +6,11 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 00:57:45 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/02 23:30:57 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/15 01:50:13 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	init_term(void)
-{
-	printf("\033[H\033[J");
-}
 
 t_files	*file_init(char *filename)
 {

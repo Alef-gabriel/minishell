@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   error_print.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 00:58:08 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/14 01:37:49 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/15 01:45:06 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,17 @@
 //make int and return -1
 int	file_error(char *s)
 {
-	printf("error file \'%s\' not found\n", s);
+	ft_putstr_fd("minishell: ", 2);
+	ft_putstr_fd("error file \'", 2);
+	ft_putstr_fd(s, 2);
+	ft_putendl_fd("\' not found", 2);
 	return(-1);
 }
 
 int	arguments_error(void)
 {
-	printf("too many arguments\n");
+	ft_putstr_fd("minishell: ", 2);
+	ft_putendl_fd("too many arguments", 2);
 	return(-1);
 }
 
