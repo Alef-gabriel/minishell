@@ -51,7 +51,7 @@ static char	*value_to_hash(char *str)
 char	*expansion(char *str)
 {
 	int		index;
-	int		j;
+	int		index_j;
 	char	*aux;
 	char	*value;
 
@@ -60,13 +60,13 @@ char	*expansion(char *str)
 	{
 		if (str[index] == '$' && verify_quotes(str, index))
 		{
-			j = index + 1;
-			while (str[j] && str[j] != ' ' && str[j] != '\'' && str[j] != '\"')
-				j++;
-			value = ft_substr(str + index + 1, 0, (j - 1) - index);
+			index_j = index + 1;
+			while (str[index_j] && (!ft_strchr(" \'\"", str[index_j])))
+				index_j++;
+			value = ft_substr(str + index + 1, 0, (index_j - 1) - index);
 			value = value_to_hash(value);
 			aux = ft_strjoin(ft_substr(str, 0, index), value);
-			value = ft_substr(str, j, ft_strlen(str));
+			value = ft_substr(str, index_j, ft_strlen(str));
 			if (!(ft_memcmp(value, "\2", ft_strlen(value))))
 				value = "\0";
 			free(str);
