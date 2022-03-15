@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 02:08:15 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/15 02:19:36 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/15 03:46:51 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	abort_sig(int sig)
 {
 	(void)sig;
-	ft_putchar_fd('\n', 1);
+	ft_putchar_fd('\n', STDOUT_FILENO);
 	rl_replace_line("", 0);
 	rl_on_new_line();
 	rl_redisplay();

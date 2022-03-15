@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/15 03:18:13 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/15 03:36:30 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ int				ft_strstr(const char *str, const char *tofind);
 // Exit
 
 int				file_error(char *s);
-int				arguments_error(void);
 void			print_error(char *err_msg_f, char *err_msg_s, int status);
 void			print_redir(int status);
 void			free_to_exit(void);

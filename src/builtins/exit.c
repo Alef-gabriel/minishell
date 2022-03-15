@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 23:59:04 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/15 02:07:51 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/15 03:45:23 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ int	is_numeric(char *string)
 
 void	print_exit_error(char *string)
 {
-	ft_putstr_fd("minishell: exit: ", 2);
-	ft_putstr_fd(string, 2);
-	ft_putendl_fd(": numeric argument required", 2);
+	ft_putstr_fd("minishell: exit: ", STDERR_FILENO);
+	ft_putstr_fd(string, STDERR_FILENO);
+	ft_putendl_fd(": numeric argument required", STDERR_FILENO);
 	return ;
 }
 

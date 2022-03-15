@@ -6,7 +6,7 @@ int	main(int argc, char **argv, char **envp)
 {
 	if (argc > 1 && argv != NULL)
 	{
-		ft_putendl_fd("Minishell is an interactive shell", 2);
+		ft_putendl_fd("Minishell is an interactive shell", STDERR_FILENO);
 		exit (EXIT_FAILURE);
 	}
 	init_vars();

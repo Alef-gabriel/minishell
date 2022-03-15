@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 23:49:18 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/15 03:18:53 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/15 03:45:05 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,18 @@
 
 static void	print_chdir_error(char	*diretory)
 {
-	ft_putstr_fd("minishell: : cd: ", 2);
-	ft_putstr_fd(diretory, 2);
-	ft_putendl_fd(": no such file or directory", 2);
+	g_mini.exit_code = 1;
+	ft_putstr_fd("minishell: : cd: ", STDERR_FILENO);
+	ft_putstr_fd(diretory, STDERR_FILENO);
+	ft_putendl_fd(": no such file or directory", STDERR_FILENO);
 	return ;
+}
+
+static int	arguments_error(void)
+{
+	g_mini.exit_code = 1;
+	ft_putendl_fd("minishell: cd: too many arguments", STDERR_FILENO);
+	return (-1);
 }
 
 int	cd_dir(char **cmd)
@@ -31,7 +39,9 @@ int	cd_dir(char **cmd)
 	if (diretory == NULL)
 		diretory = "/home/";
 	else if (cmd[2] != NULL)
+	{
 		return (arguments_error());
+	}
 	if (chdir(diretory) != 0)
 	{
 		print_chdir_error(diretory);
