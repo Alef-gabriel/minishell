@@ -6,8 +6,8 @@ int	main(int argc, char **argv, char **envp)
 {
 	if (argc > 1 && argv != NULL)
 	{
-		printf("Minishell is an interactive shell\n");
-		exit (EXIT_SUCCESS);
+		ft_putendl_fd("Minishell is an interactive shell", 2);
+		exit (EXIT_FAILURE);
 	}
 	init_vars();
 	g_mini.env_table = env_to_hash(envp);
