@@ -41,7 +41,7 @@ void	creat_commands(char *s)
 	}
 }
 
-void	parse_input(char *input, char **env)
+void	parse_input(char *input)
 {
 	char	*s;
 

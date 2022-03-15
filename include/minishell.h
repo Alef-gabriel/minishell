@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/15 03:09:52 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/15 03:18:13 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void			atribute_node(char *key, char *value, t_hash *hash, int index);
 
 char			*expansion(char *str);
 char			*check_path(char **cmd, t_node **nodes);
-void			parse_input(char *s, char **env);
+void			parse_input(char *input);
 void			creat_commands(char *s);
 char			*join_matrix(char **split);
 char			*treat_quotes(char *str);

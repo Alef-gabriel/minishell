@@ -6,13 +6,13 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 23:49:18 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/15 02:30:10 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/15 03:18:53 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static	print_chdir_error(char	*diretory)
+static void	print_chdir_error(char	*diretory)
 {
 	ft_putstr_fd("minishell: : cd: ", 2);
 	ft_putstr_fd(diretory, 2);

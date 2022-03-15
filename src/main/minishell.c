@@ -25,7 +25,7 @@ void	shell_loop(char **envp)
 		g_mini.on_child = FALSE;
 		input = takeinput();
 		if (!init_inspect(input))
-			parse_input(input, envp);
+			parse_input(input);
 		free(input);
 		g_mini.cont_pipe = 0;
 	}
