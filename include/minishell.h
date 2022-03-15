@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/15 02:03:56 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/15 02:06:10 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ void			delete_commands(t_commands *commands_struct);
 t_files			*parser(char iten, \
 	t_files *(*save)(char *, t_files *anchor, int sig));
 
-char			*remove_item_in_str(char *wf_cmd, int after_cnt, int before_cnt);
+char			*remove_item_in_str(char *w_cmd, int after_cnt, int before_cnt);
 
 /*pipe parsing*/
 

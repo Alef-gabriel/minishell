@@ -21,23 +21,23 @@ int	signal_type(char *s)
 	return (1);
 }
 
-char	*remove_item_in_str(char *wf_cmd, int after_cnt, int before_cnt)
+char	*remove_item_in_str(char *w_cmd, int after_cnt, int before_cnt)
 {
 	char	*before_item;
 	char	*after_item;
 	char	*join;
 
 	if (before_cnt != 0)
-		before_item = ft_substr(wf_cmd, 0, before_cnt);
+		before_item = ft_substr(w_cmd, 0, before_cnt);
 	else
 		before_item = ft_strdup("\0");
-	before_cnt = file_trima(wf_cmd + after_cnt);
-	after_item = ft_substr(wf_cmd + after_cnt + before_cnt, 0,
-			ft_strlen(wf_cmd + after_cnt + before_cnt));
+	before_cnt = file_trima(w_cmd + after_cnt);
+	after_item = ft_substr(w_cmd + after_cnt + before_cnt, 0,
+			ft_strlen(w_cmd + after_cnt + before_cnt));
 	join = ft_strjoin(before_item, after_item);
 	free(before_item);
 	free(after_item);
-	free(wf_cmd);
+	free(w_cmd);
 	return (join);
 }
 
@@ -49,19 +49,19 @@ t_files	*parser(char iten, t_files *(*save)(char *, t_files *anchor, int sig))
 
 	before = 0;
 	save_file = NULL;
-	while (g_mini.commands->wf_cmd && g_mini.commands->wf_cmd[before])
+	while (g_mini.commands->w_cmd && g_mini.commands->w_cmd[before])
 	{
 		after = before;
-		if (g_mini.commands->wf_cmd[before] == iten)
+		if (g_mini.commands->w_cmd[before] == iten)
 		{
-			while (g_mini.commands->wf_cmd[after]
-				&& (g_mini.commands->wf_cmd[after] == iten
-					|| g_mini.commands->wf_cmd[after] == SPACECHAR))
+			while (g_mini.commands->w_cmd[after]
+				&& (g_mini.commands->w_cmd[after] == iten
+					|| g_mini.commands->w_cmd[after] == SPACECHAR))
 				after++;
-			save_file = save(g_mini.commands->wf_cmd + after, save_file,
-					signal_type(g_mini.commands->wf_cmd + before));
-			g_mini.commands->wf_cmd
-				= remove_item_in_str(g_mini.commands->wf_cmd, after, before);
+			save_file = save(g_mini.commands->w_cmd + after, save_file,
+					signal_type(g_mini.commands->w_cmd + before));
+			g_mini.commands->w_cmd
+				= remove_item_in_str(g_mini.commands->w_cmd, after, before);
 			before = -1;
 		}
 		before++;

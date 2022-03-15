@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 23:59:04 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/15 01:31:41 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/15 02:07:51 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	exit_shell(char *input)
 		return (1);
 	}
 	clean_exit(0, cmd);
-	return (1);//
+	return (1);
 }
 
 int	is_numeric(char *string)
@@ -64,7 +64,6 @@ void	clean_exit(int exit_code, char **cmd)
 {
 	free_matrix(cmd);
 	free_to_exit();
-	//adicionar funçoes de free
 	rl_clear_history();
 	exit(exit_code);
 }
