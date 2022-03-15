@@ -1,11 +1,9 @@
 #include "minishell.h"
 
-static int	verify_quotes(char *str, int posi)
+static int	verify_quotes(char *str, int posi, int index)
 {
-	int		index;
 	int		expansion[2];
 
-	index = 0;
 	expansion[0] = -1;
 	expansion[1] = 1;
 	while (index < posi)
@@ -15,10 +13,9 @@ static int	verify_quotes(char *str, int posi)
 			if (expansion[0] == -1)
 			{
 				expansion[0] = str[index];
+				expansion[1] = 1;
 				if (str[index] == '\'')
 					expansion[1] = 0;
-				else
-					expansion[1] = 1;
 			}
 			else if (str[index] == expansion[0])
 			{
@@ -85,7 +82,7 @@ char	*expansion(char *str)
 	aux = ft_strdup(str);
 	while (aux[index])
 	{
-		if (aux[index] == '$' && verify_quotes(aux, index))
+		if (aux[index] == '$' && verify_quotes(aux, index, 0))
 		{
 			var_len = index + 1;
 			while (aux[var_len] && aux[var_len] != ' ' && aux[var_len] != '\''
