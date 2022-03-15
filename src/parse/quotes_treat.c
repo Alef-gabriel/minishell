@@ -3,16 +3,30 @@
 char	*join_matrix(char **split)
 {
 	char	*join;
+	char	*aux;
 	int		i;
 
 	i = 0;
 	join = NULL;
 	while (split[i])
 	{
-		join = ft_strjoin(join, split[i]);
+		aux = split[i];
+		join = ft_strjoin(join, aux);
 		i++;
 	}
+	free_matrix(split);
 	return (join);
+}
+
+static int	check_one(char *str)
+{
+	while (*str)
+	{
+		if (*str == 1)
+			return (1);
+		str++;
+	}
+	return (0);
 }
 
 static int	quote_expacion_verify(char *quote, int expancion)
@@ -28,16 +42,15 @@ static int	quote_expacion_verify(char *quote, int expancion)
 	else if (expancion == quote_value)
 	{
 		*quote = 1;
-		return (1);
+		return (-1);
 	}
-	return (-1);
+	return (expancion);
 }
 
 char	*treat_quotes(char *str)
 {
 	int		u;
 	int		i;
-	char	*join;
 	char	**split;
 
 	u = -1;
@@ -56,12 +69,9 @@ char	*treat_quotes(char *str)
 			str[i] = REDIRECT;
 		i++;
 	}
+	if (!check_one(str))
+		return (str);
 	split = ft_split(str, 1);
-	i = 0;
-	while (split[i])
-		i++;
-	join = ft_strdup(split[0]);
-	free(split[0]);
-	free(split);
-	return (join);
+	free(str);
+	return (join_matrix(split));
 }

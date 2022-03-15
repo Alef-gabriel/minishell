@@ -34,56 +34,69 @@ static int	verify_quotes(char *str, int posi)
 static char	*value_to_hash(char *str)
 {
 	char	*value;
+	char	*num;
 	t_node	*node;
 
+	value = NULL;
 	if (str[0] == '?')
 	{
+		num = ft_itoa(g_mini.exit_code);
+		value = ft_strjoin(num, str + 1);
 		free(str);
-		value = ft_strjoin(ft_itoa(g_mini.exit_code), str + 1);
+		free(num);
+		return (value);
 	}
-	else
-	{
-		node = hash_search(g_mini.env_table->nodes, str, ft_strlen(str));
-		if (node == NULL)
-			return ("\0");
-		free(str);
+	node = hash_search(g_mini.env_table->nodes, str, ft_strlen(str));
+	if (node != NULL)
 		value = ft_strdup(node->value);
-	}
+	free(str);
 	return (value);
+}
+
+static char	*new_str(char *value, char *str, int index, int var_len)
+{
+	char	*res;
+	char	*before;
+	char	*aux;
+	char	*after;
+
+	if (value == NULL)
+		value = ft_strdup(" \0");
+	before = ft_substr(str, 0, index);
+	aux = ft_strjoin(before, value);
+	after = ft_substr(str, var_len, ft_strlen(str));
+	res = ft_strjoin(aux, after);
+	free(value);
+	free(aux);
+	free(before);
+	free(str);
+	free(after);
+	return (res);
 }
 
 char	*expansion(char *str)
 {
 	int		index;
-	int		j;
+	int		var_len;
 	char	*aux;
 	char	*value;
 
 	index = 0;
-	while (str[index])
+	aux = ft_strdup(str);
+	while (aux[index])
 	{
-		if (str[index] == '$' && verify_quotes(str, index))
+		if (aux[index] == '$' && verify_quotes(aux, index))
 		{
-			j = index + 1;
-			while (str[j] && str[j] != ' ' && str[j] != '\'' && str[j] != '\"')
-				j++;
-			value = ft_substr(str + index + 1, 0, (j - 1) - index);
+			var_len = index + 1;
+			while (aux[var_len] && aux[var_len] != ' ' && aux[var_len] != '\''
+				&& aux[var_len] != '\"')
+				var_len++;
+			value = ft_substr(aux + index + 1, 0, (var_len - 1) - index);
 			value = value_to_hash(value);
-			aux = ft_strjoin(ft_substr(str, 0, index), value);
-			free(value);
-			value = ft_substr(str, j, ft_strlen(str));
-			if (!(ft_memcmp(value, "\2", ft_strlen(value))))
-			{
-				free(value);
-				value = ft_strdup("\0");
-			}
-			free(str);
-			str = ft_strjoin(aux, value);
-			free(aux);
-			free(value);
+			aux = new_str(value, aux, index, var_len);
 			index = -1;
 		}
 		index++;
 	}
-	return (str);
+	return (aux);
 }

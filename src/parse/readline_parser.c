@@ -4,11 +4,13 @@ int	readline_output_parser(char *s)
 {
 	t_commands *save_init;
 	int			status;
+	char		*aux;
+	char		*str;
 
-	s = expansion(s);
-	s = treat_quotes(s);
-	creat_commands(s);
-	free(s);
+	str = expansion(s);
+	aux = treat_quotes(str);
+	creat_commands(aux);
+	free(aux);
 	save_init = g_mini.commands;
 	while (g_mini.commands->next != NULL)
 	{
