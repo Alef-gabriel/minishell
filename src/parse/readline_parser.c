@@ -2,7 +2,7 @@
 
 int	readline_output_parser(char *s)
 {
-	t_commands *save_init;
+	t_commands	*save_init;
 	int			status;
 
 	s = expansion(s);
@@ -13,7 +13,8 @@ int	readline_output_parser(char *s)
 	{
 		g_mini.commands->files_redir = parser(REDIRECT, &files_save);
 		g_mini.commands->limiter = heredoc_limiter();
-		g_mini.commands->files_input_redir = parser(REDIRECT_INPUT, &redirect_input_files);
+		g_mini.commands->files_input_redir = parser(REDIRECT_INPUT, \
+		&redirect_input_files);
 		g_mini.commands->cmd = cmd_parser(g_mini.commands->wf_cmd);
 		g_mini.commands = g_mini.commands->next;
 	}

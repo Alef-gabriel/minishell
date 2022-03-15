@@ -1,11 +1,10 @@
 #include "minishell.h"
 
-static int count_cmd_len(char *s, int init)
+static int	count_cmd_len(char *s, int init)
 {
-	int ret;
+	int	ret;
 
 	ret = 0;
-
 	while (s[init] != PIPE && s[init])
 	{
 		ret++;
@@ -16,9 +15,9 @@ static int count_cmd_len(char *s, int init)
 
 void	creat_commands(char *s)
 {
-	int	i;
-	int	j;
 	t_commands	*aux;
+	int			i;
+	int			j;
 
 	i = 0;
 	j = 0;
@@ -31,7 +30,7 @@ void	creat_commands(char *s)
 			j++;
 		if (s[j] == '\0' || s[j] == PIPE)
 		{
-			if(s[j] == PIPE)
+			if (s[j] == PIPE)
 				g_mini.cont_pipe++;
 			aux->wf_cmd = ft_substr(s, i, count_cmd_len(s, i));
 			if (aux->next == NULL)
@@ -47,7 +46,7 @@ void	parse_input(char *input, char **env)
 	char	*s;
 
 	s = ft_strtrim(input, " ");
-	if(s[0] == '\0')
+	if (s[0] == '\0')
 	{
 		return ;
 	}
