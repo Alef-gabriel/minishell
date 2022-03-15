@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 00:58:08 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/15 01:45:06 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/15 02:10:42 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ int	file_error(char *s)
 	ft_putstr_fd("error file \'", 2);
 	ft_putstr_fd(s, 2);
 	ft_putendl_fd("\' not found", 2);
-	return(-1);
+	return (-1);
 }
 
 int	arguments_error(void)
 {
 	ft_putstr_fd("minishell: ", 2);
 	ft_putendl_fd("too many arguments", 2);
-	return(-1);
+	return (-1);
 }
 
 void	print_error(char *err_msg_f, char *err_msg_s, int status)
