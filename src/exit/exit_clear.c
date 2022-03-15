@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_fun.c                                         :+:      :+:    :+:   */
+/*   exit_clear.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 02:32:59 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/11 02:35:16 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/15 01:32:34 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	free_to_exit(void)
+void	free_to_exit(void)
 {
 	int		index;
 	t_node	*aux;

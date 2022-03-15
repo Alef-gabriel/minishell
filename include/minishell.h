@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/14 02:31:31 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/15 01:21:07 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void			shell_loop(char **envp);
 ** Buildin
 */
 
-int				exit_shell(char **cmd);
+int				exit_shell(char *cmd);
 
 /*
 ** Utils

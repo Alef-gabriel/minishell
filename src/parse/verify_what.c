@@ -11,8 +11,6 @@ int	exec_builtins(char **cmd, t_files *redirect, int *piper)
 			fd = piper[1];
 		if (!(ft_strcmp(cmd[0], "echo\0")))
 			ft_echo(cmd + 1, fd);
-		else if (!(ft_strcmp(cmd[0], "exit\0")))
-			exit_shell(cmd);
 		else if (!(ft_strcmp(cmd[0], "cd\0")))
 			cd_dir(cmd);
 		else if (!(ft_strcmp(cmd[0], "env\0")))
