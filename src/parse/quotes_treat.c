@@ -53,6 +53,6 @@ char	*treat_quotes(char *str)
 			str[i] = REDIRECT;
 		i++;
 	}
-	split = ft_split(str, 1); // vazamento dessa split no caso de cd nulo
+	split = ft_split(str, 1); // vazamento dessa split no caso de cd nulo e no caso de um cmd simples
 	return (join_matrix(split));
 }
