@@ -12,7 +12,6 @@ char	*join_matrix(char **split)
 		join = ft_strjoin(join, split[i]);
 		i++;
 	}
-	free(split);
 	return (join);
 }
 
@@ -27,7 +26,10 @@ static int	quote_expacion_verify(char *quote, int expancion)
 		return (quote_value);
 	}
 	else if (expancion == quote_value)
+	{
 		*quote = 1;
+		return (1);
+	}
 	return (-1);
 }
 
@@ -35,6 +37,7 @@ char	*treat_quotes(char *str)
 {
 	int		u;
 	int		i;
+	char	*join;
 	char	**split;
 
 	u = -1;
@@ -54,5 +57,11 @@ char	*treat_quotes(char *str)
 		i++;
 	}
 	split = ft_split(str, 1);
-	return (join_matrix(split));
+	i = 0;
+	while (split[i])
+		i++;
+	join = ft_strdup(split[0]);
+	free(split[0]);
+	free(split);
+	return (join);
 }

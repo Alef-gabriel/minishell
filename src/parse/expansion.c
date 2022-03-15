@@ -37,13 +37,17 @@ static char	*value_to_hash(char *str)
 	t_node	*node;
 
 	if (str[0] == '?')
+	{
+		free(str);
 		value = ft_strjoin(ft_itoa(g_mini.exit_code), str + 1);
+	}
 	else
 	{
 		node = hash_search(g_mini.env_table->nodes, str, ft_strlen(str));
 		if (node == NULL)
 			return ("\0");
-		value = node->value;
+		free(str);
+		value = ft_strdup(node->value);
 	}
 	return (value);
 }
@@ -66,9 +70,13 @@ char	*expansion(char *str)
 			value = ft_substr(str + index + 1, 0, (j - 1) - index);
 			value = value_to_hash(value);
 			aux = ft_strjoin(ft_substr(str, 0, index), value);
+			free(value);
 			value = ft_substr(str, j, ft_strlen(str));
 			if (!(ft_memcmp(value, "\2", ft_strlen(value))))
-				value = "\0";
+			{
+				free(value);
+				value = ft_strdup("\0");
+			}
 			free(str);
 			str = ft_strjoin(aux, value);
 			free(aux);
