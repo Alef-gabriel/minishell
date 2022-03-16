@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 02:17:14 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/14 00:19:59 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/15 02:10:08 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@ int	init_inspect(char *input)
 {
 	if (input == NULL)
 	{
-		//adicionar funções de free
 		exit_signal();
+	}
+	if (!(ft_strncmp(input, "exit ", 4)))
+	{
+		exit_shell(input);
 	}
 	add_history(input);
 	if (inspect_quotation(input) && inspect_redirection(input))

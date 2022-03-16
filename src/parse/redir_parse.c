@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-int check_redir(char *cmd_line)
+int	check_redir(char *cmd_line)
 {
 	if (!ft_strstr(cmd_line, ">>>"))
 		return (-1);
@@ -13,17 +13,20 @@ int check_redir(char *cmd_line)
 
 int	file_trima(char *s)
 {
-	int		i;
+	int	i;
 
 	i = 0;
-	while (s[i] && s[i] != REDIRECT && s[i] != REDIRECT_INPUT && s[i] != PIPE && s[i] != SPACECHAR)
+	while (s[i] && s[i] != REDIRECT && s[i] \
+	!= REDIRECT_INPUT && s[i] != PIPE && s[i] != SPACECHAR)
+	{
 		i++;
+	}
 	return (i);
 }
 
 t_files	*files_save(char *s, t_files *anchor, int sig)
 {
-	t_files *save_f;
+	t_files	*save_f;
 	int		i;
 
 	i = file_trima(s);
@@ -46,7 +49,7 @@ t_files	*files_save(char *s, t_files *anchor, int sig)
 
 t_files	*redirect_input_files(char *s, t_files *anchor, int sig)
 {
-	t_files *save_f;
+	t_files	*save_f;
 	int		i;
 
 	i = file_trima(s);
