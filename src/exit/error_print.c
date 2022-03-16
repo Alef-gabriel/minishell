@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 00:58:08 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/16 01:28:51 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/16 01:39:24 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,6 @@ int	print_quote(int status)
 		print_error("unclosed quotation mark", "\' \' \'", 0);
 		return (1);
 	}
-	if (status == 1)
-	{
-		print_error("unclosed quotation mark", "\' \" \'", 0);
-		return (1);
-	}
+	print_error("unclosed quotation mark", "\' \" \'", 0);
+	return (1);
 }
