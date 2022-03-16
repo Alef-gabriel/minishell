@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
+/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:04:27 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/15 23:18:26 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/16 00:36:05 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void	dup_in_exec(int	*piper, int fd_in, t_commands *cmds, char *path)
 		dup2(piper[1], STDOUT_FILENO);
 	}
 	execve(ft_conect(path, "/", cmds->cmd[0]), cmds->cmd, g_mini.env);
-	exit(127);
 }
 
 static void	redirect_in_exec_resut(int *piper, t_commands *cmds)
