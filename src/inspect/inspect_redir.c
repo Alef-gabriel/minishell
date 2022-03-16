@@ -6,15 +6,15 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 22:45:15 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/16 01:35:52 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/16 01:38:08 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	check_redirection(char *input, int index);
-int	inspect_special_char(char *input);
-int	inspect_input_redir(char *input, int index, int status);
+static int	check_redirection(char *input, int index);
+static int	inspect_special_char(char *input);
+static int	inspect_input_redir(char *input, int index, int status);
 
 int	inspect_redirection(char *input)
 {
@@ -40,7 +40,7 @@ int	inspect_redirection(char *input)
 	return (0);
 }
 
-int	check_redirection(char *input, int index)
+static int	check_redirection(char *input, int index)
 {
 	if (ft_strchr("<|>", input[index]))
 	{
@@ -63,7 +63,7 @@ int	check_redirection(char *input, int index)
 	}
 }
 
-int	inspect_special_char(char *input)
+static int	inspect_special_char(char *input)
 {
 	int	index;
 
@@ -80,7 +80,7 @@ int	inspect_special_char(char *input)
 	return (0);
 }
 
-int	inspect_input_redir(char *input, int index, int status)
+static int	inspect_input_redir(char *input, int index, int status)
 {
 	int	temp_index;
 
