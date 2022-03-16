@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/15 03:36:30 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/15 22:15:25 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <unistd.h>
 # include <errno.h>
 # include <fcntl.h>
-# include <dirent.h>
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <stdlib.h>
@@ -46,7 +45,7 @@ extern t_minishell	g_mini;
 // Main
 
 void			init_vars(void);
-void			shell_loop(char **envp);
+void			shell_loop(void);
 char			*takeinput(void);
 t_files			*file_init(char *filename);
 t_commands		*init_commands(void);
