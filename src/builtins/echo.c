@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 01:47:36 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/16 00:53:20 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/16 01:07:24 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	ft_echo(char **cmd, int fd)
 	i = 0;
 	space = ' ';
 	booption = 0;
-	printf(">>>%s %s<<<\n", cmd[0], cmd[1]);
 	if (cmd[0] && !(ft_strcmp(cmd[0], "-n\0")))
 	{
 		booption = 1;
@@ -29,11 +28,13 @@ void	ft_echo(char **cmd, int fd)
 	}
 	while (cmd[i])
 	{
-		write(fd, cmd[i], ft_strlen(cmd[i]));
+		ft_putstr_fd(cmd[i], STDIN_FILENO);
 		if (cmd[i + 1] != NULL)
-			write(fd, &space, 1);
+		{
+			ft_putchar_fd(space, STDIN_FILENO);
+		}
 		i++;
 	}
 	if (!booption)
-		write(fd, "\n", 1);
+		ft_putchar_fd('\n', STDIN_FILENO);
 }
