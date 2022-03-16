@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 22:45:15 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/16 00:49:24 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/16 01:04:32 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	inspect_redirection(char *input)
 	{
 		if (check_redirection(input, index))
 		{
-			
 			return (1);
 		}
 		index++;
