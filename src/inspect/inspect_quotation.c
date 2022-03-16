@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 22:03:28 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/16 01:40:35 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/16 01:41:12 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	inspect_quotation(char *input)
 	return (0);
 }
 
-static int	count_quotes(char *input)
+static int	is_one_quote(char *input)
 {
 	int	simple_quo;
 	int	double_quo;
