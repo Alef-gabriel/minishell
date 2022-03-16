@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 22:03:28 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/16 01:37:10 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/16 01:40:35 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 static int	check_quotes(char *input, int index);
 static int	check_double(char *input, int index);
 static int	check_single(char *input, int index);
-static int	count_quotes(char *input);
+static int	is_one_quote(char *input);
 
 int	inspect_quotation(char *input)
 {
 	int	index;
 
-	if (count_quotes(input))
+	if (is_one_quote(input))
 		return (1);
 	index = 0;
 	while (input[index] != '\0')
