@@ -6,7 +6,7 @@
 /*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:02:55 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/15 22:02:56 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/16 13:37:32 by algabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ char	*join_matrix(char **split)
 		join = ft_strjoin(join, aux);
 		i++;
 	}
-	free_matrix(split);
+	if (i == 1)
+		free(split);
+	else
+		free_matrix(split);
 	return (join);
 }
 
