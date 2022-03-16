@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 02:17:14 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/16 00:37:20 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/16 00:49:28 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	init_inspect(char *input)
 		exit_shell(input);
 	}
 	add_history(input);
-	if (inspect_quotation(input) && inspect_redirection(input))
+	if (inspect_quotation(input) || inspect_redirection(input))
 	{
 		g_mini.exit_code = 2;
 		return (1);

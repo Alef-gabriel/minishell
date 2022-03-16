@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 22:03:28 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/14 01:42:33 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/16 00:43:41 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int	inspect_quotation(char *input)
 		{
 			if (check_quotes(input, index))
 			{
-				return (0);
+				return (1);
 			}
 		}
 		index++;
 	}
-	return (1);
+	return (0);
 }
 
 int	check_quotes(char *input, int index)
@@ -47,7 +47,7 @@ int	check_quotes(char *input, int index)
 	}
 	else
 	{
-		return (0);
+		return (1);
 	}
 }
 
