@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 02:17:14 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/15 02:10:08 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/15 22:57:40 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	init_inspect(char *input)
 	{
 		exit_signal();
 	}
-	if (!(ft_strncmp(input, "exit ", 4)))
+	if (!(ft_strncmp(input, "exit ", 4)) || (!ft_strcmp(input, "exit")))
 	{
 		exit_shell(input);
 	}
