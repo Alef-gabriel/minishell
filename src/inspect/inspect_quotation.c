@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 22:03:28 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/16 01:41:12 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/16 02:01:12 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ static int	is_one_quote(char *input)
 			double_quo++;
 		index++;
 	}
-	if (simple_quo == 1)
+	if (simple_quo % 2 != 0)
 		return (print_quote(simple_quotes));
-	if (double_quo == 1)
+	if (double_quo % 2 != 0)
 		return (print_quote(double_quotes));
 	else
 		return (0);
@@ -89,9 +89,13 @@ static int	check_double(char *input, int index)
 	{
 		temp_index++;
 		if (input[temp_index] == '\"')
-		{
 			return (0);
-		}
+	}
+	while (index > -1)
+	{
+		index--;
+		if (input[index] == '\"')
+			return (0);
 	}
 	print_error("unclosed quotation mark", "\' \" \'", 0);
 	return (1);
@@ -109,6 +113,12 @@ static int	check_single(char *input, int index)
 		{
 			return (0);
 		}
+	}
+	while (index > -1)
+	{
+		index--;
+		if (input[index] == '\'')
+			return (0);
 	}
 	print_error("unclosed quotation mark", "\' \' \'", 0);
 	return (1);
