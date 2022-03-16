@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 22:03:28 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/16 01:32:26 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/16 01:37:10 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,25 +41,25 @@ int	inspect_quotation(char *input)
 
 static int	count_quotes(char *input)
 {
-	int	simple_quotes;
-	int	double_quotes;
+	int	simple_quo;
+	int	double_quo;
 	int	index;
 
-	simple_quotes = 0;
-	double_quotes = 0;
+	simple_quo = 0;
+	double_quo = 0;
 	index = 0;
 	while (input[index] != '\0')
 	{
 		if (input[index] == '\'')
-			simple_quotes++;
+			simple_quo++;
 		if (input[index] == '\"')
-			double_quotes++;
+			double_quo++;
 		index++;
 	}
-	if (simple_quotes == 1)
-		return (print_quote(0));
-	if (double_quotes == 1)
-		return (print_quote(1));
+	if (simple_quo == 1)
+		return (print_quote(simple_quotes));
+	if (double_quo == 1)
+		return (print_quote(double_quotes));
 	else
 		return (0);
 }

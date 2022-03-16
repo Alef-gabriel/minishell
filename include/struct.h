@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 01:26:37 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/15 02:13:37 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/16 01:37:17 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@
 enum	e_bool
 {
 	false,
-	true
+	true,
+	simple_quotes = 0,
+	double_quotes,
+	redir_input = 0,
+	redir_output
 };
 
 typedef struct s_node{
