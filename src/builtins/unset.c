@@ -17,20 +17,30 @@ static void	node_switch(int depth_cont, t_hash *data, int index)
 {
 	int		i;
 	t_node	*aux;
+	t_node	*save;
+	t_node	*apoio;
 
 	i = 0;
+	apoio = NULL;
+	save = NULL;
+	if (depth_cont > 1)
+		save = data->nodes[index];
 	while (i < depth_cont)
 	{
+		if (i + 2 == depth_cont)
+			apoio = data->nodes[index];
 		aux = data->nodes[index]->next;
 		if (i + 1 == depth_cont)
 		{
 			free(data->nodes[index]->key);
 			free(data->nodes[index]->value);
 			free(data->nodes[index]);
+			apoio->next = aux;
 		}
 		data->nodes[index] = aux;
 		i++;
 	}
+	data->nodes[index] = save;
 }
 
 int	unset(t_hash *data, char *key)
