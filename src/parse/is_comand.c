@@ -6,13 +6,13 @@
 /*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:02:41 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/16 23:49:06 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/17 00:38:56 by algabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char	*path_cmds(char **path_comand, char *cmd)
+static char	*path_cmds(char **path_comand, char **cmd)
 {
 	char	*command_which;
 	int		pos;
@@ -20,7 +20,9 @@ static char	*path_cmds(char **path_comand, char *cmd)
 	pos = 0;
 	while (path_comand[pos] != NULL)
 	{
-		command_which = ft_conect(path_comand[pos], "/", cmd);
+		if (access(cmd[0], F_OK) == 0)
+			return (ft_strdup(cmd[0]));
+		command_which = ft_conect(path_comand[pos], "/", cmd[0]);
 		if (access(command_which, F_OK) == 0)
 		{
 			free(command_which);
@@ -50,7 +52,7 @@ char	*check_path(t_commands *commands, t_node **nodes)
 	first_bool = 1;
 	while (commands->wf_cmd)
 	{
-		path_cmd = path_cmds(path_list, commands->cmd[0]);
+		path_cmd = path_cmds(path_list, commands->cmd);
 		if (first_bool == 1)
 		{
 			res = path_cmd;

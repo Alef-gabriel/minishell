@@ -6,7 +6,7 @@
 /*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:03:15 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/15 22:03:17 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/17 02:06:39 by algabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,9 @@ char	*ft_conect(char	*first, char *mid, char *end)
 	char	*res;
 
 	if (first == NULL)
-	{
 		return (end);
-	}
+	else if (!ft_strcmp(first, end))
+		return (end);
 	path = ft_strjoin(first, mid);
 	res = ft_strjoin(path, end);
 	free(path);
