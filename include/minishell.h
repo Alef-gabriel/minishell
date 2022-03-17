@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/16 01:30:20 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/16 22:47:18 by algabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void			atribute_node(char *key, char *value, t_hash *hash, int index);
 // Parse
 
 char			*expansion(char *str);
-char			*check_path(char **cmd, t_node **nodes);
+char	*check_path(t_commands *commands, t_node **nodes);
 void			parse_input(char *input);
 void			creat_commands(char *s);
 char			*join_matrix(char **split);

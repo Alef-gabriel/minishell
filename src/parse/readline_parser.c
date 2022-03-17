@@ -6,7 +6,7 @@
 /*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:03:01 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/15 22:03:02 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/16 22:53:56 by algabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,16 @@ int	exec_commands(t_commands *commands_struct)
 
 	if (commands_struct->limiter == NULL && commands_struct->cmd == NULL)
 		return (0);
-	local = check_path(commands_struct->cmd, g_mini.env_table->nodes);
+	local = check_path(commands_struct, g_mini.env_table->nodes);
 	g_mini.env = hash_to_env(g_mini.env_table->nodes);
 	redir_exec(commands_struct);
 	g_mini.on_child = FALSE;
-	if (ft_exec(local, commands_struct) == -1)
-		return (-1);
 	if (local)
+	{
+		if (ft_exec(local, commands_struct) == -1)
+			return (-1);
 		free(local);
+	}
 	free_matrix(g_mini.env);
 	delete_commands(commands_struct);
 	return (0);
