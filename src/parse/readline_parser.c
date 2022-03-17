@@ -6,16 +6,15 @@
 /*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:03:01 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/17 18:26:09 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/17 18:36:43 by algabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	readline_output_parser(char *s)
+void	readline_output_parser(char *s)
 {
 	t_commands	*save_init;
-	int			status;
 	char		*aux;
 	char		*str;
 
@@ -38,8 +37,7 @@ int	readline_output_parser(char *s)
 			g_mini.commands = g_mini.commands->next;
 	}
 	g_mini.commands = save_init;
-	status = exec_commands(g_mini.commands);
-	return (status);
+	exec_commands(g_mini.commands);
 }
 
 int	exec_commands(t_commands *commands_struct)
@@ -98,18 +96,4 @@ void	delete_commands(t_commands *commands_struct)
 		free(commands_struct);
 		commands_struct = aux;
 	}
-}
-
-t_commands	*commads_reconect(t_commands *save, t_commands *current)
-{
-	t_commands	*aux;
-
-	g_mini.cont_pipe--;
-	aux = current->next;
-	if (!aux)
-		aux = NULL;
-	current->next = NULL;
-	delete_commands(save);
-	g_mini.commands = aux;
-	return (aux);
 }

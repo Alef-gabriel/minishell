@@ -6,7 +6,7 @@
 /*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:02:46 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/15 22:02:49 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/17 18:38:37 by algabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,7 @@ void	parse_input(char *input)
 
 	s = ft_strtrim(input, " ");
 	if (s[0] == '\0')
-	{
 		return ;
-	}
-	if (readline_output_parser(s) == -1)
-	{
-		return ;
-	}
+	readline_output_parser(s);
 	free(s);
 }

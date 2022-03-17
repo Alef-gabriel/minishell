@@ -6,7 +6,7 @@
 /*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:02:41 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/17 18:31:34 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/17 18:37:08 by algabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,18 @@ char	**path_cmds(char **path_comand, char **cmd)
 	ft_putstr_fd("Comomand not found\n", 1);
 	free_matrix(cmd);
 	return (NULL);
+}
+
+t_commands	*commads_reconect(t_commands *save, t_commands *current)
+{
+	t_commands	*aux;
+
+	g_mini.cont_pipe--;
+	aux = current->next;
+	if (!aux)
+		aux = NULL;
+	current->next = NULL;
+	delete_commands(save);
+	g_mini.commands = aux;
+	return (aux);
 }

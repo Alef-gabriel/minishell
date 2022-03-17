@@ -6,7 +6,7 @@
 /*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/17 17:01:37 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/17 18:36:12 by algabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ t_limiter		*heredoc_limiter(void);
 
 /*readline parser*/
 
-int				readline_output_parser(char *s);
+void				readline_output_parser(char *s);
 int				exec_commands(t_commands *commands_struct);
 void			delete_commands(t_commands *commands_struct);
 
