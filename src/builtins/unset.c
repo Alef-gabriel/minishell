@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 21:29:04 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/17 20:36:11 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/17 20:36:56 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,24 @@ static void	node_switch(int depth_cont, t_hash *data, int index)
 	int		i;
 	t_node	*aux;
 	t_node	*save;
-	t_node	*apoio;
+	t_node	*temp;
 
 	i = 0;
-	apoio = NULL;
+	temp = NULL;
 	save = NULL;
 	if (depth_cont > 1)
 		save = data->nodes[index];
 	while (i < depth_cont)
 	{
 		if (i + 2 == depth_cont)
-			apoio = data->nodes[index];
+			temp = data->nodes[index];
 		aux = data->nodes[index]->next;
 		if (i + 1 == depth_cont)
 		{
 			free(data->nodes[index]->key);
 			free(data->nodes[index]->value);
 			free(data->nodes[index]);
-			apoio->next = aux;
+			temp->next = aux;
 		}
 		data->nodes[index] = aux;
 		i++;
