@@ -6,7 +6,7 @@
 /*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:03:01 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/17 17:57:23 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/17 18:26:09 by algabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,7 @@ int	readline_output_parser(char *s)
 		g_mini.commands->cmd = cmd_parser(g_mini.commands->wf_cmd, \
 		hash_search(g_mini.env_table->nodes, "PATH", 4));
 		if (g_mini.commands->cmd == NULL)
-		{
-			g_mini.cont_pipe--;
 			save_init = commads_reconect(save_init, g_mini.commands);
-			g_mini.commands = save_init;
-		}
 		else
 			g_mini.commands = g_mini.commands->next;
 	}
@@ -50,12 +46,6 @@ int	exec_commands(t_commands *commands_struct)
 {
 	if (!commands_struct)
 		return (0);
-	if (commands_struct->limiter == NULL && (commands_struct->cmd == NULL
-		|| commands_struct->cmd[0] == NULL))
-	{
-		delete_commands(commands_struct);
-		return (0);
-	}
 	g_mini.env = hash_to_env(g_mini.env_table->nodes);
 	redir_exec(commands_struct);
 	g_mini.on_child = FALSE;
@@ -114,10 +104,12 @@ t_commands	*commads_reconect(t_commands *save, t_commands *current)
 {
 	t_commands	*aux;
 
+	g_mini.cont_pipe--;
 	aux = current->next;
 	if (!aux)
 		aux = NULL;
 	current->next = NULL;
 	delete_commands(save);
+	g_mini.commands = aux;
 	return (aux);
 }
