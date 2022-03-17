@@ -6,7 +6,7 @@
 /*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:03:01 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/16 22:53:56 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/17 17:57:23 by algabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,22 @@ int	readline_output_parser(char *s)
 	creat_commands(aux);
 	free(aux);
 	save_init = g_mini.commands;
-	while (g_mini.commands->next != NULL)
+	while (g_mini.commands && g_mini.commands->next != NULL)
 	{
 		g_mini.commands->files_redir = parser(REDIRECT, &files_save);
 		g_mini.commands->limiter = heredoc_limiter();
 		g_mini.commands->files_input_redir = parser(REDIRECT_INPUT, \
 		&redirect_input_files);
-		g_mini.commands->cmd = cmd_parser(g_mini.commands->wf_cmd);
-		g_mini.commands = g_mini.commands->next;
+		g_mini.commands->cmd = cmd_parser(g_mini.commands->wf_cmd, \
+		hash_search(g_mini.env_table->nodes, "PATH", 4));
+		if (g_mini.commands->cmd == NULL)
+		{
+			g_mini.cont_pipe--;
+			save_init = commads_reconect(save_init, g_mini.commands);
+			g_mini.commands = save_init;
+		}
+		else
+			g_mini.commands = g_mini.commands->next;
 	}
 	g_mini.commands = save_init;
 	status = exec_commands(g_mini.commands);
@@ -40,20 +48,19 @@ int	readline_output_parser(char *s)
 
 int	exec_commands(t_commands *commands_struct)
 {
-	char	*local;
-
-	if (commands_struct->limiter == NULL && commands_struct->cmd == NULL)
+	if (!commands_struct)
 		return (0);
-	local = check_path(commands_struct, g_mini.env_table->nodes);
+	if (commands_struct->limiter == NULL && (commands_struct->cmd == NULL
+		|| commands_struct->cmd[0] == NULL))
+	{
+		delete_commands(commands_struct);
+		return (0);
+	}
 	g_mini.env = hash_to_env(g_mini.env_table->nodes);
 	redir_exec(commands_struct);
 	g_mini.on_child = FALSE;
-	if (local)
-	{
-		if (ft_exec(local, commands_struct) == -1)
-			return (-1);
-		free(local);
-	}
+	if (ft_exec(commands_struct) == -1)
+		return (-1);
 	free_matrix(g_mini.env);
 	delete_commands(commands_struct);
 	return (0);
@@ -101,4 +108,16 @@ void	delete_commands(t_commands *commands_struct)
 		free(commands_struct);
 		commands_struct = aux;
 	}
+}
+
+t_commands	*commads_reconect(t_commands *save, t_commands *current)
+{
+	t_commands	*aux;
+
+	aux = current->next;
+	if (!aux)
+		aux = NULL;
+	current->next = NULL;
+	delete_commands(save);
+	return (aux);
 }

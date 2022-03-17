@@ -6,7 +6,7 @@
 /*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:03:15 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/17 02:06:39 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/17 17:00:25 by algabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,19 +81,25 @@ t_files	*parser(char iten, t_files *(*save)(char *, t_files *anchor, int sig))
 	return (save_file);
 }
 
-char	**cmd_parser(char *cmd)
+char	**cmd_parser(char *cmd, t_node *path)
 {
 	int		i;
+	char	**path_list;
 	char	**n_cmd;
 
 	i = 0;
 	if (cmd && *cmd)
 	{
+		if (path == NULL)
+			return (NULL);
+		path_list = ft_split(path->value, ':');
 		while (cmd[i] == SPACECHAR)
 			i++;
 		if (i == ft_strlen(cmd))
 			return (NULL);
 		n_cmd = ft_split(cmd, SPACECHAR);
+		n_cmd = path_cmds(path_list, n_cmd);
+		free_matrix(path_list);
 		return (n_cmd);
 	}
 	return (NULL);

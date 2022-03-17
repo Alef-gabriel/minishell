@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:04:27 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/16 00:36:05 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/17 15:33:59 by algabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	dup_in_exec(int	*piper, int fd_in, t_commands *cmds, char *path)
+static void	dup_in_exec(int	*piper, int fd_in, t_commands *cmds)
 {
 	g_mini.on_child = TRUE;
 	get_sig();
@@ -22,7 +22,7 @@ static void	dup_in_exec(int	*piper, int fd_in, t_commands *cmds, char *path)
 		close(piper[0]);
 		dup2(piper[1], STDOUT_FILENO);
 	}
-	execve(ft_conect(path, "/", cmds->cmd[0]), cmds->cmd, g_mini.env);
+	execve(cmds->cmd[0], cmds->cmd, g_mini.env);
 }
 
 static void	redirect_in_exec_resut(int *piper, t_commands *cmds)
@@ -38,7 +38,7 @@ static void	redirect_in_exec_resut(int *piper, t_commands *cmds)
 		g_mini.cont_pipe--;
 }
 
-int	ft_exec(char *path, t_commands *cmds)
+int	ft_exec(t_commands *cmds)
 {
 	t_commands	*aux;
 	pid_t		pid;
@@ -57,7 +57,7 @@ int	ft_exec(char *path, t_commands *cmds)
 		{
 			pid = fork();
 			if (pid == 0)
-				dup_in_exec(piper, g_mini.fd_in, cmds, path);
+				dup_in_exec(piper, g_mini.fd_in, cmds);
 			waitpid(pid, &g_mini.exit_tmp, 0);
 		}
 		redirect_in_exec_resut(piper, cmds);

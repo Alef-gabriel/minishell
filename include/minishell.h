@@ -6,7 +6,7 @@
 /*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/16 22:47:18 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/17 17:01:37 by algabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,9 @@ void			atribute_node(char *key, char *value, t_hash *hash, int index);
 
 // Parse
 
+t_commands	*commads_reconect(t_commands *save, t_commands *current);
 char			*expansion(char *str);
-char	*check_path(t_commands *commands, t_node **nodes);
+char	**path_cmds(char **path_comand, char **cmd);
 void			parse_input(char *input);
 void			creat_commands(char *s);
 char			*join_matrix(char **split);
@@ -133,11 +134,11 @@ char			*remove_item_in_str(char *w_cmd, int after_cnt, int before_cnt);
 /*pipe parsing*/
 
 char			*ft_conect(char	*first, char *mid, char *end);
-char			**cmd_parser(char *cmd);
+char			**cmd_parser(char *cmd, t_node *path);
 t_files			*files_save(char *s, t_files *anchor, int sig);
 
 /* Exec */
-int				ft_exec(char *path, t_commands *cmds);
+int				ft_exec(t_commands *cmds);
 void			redir_exec(t_commands *commands);
 void			ft_filecmp(int destination_fd, int fd);
 int				exec_builtins(char **cmd, t_files *redirect, int *piper);
