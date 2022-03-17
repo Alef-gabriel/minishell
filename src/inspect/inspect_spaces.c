@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inspect.c                                          :+:      :+:    :+:   */
+/*   inspect_spaces.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/12 02:17:14 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/17 20:47:44 by anhigo-s         ###   ########.fr       */
+/*   Created: 2022/03/17 20:44:43 by anhigo-s          #+#    #+#             */
+/*   Updated: 2022/03/17 20:58:35 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	init_inspect(char *input)
+int	str_is_only_spaces(char *string)
 {
-	if (input == NULL)
+	int	index;
+
+	index = 0;
+	while (string[index] != '\0')
 	{
-		exit_signal();
+		if (!ft_strchr(" 	", string[index]))
+		{
+			return (0);
+		}
+		index++;
 	}
-	if (!(ft_strncmp(input, "exit ", 4)) || (!ft_strcmp(input, "exit")))
-	{
-		exit_shell(input);
-	}
-	add_history(input);
-	if (str_is_only_spaces(input))
-		return (1);
-	if (inspect_quotation(input) || inspect_redirection(input))
-	{
-		g_mini.exit_code = 2;
-		return (1);
-	}
-	return (0);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 22:45:15 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/16 01:38:08 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/17 20:56:26 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int	inspect_special_char(char *input)
 	index = 0;
 	while (input[index] != '\0')
 	{
-		if (ft_strchr("();*\\&", input[index]))
+		if (ft_strchr("();*&", input[index]))
 		{
 			print_error("special characters should not be interpreted", "", 0);
 			return (1);

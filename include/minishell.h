@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
+/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/17 18:36:12 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/17 20:48:05 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int				inspect_quotation(char *input);
 int				inspect_redirection(char *input);
 int				inspect_pipe(char *input, int index);
 int				start_with_pipe(char *input);
-
+int				str_is_only_spaces(char *string);
 // Utils
 
 void			free_matrix(char **matrix);

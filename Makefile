@@ -38,6 +38,7 @@ SRCS = $(PATH_MAIN)minishell.c $(PATH_MAIN)initial_func.c $(PATH_MAIN)signal.c \
 		$(PATH_BUILTINS)chdir.c $(PATH_BUILTINS)env.c \
 		$(PATH_INSPECT)inspect_pipe.c $(PATH_INSPECT)inspect_quotation.c \
 		$(PATH_INSPECT)inspect_redir.c $(PATH_INSPECT)inspect.c \
+		$(PATH_INSPECT)inspect_spaces.c \
 		$(PATH_EXIT)exit_clear.c $(PATH_EXIT)error_print.c \
 
 OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(SRCS))
