@@ -6,20 +6,22 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 21:29:04 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/18 22:43:59 by coder            ###   ########.fr       */
+/*   Updated: 2022/03/18 22:53:15 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	node_switch(int depth_cont, t_hash *data, int index, int i)
+static void	node_switch(int depth_cont, t_hash *data, int index)
 {
 	t_node	*aux;
 	t_node	*save;
 	t_node	*temp;
+	int		i;
 
 	temp = NULL;
 	save = NULL;
+	i = 0;
 	if (depth_cont > 1)
 		save = data->nodes[index];
 	while (i < depth_cont)
@@ -58,7 +60,7 @@ int	unset(t_hash *data, char *key)
 	{
 		if (ft_memcmp(aux->key, key, key_len) == 0)
 		{
-			node_switch(depth_cont, data, index, 0);
+			node_switch(depth_cont, data, index);
 			break ;
 		}
 		aux = aux->next;

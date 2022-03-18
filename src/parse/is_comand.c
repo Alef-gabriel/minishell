@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_comand.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:02:41 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/18 17:01:17 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/18 23:36:30 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	**path_cmds(char **path_comand, char **cmd)
 	int		pos;
 
 	pos = 0;
-	while (path_comand[pos] != NULL)
+	while (path_comand && path_comand[pos] != NULL)
 	{
 		if (access(cmd[0], F_OK) == 0 || is_builtins(cmd[0]))
 			return (cmd);
@@ -41,6 +41,8 @@ char	**path_cmds(char **path_comand, char **cmd)
 		free(command_which);
 		pos++;
 	}
+	if (path_comand == NULL && (access(cmd[0], F_OK) == 0 || is_builtins(cmd[0])))
+		return (cmd);
 	error_cmd(cmd[0]);
 	free_matrix(cmd);
 	return (NULL);

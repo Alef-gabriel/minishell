@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   readline_parser.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:03:01 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/18 17:04:48 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/18 23:24:10 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	readline_output_parser(char *s)
 int	exec_commands(t_commands *commands_struct)
 {
 	if (!commands_struct)
-		return (0);
+		return (0);	
 	g_mini.env = hash_to_env(g_mini.env_table->nodes);
 	redir_exec(commands_struct);
 	g_mini.on_child = FALSE;
