@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
+/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:04:27 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/18 00:51:54 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/18 01:49:09 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static void	redirect_in_exec_resut(int *piper, t_commands *cmds)
 {
 	g_mini.fd_in = piper[0];
 	g_mini.on_child = FALSE;
-	g_mini.exit_code = WEXITSTATUS(g_mini.exit_tmp);
 	if (g_mini.cont_pipe > 0 || cmds->files_redir != NULL
 		|| cmds->files_input_redir != NULL)
 		close(piper[1]);
@@ -37,10 +36,22 @@ static void	redirect_in_exec_resut(int *piper, t_commands *cmds)
 		g_mini.cont_pipe--;
 }
 
+void	start_child(t_commands *cmds, int piper[2])
+{
+	pid_t	pid;
+
+	get_sig_child();
+	pid = fork();
+	if (pid == 0)
+		dup_in_exec(piper, g_mini.fd_in, cmds);
+	waitpid(pid, &g_mini.exit_tmp, 0);
+	if (WIFEXITED(g_mini.exit_tmp))
+		g_mini.exit_code = WEXITSTATUS(g_mini.exit_tmp);
+}
+
 void	ft_exec(t_commands *cmds)
 {
 	t_commands	*aux;
-	pid_t		pid;
 	int			piper[2];
 
 	g_mini.fd_in = 0;
@@ -54,11 +65,7 @@ void	ft_exec(t_commands *cmds)
 			return ;
 		if (exec_builtins(cmds->cmd, cmds->files_redir, piper) == 0)
 		{
-			get_sig_child();
-			pid = fork();
-			if (pid == 0)
-				dup_in_exec(piper, g_mini.fd_in, cmds);
-			waitpid(pid, &g_mini.exit_tmp, 0);
+			start_child(cmds, piper);
 		}
 		redirect_in_exec_resut(piper, cmds);
 		cmds = cmds->next;

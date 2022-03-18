@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
+/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/18 00:52:27 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/18 01:49:49 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdio.h>
 # include <unistd.h>
-# include <errno.h>
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/wait.h>
@@ -97,9 +96,9 @@ void			atribute_node(char *key, char *value, t_hash *hash, int index);
 
 // Parse
 
-t_commands	*commads_reconect(t_commands *save, t_commands *current);
+t_commands		*commads_reconect(t_commands *save, t_commands *current);
 char			*expansion(char *str);
-char	**path_cmds(char **path_comand, char **cmd);
+char			**path_cmds(char **path_comand, char **cmd);
 void			parse_input(char *input);
 void			creat_commands(char *s);
 char			*join_matrix(char **split);
@@ -123,7 +122,7 @@ t_limiter		*heredoc_limiter(void);
 
 /*readline parser*/
 
-void				readline_output_parser(char *s);
+void			readline_output_parser(char *s);
 int				exec_commands(t_commands *commands_struct);
 void			delete_commands(t_commands *commands_struct);
 
