@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 02:17:14 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/17 21:02:44 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/18 01:17:59 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	init_inspect(char *input)
 	{
 		exit_shell(input);
 	}
-	g_mini.exit_code = 0;
 	add_history(input);
 	if (str_is_only_spaces(input))
 		return (1);
