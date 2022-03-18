@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 21:28:57 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/02/07 21:28:58 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/19 00:41:58 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	export(t_hash *data, char *cmd)
 {
 	char	*key;
 	char	*value;
-	int		index;
+	t_node	*search;
 	int		j;
 
 	j = 0;
@@ -25,8 +25,15 @@ int	export(t_hash *data, char *cmd)
 	if (cmd[j] != '=')
 		return (0);
 	key = ft_substr(cmd, 0, j);
-	index = hash(key, data->size);
 	value = ft_substr(cmd, j + 1, ft_strlen(cmd) - j);
-	addlast(&data->nodes[index], create_new_node(key, value));
+	search = hash_search(data->nodes, key, ft_strlen(key));
+	if (!search)
+		addlast(&data->nodes[hash(key, data->size)], create_new_node(key, value));
+	else
+	{
+		free(key);
+		free(search->value);
+		search->value = value;
+	}
 	return (0);
 }
