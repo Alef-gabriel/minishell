@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inspect_spaces.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 20:44:43 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/18 16:35:57 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/18 17:06:33 by algabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	str_is_only_spaces(char *string)
 
 int	start_with_quotes(char *string)
 {
-	if (ft_strncmp(string, "\'\'", 2) == 0 )
+	if (ft_strncmp(string, "\'\'", 2) == 0)
 	{
 		error_cmd(" ");
 		return (1);

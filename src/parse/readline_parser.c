@@ -6,7 +6,7 @@
 /*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:03:01 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/18 00:52:53 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/18 17:04:48 by algabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	readline_output_parser(char *s)
 		&redirect_input_files);
 		g_mini.commands->cmd = cmd_parser(g_mini.commands->wf_cmd, \
 		hash_search(g_mini.env_table->nodes, "PATH", 4));
-		if (g_mini.commands->cmd == NULL)
+		if (g_mini.commands->cmd == NULL && g_mini.commands->limiter == NULL)
 			save_init = commads_reconect(save_init, g_mini.commands);
 		else
 			g_mini.commands = g_mini.commands->next;
