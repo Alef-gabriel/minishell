@@ -6,13 +6,13 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 01:01:38 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/15 03:45:53 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/18 15:49:56 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	pwd_build(int fd)
+int	pwd_build(void)
 {
 	char	*pwd;
 

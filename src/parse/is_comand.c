@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   is_comand.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
+/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:02:41 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/18 00:49:31 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/18 16:36:19 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	error_cmd(char *cmd);
 
 static int	is_builtins(char *cmd)
 {

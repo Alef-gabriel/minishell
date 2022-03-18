@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/18 01:49:49 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/18 16:36:39 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,12 @@ void			get_sig_child(void);
 
 // Buildin
 
-void			ft_echo(char **cmd, int fd);
+void			ft_echo(char **cmd);
 int				cd_dir(char **cmd);
-int				print_table(t_node **nodes, int fd);
+int				print_table(void);
 int				exit_shell(char *cmd);
 int				export(t_hash *data, char *cmd);
-int				pwd_build(int fd);
+int				pwd_build(void);
 int				unset(t_hash *data, char *key);
 
 // Inspect
@@ -82,6 +82,7 @@ void			print_error(char *err_msg_f, char *err_msg_s, int status);
 void			print_redir(int status);
 void			free_to_exit(void);
 void			exit_signal(void);
+void			error_cmd(char *cmd);
 
 // Hash Table
 
@@ -141,7 +142,7 @@ t_files			*files_save(char *s, t_files *anchor, int sig);
 void			ft_exec(t_commands *cmds);
 void			redir_exec(t_commands *commands);
 void			ft_filecmp(int destination_fd, int fd);
-int				exec_builtins(char **cmd, t_files *redirect, int *piper);
+int				exec_builtins(char **cmd);
 
 int				signal_type(char *s);
 int				fd_to_fd(int fd_in, t_files *fd_out);

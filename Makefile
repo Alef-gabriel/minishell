@@ -2,7 +2,7 @@ NAME = minishell
 
 CC = gcc
 
-CFLAGS	= -g3 -Wall #-Werror -Wextra
+CFLAGS	= -g3 -Wall -Werror -Wextra
 LIBFT 	= -L ./libft -lft
 
 RM = rm -rf

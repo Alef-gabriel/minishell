@@ -6,20 +6,20 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 01:47:10 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/15 01:37:08 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/18 15:52:19 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	print_table(t_node **nodes, int fd)
+int	print_table(void)
 {
 	int	i;
 
 	i = 0;
 	while (g_mini.env[i])
 	{
-		ft_putendl_fd(g_mini.env[i], fd);
+		ft_putendl_fd(g_mini.env[i], STDOUT_FILENO);
 		i++;
 	}
 	return (0);

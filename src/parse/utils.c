@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
+/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:03:15 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/17 17:00:25 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/18 15:49:21 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char	**cmd_parser(char *cmd, t_node *path)
 		path_list = ft_split(path->value, ':');
 		while (cmd[i] == SPACECHAR)
 			i++;
-		if (i == ft_strlen(cmd))
+		if (i == (int)ft_strlen(cmd))
 			return (NULL);
 		n_cmd = ft_split(cmd, SPACECHAR);
 		n_cmd = path_cmds(path_list, n_cmd);

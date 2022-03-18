@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
+/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:02:46 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/17 18:38:37 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/18 15:49:12 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	creat_commands(char *s)
 	j = 0;
 	g_mini.commands = init_commands();
 	aux = g_mini.commands;
-	while (i < ft_strlen(s) && s[i])
+	while (i < (int)ft_strlen(s) && s[i])
 	{
 		j = i;
 		while (s[j] != PIPE && s[j])

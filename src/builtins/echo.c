@@ -6,13 +6,13 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 01:47:36 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/16 01:07:24 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/18 15:49:28 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_echo(char **cmd, int fd)
+void	ft_echo(char **cmd)
 {
 	int		i;
 	int		booption;
