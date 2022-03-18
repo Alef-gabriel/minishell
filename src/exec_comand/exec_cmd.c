@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
+/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:04:27 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/17 15:33:59 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/17 21:34:08 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	dup_in_exec(int	*piper, int fd_in, t_commands *cmds)
 {
 	g_mini.on_child = TRUE;
-	get_sig();
+	
 	dup2(fd_in, STDIN_FILENO);
 	if (g_mini.cont_pipe > 0 || cmds->files_redir != NULL)
 	{
@@ -55,6 +55,7 @@ int	ft_exec(t_commands *cmds)
 			return (1);
 		if (exec_builtins(cmds->cmd, cmds->files_redir, piper) == 0)
 		{
+			get_sig_child();
 			pid = fork();
 			if (pid == 0)
 				dup_in_exec(piper, g_mini.fd_in, cmds);

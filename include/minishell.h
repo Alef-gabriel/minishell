@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/17 20:48:05 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/17 21:25:31 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ char			*takeinput(void);
 t_files			*file_init(char *filename);
 t_commands		*init_commands(void);
 void			get_sig(void);
+void			get_sig_child(void);
 
 // Buildin
 
