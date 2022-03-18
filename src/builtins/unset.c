@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 21:29:04 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/18 00:57:19 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/18 22:14:17 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ static void	node_switch(int depth_cont, t_hash *data, int index, int i)
 			free(data->nodes[index]->key);
 			free(data->nodes[index]->value);
 			free(data->nodes[index]);
-			temp->next = aux;
+			if (temp)
+				temp->next = aux;
 		}
 		data->nodes[index] = aux;
 		i++;
