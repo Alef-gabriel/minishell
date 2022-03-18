@@ -3,16 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   is_comand.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:02:41 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/17 20:35:47 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/18 00:40:14 by algabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 void	error_cmd(char *cmd);
+
+static	int is_builtins(char *cmd)
+{
+	if (!ft_strcmp(cmd, "echo\0") || !ft_strcmp(cmd, "unset\0")
+		|| !ft_strcmp(cmd, "export\0") || !ft_strcmp(cmd, "env\0")
+			|| !ft_strcmp(cmd, "cd\0") || !ft_strcmp(cmd, "pwd\0"))
+		return (1);
+	return (0);
+}
 
 char	**path_cmds(char **path_comand, char **cmd)
 {
@@ -22,7 +31,7 @@ char	**path_cmds(char **path_comand, char **cmd)
 	pos = 0;
 	while (path_comand[pos] != NULL)
 	{
-		if (access(cmd[0], F_OK) == 0)
+		if (access(cmd[0], F_OK) == 0 || is_builtins(cmd[0]))
 			return (cmd);
 		command_which = ft_conect(path_comand[pos], "/", cmd[0]);
 		if (access(command_which, F_OK) == 0)
