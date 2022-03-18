@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:04:27 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/17 21:34:08 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/18 00:51:54 by algabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static void	dup_in_exec(int	*piper, int fd_in, t_commands *cmds)
 {
 	g_mini.on_child = TRUE;
-	
 	dup2(fd_in, STDIN_FILENO);
 	if (g_mini.cont_pipe > 0 || cmds->files_redir != NULL)
 	{
@@ -38,7 +37,7 @@ static void	redirect_in_exec_resut(int *piper, t_commands *cmds)
 		g_mini.cont_pipe--;
 }
 
-int	ft_exec(t_commands *cmds)
+void	ft_exec(t_commands *cmds)
 {
 	t_commands	*aux;
 	pid_t		pid;
@@ -52,7 +51,7 @@ int	ft_exec(t_commands *cmds)
 			|| cmds->files_input_redir || cmds->limiter)
 			pipe(piper);
 		if (input_to_exec(cmds->files_input_redir, piper, cmds->limiter) == 1)
-			return (1);
+			return ;
 		if (exec_builtins(cmds->cmd, cmds->files_redir, piper) == 0)
 		{
 			get_sig_child();
@@ -65,5 +64,4 @@ int	ft_exec(t_commands *cmds)
 		cmds = cmds->next;
 	}
 	cmds = aux;
-	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/17 21:25:31 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/18 00:52:27 by algabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ char			**cmd_parser(char *cmd, t_node *path);
 t_files			*files_save(char *s, t_files *anchor, int sig);
 
 /* Exec */
-int				ft_exec(t_commands *cmds);
+void			ft_exec(t_commands *cmds);
 void			redir_exec(t_commands *commands);
 void			ft_filecmp(int destination_fd, int fd);
 int				exec_builtins(char **cmd, t_files *redirect, int *piper);

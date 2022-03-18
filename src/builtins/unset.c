@@ -3,24 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 21:29:04 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/17 20:36:56 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/18 00:57:19 by algabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-//aux tem que ter o poneiro next para o node depois do que tem que excluir
-static void	node_switch(int depth_cont, t_hash *data, int index)
+static void	node_switch(int depth_cont, t_hash *data, int index, int i)
 {
-	int		i;
 	t_node	*aux;
 	t_node	*save;
 	t_node	*temp;
 
-	i = 0;
 	temp = NULL;
 	save = NULL;
 	if (depth_cont > 1)
@@ -60,7 +57,7 @@ int	unset(t_hash *data, char *key)
 	{
 		if (ft_memcmp(aux->key, key, key_len) == 0)
 		{
-			node_switch(depth_cont, data, index);
+			node_switch(depth_cont, data, index, 0);
 			break ;
 		}
 		aux = aux->next;

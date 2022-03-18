@@ -6,7 +6,7 @@
 /*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:03:01 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/17 18:36:43 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/18 00:52:53 by algabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ int	exec_commands(t_commands *commands_struct)
 	g_mini.env = hash_to_env(g_mini.env_table->nodes);
 	redir_exec(commands_struct);
 	g_mini.on_child = FALSE;
-	if (ft_exec(commands_struct) == -1)
-		return (-1);
+	ft_exec(commands_struct);
 	free_matrix(g_mini.env);
 	delete_commands(commands_struct);
 	return (0);

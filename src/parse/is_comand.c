@@ -6,7 +6,7 @@
 /*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:02:41 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/18 00:40:14 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/18 00:49:31 by algabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	error_cmd(char *cmd);
 
-static	int is_builtins(char *cmd)
+static int	is_builtins(char *cmd)
 {
 	if (!ft_strcmp(cmd, "echo\0") || !ft_strcmp(cmd, "unset\0")
 		|| !ft_strcmp(cmd, "export\0") || !ft_strcmp(cmd, "env\0")
-			|| !ft_strcmp(cmd, "cd\0") || !ft_strcmp(cmd, "pwd\0"))
+		|| !ft_strcmp(cmd, "cd\0") || !ft_strcmp(cmd, "pwd\0"))
 		return (1);
 	return (0);
 }
