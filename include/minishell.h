@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/19 00:35:21 by coder            ###   ########.fr       */
+/*   Updated: 2022/03/19 02:44:17 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,12 @@ void			get_sig_child(void);
 
 // Buildin
 
-void			ft_echo(char **cmd);
+void			ft_echo(char **cmd, int fd);
 int				cd_dir(char **cmd);
-int				print_table(void);
+int				print_table(int fd);
 int				exit_shell(char *cmd);
 int				export(t_hash *data, char *cmd);
-int				pwd_build(void);
+int				pwd_build(int fd);
 int				unset(t_hash *data, char *key);
 
 // Inspect
@@ -142,7 +142,7 @@ t_files			*files_save(char *s, t_files *anchor, int sig);
 void			ft_exec(t_commands *cmds);
 void			redir_exec(t_commands *commands);
 void			ft_filecmp(int destination_fd, int fd);
-int				exec_builtins(char **cmd);
+int				exec_builtins(char **cmd, int fd);
 
 int				signal_type(char *s);
 int				fd_to_fd(int fd_in, t_files *fd_out);

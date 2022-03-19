@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:04:27 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/18 15:51:40 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/19 02:46:08 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	ft_exec(t_commands *cmds)
 			pipe(piper);
 		if (input_to_exec(cmds->files_input_redir, piper, cmds->limiter) == 1)
 			return ;
-		if (exec_builtins(cmds->cmd) == 0)
+		if (exec_builtins(cmds->cmd, piper[1]) == 0)
 		{
 			start_child(cmds, piper);
 		}

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 01:47:36 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/18 15:49:28 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/19 02:42:11 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_echo(char **cmd)
+void	ft_echo(char **cmd, int fd)
 {
 	int		i;
 	int		booption;
@@ -28,13 +28,13 @@ void	ft_echo(char **cmd)
 	}
 	while (cmd[i])
 	{
-		ft_putstr_fd(cmd[i], STDIN_FILENO);
+		ft_putstr_fd(cmd[i], fd);
 		if (cmd[i + 1] != NULL)
 		{
-			ft_putchar_fd(space, STDIN_FILENO);
+			ft_putchar_fd(space, fd);
 		}
 		i++;
 	}
 	if (!booption)
-		ft_putchar_fd('\n', STDIN_FILENO);
+		ft_putchar_fd('\n', fd);
 }
