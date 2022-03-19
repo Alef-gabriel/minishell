@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 01:47:36 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/18 15:49:28 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/18 21:57:40 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	ft_echo(char **cmd)
 	int		booption;
 	char	space;
 
-	i = 0;
 	space = ' ';
 	booption = 0;
 	if (cmd[0] && !(ft_strcmp(cmd[0], "-n\0")))
@@ -26,8 +25,10 @@ void	ft_echo(char **cmd)
 		booption = 1;
 		cmd = cmd + 1;
 	}
+	i = 0;
 	while (cmd[i])
 	{
+		g_mini.exit_code = 0;
 		ft_putstr_fd(cmd[i], STDIN_FILENO);
 		if (cmd[i + 1] != NULL)
 		{
