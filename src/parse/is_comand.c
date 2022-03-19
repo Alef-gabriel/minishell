@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_comand.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:02:41 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/19 00:09:01 by coder            ###   ########.fr       */
+/*   Updated: 2022/03/18 21:24:41 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,15 @@ t_commands	*commads_reconect(t_commands *save, t_commands *current)
 
 void	error_cmd(char *cmd)
 {
+	g_mini.exit_code = 127;
+	if (ft_strncmp(cmd, "/", 1) == 0)
+	{
+		ft_putstr_fd("minishell: ", STDERR_FILENO);
+		ft_putstr_fd(cmd, STDERR_FILENO);
+		ft_putendl_fd(": No such file or directory", STDERR_FILENO);
+	}
 	ft_putstr_fd("minishell: ", STDERR_FILENO);
 	ft_putstr_fd(cmd, STDERR_FILENO);
 	ft_putendl_fd(": command not found", STDERR_FILENO);
-	g_mini.exit_code = 127;
 	return ;
 }
