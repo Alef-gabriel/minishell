@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:02:41 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/18 21:24:41 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/19 00:34:30 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ char	**path_cmds(char **path_comand, char **cmd)
 		free(command_which);
 		pos++;
 	}
-	if (path_comand == NULL && (access(cmd[0], F_OK) == 0 || is_builtins(cmd[0])))
+	if (path_comand == NULL && (access(cmd[0], F_OK) == 0
+			|| is_builtins(cmd[0])))
 		return (cmd);
 	error_cmd(cmd[0]);
 	free_matrix(cmd);
