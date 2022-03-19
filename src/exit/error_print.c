@@ -6,18 +6,17 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 00:58:08 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/18 01:51:51 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/19 01:37:39 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	file_error(char *s)
+int	file_error(char *err_msg)
 {
 	ft_putstr_fd("minishell: ", STDERR_FILENO);
-	ft_putstr_fd("error file: \'", STDERR_FILENO);
-	ft_putstr_fd(s, 2);
-	ft_putendl_fd("\' not found", STDERR_FILENO);
+	ft_putstr_fd(err_msg, STDERR_FILENO);
+	ft_putendl_fd(": No such file or directory", STDERR_FILENO);
 	return (-1);
 }
 
