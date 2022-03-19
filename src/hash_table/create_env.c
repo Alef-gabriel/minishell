@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 21:30:36 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/19 00:35:10 by coder            ###   ########.fr       */
+/*   Updated: 2022/03/19 04:22:51 by algabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,16 @@ void	addlast(t_node **node, t_node *new)
 	}
 }
 
+static int	matrix_cont(char **matrix)
+{
+	int	i;
+
+	i = 0;
+	while (matrix[i])
+		i++;
+	return (i);
+}
+
 t_hash	*env_to_hash(char **env)
 {
 	t_hash	*table;
@@ -49,20 +59,20 @@ t_hash	*env_to_hash(char **env)
 
 	i = 0;
 	j = 0;
-	while (env[i])
-		i++;
-	table = create_hash(i);
-	i = 0;
+	table = create_hash(matrix_cont(env));
 	while (env[i])
 	{
 		j = 0;
-		while ((env[i][j] != '='))
-			j++;
-		key = ft_substr(env[i], 0, j);
-		hash_index = hash(key, table->size);
-		addlast(&table->nodes[hash_index],
-			create_new_node(key, ft_substr(env[i], j + 1,
-					ft_strlen(env[i]) - j + 1)));
+		if (ft_strstr(env[i], "_WORKSPACE_"))
+		{
+			while ((env[i][j] != '='))
+				j++;
+			key = ft_substr(env[i], 0, j);
+			hash_index = hash(key, table->size);
+			addlast(&table->nodes[hash_index],
+				create_new_node(key, ft_substr(env[i], j + 1,
+						ft_strlen(env[i]) - j + 1)));
+		}
 		i++;
 	}
 	return (table);
