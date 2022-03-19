@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
+/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 04:47:57 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/19 04:47:58 by algabrie         ###   ########.fr       */
+/*   Updated: 2022/03/19 00:58:54 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,8 @@
 # define MINISHELL_H
 
 # include <stdio.h>
-# include <unistd.h>
 # include <fcntl.h>
-# include <sys/types.h>
 # include <sys/wait.h>
-# include <stdlib.h>
 # include <signal.h>
 # include <readline/readline.h>
 # include <readline/history.h>
