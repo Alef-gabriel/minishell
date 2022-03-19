@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 02:08:15 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/18 01:20:08 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2022/03/18 22:00:15 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static void	abort_sig(int sig)
 	g_mini.exit_code = 130;
 	if (g_mini.on_child == TRUE)
 	{
-		quit_sig_child(sig);
 		g_mini.on_child = FALSE;
 		exit(0);
 	}

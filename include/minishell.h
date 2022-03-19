@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 23:00:35 by anhigo-s          #+#    #+#             */
-/*   Updated: 2022/03/19 02:44:17 by coder            ###   ########.fr       */
+/*   Updated: 2022/03/18 23:21:01 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ t_files			*file_init(char *filename);
 t_commands		*init_commands(void);
 void			get_sig(void);
 void			get_sig_child(void);
+void			get_sig_heredoc(void);
 
 // Buildin
 

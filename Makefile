@@ -23,7 +23,7 @@ PATH_EXIT = $(PATH_SRC)exit/
 PATH_OBJS = ./objs/
 
 SRCS = $(PATH_MAIN)minishell.c $(PATH_MAIN)initial_func.c $(PATH_MAIN)signal.c \
-		$(PATH_MAIN)prompt.c \
+		$(PATH_MAIN)prompt.c $(PATH_MAIN)signal_heredoc.c \
 		$(PATH_PARSE)is_comand.c $(PATH_PARSE)verify_what.c\
 		$(PATH_PARSE)parse_input.c $(PATH_PARSE)readline_parser.c \
 		$(PATH_PARSE)redir_parse.c $(PATH_PARSE)utils.c \
