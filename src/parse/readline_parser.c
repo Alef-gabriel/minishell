@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   readline_parser.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: algabrie <alefgabrielr@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/15 22:03:01 by algabrie          #+#    #+#             */
-/*   Updated: 2022/03/18 21:57:12 by anhigo-s         ###   ########.fr       */
+/*   Created: 2022/03/19 04:48:48 by algabrie          #+#    #+#             */
+/*   Updated: 2022/03/19 04:48:49 by algabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
